@@ -4,7 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  NavLink,
+  Redirect
 } from "react-router-dom";
 import logo from './logo.svg';
 import './App.scss';
@@ -27,8 +28,11 @@ const App: React.FC = () => {
           <Route exact path="/">
             <TestPage />
           </Route>
-          <Route path="/*">
+          <Route path="/404">
             <PageNotFound />
+          </Route>
+          <Route path="/*">
+            <Redirect to="/404" />
           </Route>
         </Switch>
       </Router>
