@@ -1,5 +1,5 @@
 import React from 'react';
-import './userUnlock.css';
+import './userUnlock.scss';
 
 const UserUnlock: React.FC = () => {
     return(

@@ -1,5 +1,5 @@
 import React from 'react';
-import './testPage.css'
+import './testPage.scss'
 import { NavLink } from 'react-router-dom';
 
 const TestPage: React.FC = () => {
