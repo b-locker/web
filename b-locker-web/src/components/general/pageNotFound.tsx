@@ -1,6 +1,6 @@
 import React from 'react';
-import './pageNotFound.css'
-import '../../styles/global.css'
+import './pageNotFound.scss'
+import '../../styles/global.scss'
 
 const PageNotFound: React.FC = () => {
     return(
