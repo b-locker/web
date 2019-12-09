@@ -1,5 +1,5 @@
 import React from 'react';
-import './orgLogin.css';
+import './orgLogin.scss';
 
 const OrgLogin: React.FC = () => {
     return(
