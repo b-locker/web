@@ -45,7 +45,7 @@
     transition: ease 200s !important;
     transform: rotate(-3600deg) !important;
 }
-
+/*
 .box{
     border: black dotted 1px;
 }
@@ -53,33 +53,15 @@
 .red-box{
     border: red dotted 2px;
 }
-
+*/
 .main{
     margin: 0;
     width: 100%;
     height: 100%;
     font-family: 'Dosis', sans-serif;
-    font-weight: 300;   
+    font-weight: 300;
+    overflow: hidden;
 }
-
-/*
-.bg-purple{
-    //background: url(http://salehriaz.com/404Page/img/bg_purple.png);
-    background: url(../../assets/bg_purple.png) no-repeat center center fixed;
-    // Set rules to fill background 
-    min-height: 100%;
-    min-width: 1024px;
-	
-    //Set up proportionate scaling 
-    width: 100%;
-    height: auto;
-	
-    //Set up positioning 
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-*/
 
 #bg {
     position: fixed; 
@@ -88,6 +70,7 @@
     width: 200%; 
     height: 200%;
   }
+
   #bg img {
     position: absolute; 
     top: 0; 
@@ -134,7 +117,6 @@
 }
 
 .central-body{
-/*    width: 100%;*/
     padding: 17% 5% 10% 5%;
     text-align: center;
 }
@@ -165,10 +147,6 @@
     position: absolute;
     top: 12%;
     left: 25%;
-/*
-    transform: rotate(0deg);
-    transition: transform ease-in 99999999999s;
-*/
 }
 
 .earth-moon{
@@ -201,8 +179,9 @@
     right: 0; 
     bottom: 0; 
     margin: auto; 
-    min-width: 50%;
-    min-height: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .glowing_stars .star{
