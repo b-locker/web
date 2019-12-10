@@ -46,28 +46,58 @@
     transform: rotate(-3600deg) !important;
 }
 
+.box{
+    border: black dotted 1px;
+}
+
+.red-box{
+    border: red dotted 2px;
+}
+
 .main{
     margin: 0;
     width: 100%;
     height: 100%;
     font-family: 'Dosis', sans-serif;
-    font-weight: 300;
-    -webkit-user-select: none; // Safari 3.1+ 
-    -moz-user-select: none; // Firefox 2+ 
-    -ms-user-select: none; // IE 10+ 
-    user-select: none; // Standard syntax
+    font-weight: 300;   
 }
 
+/*
 .bg-purple{
     //background: url(http://salehriaz.com/404Page/img/bg_purple.png);
-    background: url(../../assets/bg_purple.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    overflow: hidden;
-    
+    background: url(../../assets/bg_purple.png) no-repeat center center fixed;
+    // Set rules to fill background 
+    min-height: 100%;
+    min-width: 1024px;
+	
+    //Set up proportionate scaling 
+    width: 100%;
+    height: auto;
+	
+    //Set up positioning 
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+*/
+
+#bg {
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;
+  }
+  #bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
 
 .custom-navbar{
     padding-top: 15px;
@@ -164,12 +194,15 @@
     pointer-events: none;
 }
 
-.stars{
-    //background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
-    background: url(../../assets/overlay_stars.svg);
-    background-repeat: repeat;
-    background-size: contain;
-    background-position: left top;
+.stars img{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
 }
 
 .glowing_stars .star{

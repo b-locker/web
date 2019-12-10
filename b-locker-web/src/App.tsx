@@ -7,7 +7,6 @@ import {
   NavLink,
   Redirect
 } from "react-router-dom";
-import logo from './logo.svg';
 import './App.scss';
 import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
