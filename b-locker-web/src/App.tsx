@@ -4,9 +4,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  NavLink
+  NavLink,
+  Redirect
 } from "react-router-dom";
-import logo from './logo.svg';
 import './App.scss';
 import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
@@ -27,8 +27,11 @@ const App: React.FC = () => {
           <Route exact path="/">
             <TestPage />
           </Route>
-          <Route path="/*">
+          <Route path="/404">
             <PageNotFound />
+          </Route>
+          <Route path="/*">
+            <Redirect to="/404" />
           </Route>
         </Switch>
       </Router>
