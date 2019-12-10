@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from "react-dom";
 import {
   BrowserRouter as Router,
@@ -8,33 +8,39 @@ import {
   Redirect
 } from "react-router-dom";
 import './App.scss';
+import './global/i18n/i18n'
 import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
 import PageNotFound from './components/general/pageNotFound';
 import TestPage from './components/general/testPage';
+import LanguageSelector from './global/i18n/languageSelector';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/login">
-            <OrgLogin />
-          </Route>
-          <Route path="/unlock">
-            <UserUnlock />
-          </Route>
-          <Route exact path="/">
-            <TestPage />
-          </Route>
-          <Route path="/404">
-            <PageNotFound />
-          </Route>
-          <Route path="/*">
-            <Redirect to="/404" />
-          </Route>
-        </Switch>
-      </Router>
+      <Suspense fallback={null}>
+        <LanguageSelector></LanguageSelector>
+
+        <Router>
+          <Switch>
+            <Route path="/login">
+              <OrgLogin />
+            </Route>
+            <Route path="/unlock">
+              <UserUnlock />
+            </Route>
+            <Route exact path="/">
+              <TestPage />
+            </Route>
+            <Route path="/404">
+              <PageNotFound />
+            </Route>
+            <Route path="/*">
+              <Redirect to="/404" />
+            </Route>
+          </Switch>
+        </Router>
+      </Suspense>
     </div>
     /*<div className="App">
       <header className="App-header">

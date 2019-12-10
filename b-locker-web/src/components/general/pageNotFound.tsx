@@ -8,9 +8,12 @@ import rocket from '../../assets/rocket.svg';
 import earth from '../../assets/earth.svg';
 import moon from '../../assets/moon.svg';
 import astronaut from '../../assets/astronaut.svg';
+import { useTranslation } from 'react-i18next';
 
 const homeUrl: string = "http://b-locker.com"
 const PageNotFound: React.FC = () => {
+    const { t, i18n } = useTranslation();
+
     return (
         <div className="main bg-purple red-box">
             <div id="bg">
@@ -21,7 +24,7 @@ const PageNotFound: React.FC = () => {
             </div>
             <div className="central-body box">
                 <img className="image-404 box" src={image404} width="300px" alt="" />
-                <a href={homeUrl} className="btn-go-home box" target="_blank" rel="noopener noreferrer">GO BACK HOME</a>
+                <a href={homeUrl} className="btn-go-home box" target="_blank" rel="noopener noreferrer">{t('goback.button')}</a>
             </div>
             <div className="objects box">
                 <img className="object_rocket box" src={rocket} width="40px" alt="" />
