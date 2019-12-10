@@ -5,7 +5,6 @@ import detectBrowserLanguage from 'detect-browser-language';
 
 let browserLang: string = detectBrowserLanguage();
 browserLang = browserLang.substr(0, browserLang.indexOf('-'));
-console.log('browser language:', browserLang);
 
 i18n
     .use(backend)

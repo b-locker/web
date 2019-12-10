@@ -1,5 +1,8 @@
 {
     "hello.label": "Hello",
     "thankyou.label": "Thank you",
-    "goback.button": "GO BACK HOME"
+    "goback.button": "GO BACK HOME",
+    "thispage.label": "This page",
+    "orgloginpage.label": "Organisation login page",
+    "userunlockpage.label": "User unlock page"
 }
