@@ -2,7 +2,25 @@
 
 .header{
     background-color: $main-white;
+    display: flex;
+    border: 1px dashed black;
+    box-sizing: content-box;
+    height: 10%;
+}
+
+#title{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 5vh;
     font-weight: bold;
+
+    margin-left: 4vh;
+    margin-right: 2vw;
+    align-self: center;
+    border: 1px dotted black;
+}
+
+#logo{
+    max-height: 6vh;
+    align-self: center;
+    border: 1px dotted black;
 }
