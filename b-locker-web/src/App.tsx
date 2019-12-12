@@ -19,8 +19,6 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Suspense fallback={null}>
-        <LanguageSelector></LanguageSelector>
-
         <Router>
           <Switch>
             <Route path="/login">
