@@ -1,17 +1,15 @@
 import React from 'react';
 import './orgDashboard.scss';
-import orgNavigation from '../navigation/orgNavigation';
+import OrgNavigation from '../navigation/orgNavigation';
+import OrgTopbar from '../topbar/orgTopbar';
 
 
 const orgDashboard: React.FC = () => {
-
     return (
-        <main>
-            <h1>Dashboard</h1>
-            <div className="container">
-
-            </div>
-        </main>
+        <div className="main-div">
+            <OrgNavigation></OrgNavigation>
+            <OrgTopbar></OrgTopbar>
+        </div>
     );
 }
 

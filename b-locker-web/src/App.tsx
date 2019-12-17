@@ -10,6 +10,7 @@ import logo from './logo.svg';
 import './App.scss';
 import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
+import OrgDashboard from './components/organisation/dashboard/orgDashboard';
 import PageNotFound from './components/general/pageNotFound';
 import TestPage from './components/general/testPage';
 
@@ -23,6 +24,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/unlock">
             <UserUnlock />
+          </Route>
+          <Route path="/dashboard">
+            <OrgDashboard />
           </Route>
           <Route exact path="/">
             <TestPage />
