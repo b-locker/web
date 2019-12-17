@@ -5,7 +5,7 @@ import dutchFlag from '../../assets/netherlands-flag-icon-64.png';
 import englishFlag from '../../assets/united-kingdom-flag-icon-64.png';
 
 const LanguageSelector: React.FC = () => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
     const changeLanguage = (event: any) => {
         i18n.changeLanguage(event.target.alt);

@@ -4,5 +4,11 @@
     "goback.button": "GO BACK HOME",
     "thispage.label": "This page",
     "orgloginpage.label": "Organisation login page",
-    "userunlockpage.label": "User unlock page"
+    "userunlockpage.label": "User unlock page",
+    "header.ruas.label": "Rotterdam UAS",
+    "unlock.unlock.label": "Unlock",
+    "unlock.desc.label": "Enter locker pass",
+    "unlock.passcode.hint":"Passcode",
+    "unlock.unlock.button": "Unlock",
+    "unlock.forgotpass.label": "Forgot pass?"
 }

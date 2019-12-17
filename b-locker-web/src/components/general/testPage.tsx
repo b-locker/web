@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import './testPage.scss'
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../../global/i18n/languageSelector';
 
 const TestPage: React.FC = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div>
-            <ul>
-                <li>
-                    <NavLink to="/">{t('thispage.label')}</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/login">{t('orgloginpage.label')}</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/randompagethatwontwork">404</NavLink>
-                </li>
-            </ul>
+            <Suspense fallback={null}>
+                <LanguageSelector></LanguageSelector>
+                <ul>
+                    <li>
+                        <NavLink to="/">{t('thispage.label')}</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/login">{t('orgloginpage.label')}</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/randompagethatwontwork">404</NavLink>
+                    </li>
+                </ul>
+            </Suspense>
         </div>
     );
 }
