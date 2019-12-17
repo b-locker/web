@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../../global/i18n/languageSelector';
 
 const TestPage: React.FC = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div>
