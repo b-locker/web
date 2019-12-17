@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 const homeUrl: string = "http://b-locker.com"
 const PageNotFound: React.FC = () => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <div className="main bg-purple red-box">

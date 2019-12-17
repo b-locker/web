@@ -3,21 +3,23 @@
 .header{
     box-sizing: content-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px dashed red;
 }
 
 .header-top{
     background-color: $main-white;
     display: flex;
     height: 10vh;
-    border: 1px dashed black;
+}
+
+.header-bottom{
+    display: flex;
+    height: 6vh;
+    padding-top: 1vh;
 }
 
 .sub-header{
     display: flex;
-    flex-wrap: wrap;
-    height: 10vh;
-    border: 1px dashed black;
+    height: 3vh;
 }
 
 #title{
@@ -26,31 +28,31 @@
 
     align-self: center;
 
-    margin-left: 4vh;
-    margin-right: 2vw;
-    border: 1px dotted black;
+    padding-left: 4vh;
+    padding-right: 2vw;
 }
 
 #bl-logo{
     max-height: 6vh;
     align-self: center;
-    border: 1px dotted black;
 }
 
 #ruas-logo{
-    max-height: 6vh;
+    max-height: 5vh;
     align-self: center;
-    margin-left: 4vh;
-    margin-right: 2vw;
-    border: 1px dotted black;
+    padding-left: 4vh;
+    padding-right: 2vw;
 }
 
 #ruas-title{
     align-self: center;
-    border: 1px dotted black;
+    font-size: large;
 }
 
 #user-detail{
-    border: 1px dotted black;
+    align-self: center;
+    padding-left: 4vh;
+    color: $main-red;
+    font-size: small;
 }
 
