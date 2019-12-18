@@ -4,7 +4,7 @@ import './orgTopbar.scss';
 const topbar: React.FC = () => {
 
     return (
-        <section className="topnav">
+        <section className="topbar">
             <div className="container">
                 <a className="active" href="#home">Home</a>
                 <a href="#news">News</a>

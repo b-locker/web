@@ -9,6 +9,11 @@ const orgDashboard: React.FC = () => {
         <div className="main-div">
             <OrgNavigation></OrgNavigation>
             <OrgTopbar></OrgTopbar>
+            <main>
+                <h1>Dashboard</h1>
+
+
+            </main>
         </div>
     );
 }

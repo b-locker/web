@@ -1,1 +1,31 @@
 @import "../../../styles/org-global.scss";
+
+main {
+  position: relative;
+  height: 100vh;
+  padding-left: 25px;
+
+  h1 {
+    color: $white;
+    float: left;
+  }
+
+  .container {
+    background-color: $white;
+  }
+}
+
+.main-div {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    $upper-part-background 0%,
+    $upper-part-background 35%,
+    $upper-part-background 35%,
+    $background 35%,
+    $background 100%
+  );
+  margin-left: $menu-width-desktop;
+  margin-top: 0px;
+  margin-right: 0px;
+}
