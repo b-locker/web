@@ -15,13 +15,27 @@ const orgDashboard: React.FC = () => {
                 </div>
                 <div className="row">
                     <div className="flex-container">
-                        <div className="box1"></div>
-                        <div className="box2"></div>
-                        <div className="box3"></div>
+                        <div className="box1">
+                            <div className="box-left-side">
+                                <p>hai</p>
+                            </div>
+                            <div className="box-right-side"></div>
+                        </div>
+                        <div className="box2">
+                            <div className="box-left-side"></div>
+                            <div className="box-right-side"></div>
+                        </div>
+                        <div className="box3">
+                            <div className="box-left-side"></div>
+                            <div className="box-right-side"></div>
+                        </div>
                     </div>
                 </div>
-                <div className="Panel">
-                    <p>Hoi</p>
+                <div className="row">
+                    <div className="panel">
+
+                    </div>
+
                 </div>
             </main>
         </div>
