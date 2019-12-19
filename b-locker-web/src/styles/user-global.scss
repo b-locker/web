@@ -5,12 +5,87 @@ $main-lightgray: #F2F2F2;
 $background: #F2F2F2;
 $main-white: #FFFFFF;
 $main-green: #39BC6E;
+$hover-green: rgb(43, 175, 96);
+$active-green: rgb(39, 131, 76);
 
+// use this for debugging css
+.box{
+    border: black dotted 1px;
+}
 
-.global-title{
-    font-size: x-large;
+.wrap-content-div{
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+.global-page-title{
+    font-size: 5vh;
     font-weight: bold;
-    font-family: monospace;
-    text-shadow: 1px, black;
+}
+
+.global-button-green{
+    color: $main-white;
+    width: 85vw;
+    font-size: 3.5vh;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50px;
+    border: 0px;
+    background-color: $main-green;
+    @media only screen and (min-width: 600px) {
+        width: 30vw;
+    }
+}
+
+.global-button-green:hover {
+    background-color: $hover-green;
+    cursor: pointer;
+}
+
+.global-button-green:active {
+    background-color: $active-green;
+}
+
+.global-desc-label{
+    font-size: small;
+    max-width: fit-content;
+}
+
+.global-input{
+    height: 40px;
+    width: 85vw;
+    border: 0px;
+    font-size: 3vh;
+    padding-left: 10px;
+    @media only screen and (min-width: 600px) {
+        width: 30vw;
+    }
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #8A8A8A;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #8A8A8A;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #8A8A8A;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: #8A8A8A;
+}
+
+.href-button{
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    color: #3869DB;
+}
+
+.href-button:hover{
+    cursor: pointer;
+    text-decoration: underline;
 }
 

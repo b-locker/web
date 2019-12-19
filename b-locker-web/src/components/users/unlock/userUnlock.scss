@@ -3,4 +3,34 @@
 .main-div{
     background-color: $background;
     height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.unlock-div{
+    max-width: fit-content;
+    margin: 0 auto;
+    @media only screen and (min-width: 600px) {
+        max-width: 50%;
+    }
+}
+
+.title-icon-div{
+    display: flex;
+    margin-top: -20px;
+    margin-bottom: -45px;
+}
+
+.unlock-title{
+    justify-self: flex-start;
+    align-self: center;
+    padding-right: 20px;
+}
+
+.lock-icon{
+    align-self: center;
+    height: 4vh;
+}
+
+.pass-input{
+    margin-bottom: 10px;
 }

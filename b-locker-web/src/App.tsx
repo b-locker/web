@@ -27,6 +27,9 @@ const App: React.FC = () => {
             <Route exact path="/">
               <TestPage />
             </Route>
+            <Route exact path="/info">
+              
+            </Route>
             <Route path="/404">
               <PageNotFound />
             </Route>

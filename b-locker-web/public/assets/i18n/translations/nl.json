@@ -5,5 +5,10 @@
     "thispage.label": "Deze pagina",
     "orgloginpage.label": "Organisatie inlog pagina",
     "userunlockpage.label": "Gebruiker inlog pagina",
-    "header.ruas.label": "Hogeschool Rotterdam"
+    "header.ruas.label": "Hogeschool Rotterdam",
+    "unlock.unlock.label": "Openen",
+    "unlock.desc.label": "Voer de code van je kluisje in",
+    "unlock.passcode.hint":"Code",
+    "unlock.unlock.button": "Openen",
+    "unlock.forgotpass.label": "Code vergeten?"
 }

@@ -7,7 +7,7 @@
     "userunlockpage.label": "User unlock page",
     "header.ruas.label": "Rotterdam UAS",
     "unlock.unlock.label": "Unlock",
-    "unlock.desc.label": "Enter locker pass",
+    "unlock.desc.label": "Enter the passcode of your locker",
     "unlock.passcode.hint":"Passcode",
     "unlock.unlock.button": "Unlock",
     "unlock.forgotpass.label": "Forgot pass?"
