@@ -10,8 +10,36 @@ main {
     float: left;
   }
 
-  .container {
-    background-color: $white;
+  .row {
+    content: "";
+    display: table;
+    clear: both;
+
+    .flex-container {
+      display: flex;
+      flex-direction: row;
+      .box1 {
+        border-radius: 20px;
+        margin-right: 75px;
+        width: 200px;
+        height: 110px;
+        background-color: $white;
+      }
+      .box2 {
+        border-radius: 20px;
+        margin-right: 75px;
+        width: 200px;
+        height: 110px;
+        background-color: $white;
+      }
+      .box3 {
+        border-radius: 20px;
+        margin-right: 75px;
+        width: 200px;
+        height: 110px;
+        background-color: $white;
+      }
+    }
   }
 }
 

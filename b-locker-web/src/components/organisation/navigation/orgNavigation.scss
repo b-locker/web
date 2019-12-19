@@ -11,7 +11,8 @@
 
   ul {
     list-style: none;
-    padding: 0.5em 0;
+    padding: 1.55em 0;
+    text-align: left;
 
     li {
       font-weight: 500;
@@ -21,6 +22,7 @@
       &:last-child {
         bottom: 0;
         position: absolute;
+        width: 100%;
       }
 
       &:hover {
