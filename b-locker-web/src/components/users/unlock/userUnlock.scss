@@ -1,11 +1,5 @@
 @import "../../../styles/user-global.scss";
 
-.main-div{
-    background-color: $background;
-    height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .unlock-div{
     max-width: fit-content;
     margin: 0 auto;
@@ -16,8 +10,6 @@
 
 .title-icon-div{
     display: flex;
-    margin-top: -20px;
-    margin-bottom: -45px;
 }
 
 .unlock-title{
@@ -32,5 +24,6 @@
 }
 
 .pass-input{
+    margin-top: 10px;
     margin-bottom: 10px;
 }

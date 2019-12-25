@@ -6,11 +6,6 @@ import { useTranslation } from 'react-i18next';
 import lockIcon from '../../../assets/lock.svg'
 import { useHistory } from 'react-router';
 
-interface User {
-    guid: string;
-    password: string;
-}
-
 const UserUnlock: React.FC = () => {
     // https://stackoverflow.com/a/57767104/7052690
     const [passcode, setPasscode] = useState("");
@@ -26,6 +21,9 @@ const UserUnlock: React.FC = () => {
         if(passcode){
             history.push('/info')
         }
+        else{
+            alert('Fill in a passcode');
+        }
     }
 
     return (
@@ -38,9 +36,9 @@ const UserUnlock: React.FC = () => {
                 </div>
                 <p className="global-desc-label">{t('unlock.desc.label')}</p>
                 <input className="pass-input global-input" placeholder={t('unlock.passcode.hint')} 
-                type="password"
-                id="passcode"
-                onChange={evt => setPasscode(evt.target.value)}></input>
+                    type="password"
+                    id="passcode"
+                    onChange={evt => setPasscode(evt.target.value)}></input>
                 <br />
                 <button className="global-button-green" onClick={unlock}>{t('unlock.unlock.button')}</button>
                 <br />
