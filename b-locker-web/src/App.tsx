@@ -11,6 +11,7 @@ import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
 import PageNotFound from './components/general/pageNotFound';
 import TestPage from './components/general/testPage';
+import UserInfo from './components/users/info/userInfo';
 
 const App: React.FC = () => {
   return (
@@ -26,6 +27,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/">
               <TestPage />
+            </Route>
+            <Route exact path="/info">
+              <UserInfo />
             </Route>
             <Route path="/404">
               <PageNotFound />
