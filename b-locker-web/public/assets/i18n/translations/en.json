@@ -36,5 +36,13 @@
     "info.daysleft.label": "days left",
     "info.timesopened.label": "Times opened",
     "info.changepass.button": "Change pass",
-    "info.end.button": "End ownership"
+    "info.end.button": "End ownership",
+    "info.ends.label": "Ends",
+    "forgot.forgotPass.label": "Forgot Pass",
+    "forgot.enterEmail.label": "Enter your email",
+    "forgot.send.button": "Send",
+    "forgotSent.sent.label": "Sent",
+    "forgotSent.checkMail.label": "Check your email to continue",
+    "forgotSent.explanation.label": "If you have haven't received an email, try sending again or contact the organization's manager at",
+    "forgotSent.resend.button": "Re-send"
 }

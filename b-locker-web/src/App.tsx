@@ -11,6 +11,10 @@ import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
 import PageNotFound from './components/general/pageNotFound';
 import TestPage from './components/general/testPage';
+import UserForgotPass from './components/users/forgotPass/userForgotPass';
+import UserChangePass from './components/users/changePass/userChangePass';
+import UserEndOwnership from './components/users/endOwnership/userEndOwnership';
+import UserForgotPassSent from './components/users/forgotPassSent/userForgotPassSent';
 import UserInfo from './components/users/info/userInfo';
 
 const App: React.FC = () => {
@@ -30,6 +34,18 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/info">
               <UserInfo />
+            </Route>
+            <Route exact path="/forgotPass">
+              <UserForgotPass />
+            </Route>
+            <Route exact path="/forgotPassSent">
+              <UserForgotPassSent />
+            </Route>
+            <Route exact path="/changePass">
+              <UserChangePass />
+            </Route>
+            <Route exact path="/endOwnership">
+              <UserEndOwnership />
             </Route>
             <Route path="/404">
               <PageNotFound />
