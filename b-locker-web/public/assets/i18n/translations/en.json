@@ -46,9 +46,11 @@
     "forgotSent.explanation.label": "If you have haven't received an email, try sending again or contact the organization's manager at",
     "forgotSent.resend.button": "Re-send",
     "end.areyousure.label": "Are you sure?",
-    "end.desc.label": "Ending the locker ownership will make it available for new owner.\n\nBe sure to take out all of your belongings first",
+    "end.desc.label": "Ending the locker ownership will make it available for new owner. Be sure to take out all of your belongings first",
     "end.passcode.label": "Passcode",
     "end.imsure.button": "Yes I'm sure",
     "goodbye.seeya.label": "See ya!",
-    "goodbye.desc.label": "Thanks for using B-locker, your ownership has succesfully been revoked."
+    "goodbye.desc.label": "Thanks for using B-locker, your ownership has succesfully been revoked.",
+    "lockdown.lockdown.label": "Lockdown",
+    "lockdown.desc.label": "Too many unlock attempts. For security reasons, unlocking is temporarily disabled. We have sent an email to the locker owner to lift this lockdown"
 }

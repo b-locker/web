@@ -50,5 +50,7 @@
     "end.passcode.label": "Code",
     "end.imsure.button": "Ik weet het zeker",
     "goodbye.seeya.label": "Tot ziens!",
-    "goodbye.desc.label": "Bedankt voor het gebruiken van B-locker, uw eigenaarschap is succesvol opgezegd."
+    "goodbye.desc.label": "Bedankt voor het gebruiken van B-locker, uw eigenaarschap is succesvol opgezegd.",
+    "lockdown.lockdown.label": "Lockdown",
+    "lockdown.desc.label": "Te veel ontgrendelings pogingen. Voor veiligheidsredenen is het openen tijdelijk geblokkeerd. We hebben een mail naar de eigenaar gestuurd om deze blokkade op te heffen."
 }
