@@ -44,5 +44,11 @@
     "forgotSent.sent.label": "Verstuurd",
     "forgotSent.checkMail.label": "Check je email om door te gaan",
     "forgotSent.explanation.label": "Heeft u geen email ontvangen? Probeer het opnieuw of neem contact op met de beheerder via",
-    "forgotSent.resend.button": "Verstuur opnieuw"
+    "forgotSent.resend.button": "Verstuur opnieuw",
+    "end.areyousure.label": "Weet je het zeker?",
+    "end.desc.label": "Het beindigen van je eigenaarschap maakt het kluisje beschikbaar voor iemand anders.\n\nZorg ervoor dat al uw spullen uit het kluisje zijn verwijderd.",
+    "end.passcode.label": "Code",
+    "end.imsure.button": "Ik weet het zeker",
+    "goodbye.seeya.label": "Tot ziens!",
+    "goodbye.desc.label": "Bedankt voor het gebruiken van B-locker, uw eigenaarschap is succesvol opgezegd."
 }

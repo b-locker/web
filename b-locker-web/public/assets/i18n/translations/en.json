@@ -44,5 +44,11 @@
     "forgotSent.sent.label": "Sent",
     "forgotSent.checkMail.label": "Check your email to continue",
     "forgotSent.explanation.label": "If you have haven't received an email, try sending again or contact the organization's manager at",
-    "forgotSent.resend.button": "Re-send"
+    "forgotSent.resend.button": "Re-send",
+    "end.areyousure.label": "Are you sure?",
+    "end.desc.label": "Ending the locker ownership will make it available for new owner.\n\nBe sure to take out all of your belongings first",
+    "end.passcode.label": "Passcode",
+    "end.imsure.button": "Yes I'm sure",
+    "goodbye.seeya.label": "See ya!",
+    "goodbye.desc.label": "Thanks for using B-locker, your ownership has succesfully been revoked."
 }
