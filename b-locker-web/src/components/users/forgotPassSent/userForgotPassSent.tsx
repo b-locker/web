@@ -5,6 +5,7 @@ import Countdown, { zeroPad } from 'react-countdown';
 
 const UserForgotPassSent: React.FC = () => {
     const { t } = useTranslation();
+    // TODO: change this email to the real email adress
     let adminEmail: string = "briannogwat@gmail.com"
     //let timeout: number = Date.now() + 3000;
     let [timeout, setTimeout] = useState(Date.now()+30000);

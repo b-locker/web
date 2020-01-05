@@ -7,6 +7,7 @@ const UserForgotPass: React.FC = () => {
     let history = useHistory();
     const { t } = useTranslation();
     const [email, setEmail] = useState("");
+    // TODO: change this email to the real email adress
     const emailHint = "095***@hr.nl";
 
     function sendForgotPass(e: any){
