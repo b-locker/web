@@ -18,6 +18,7 @@ import UserForgotPassSent from './components/users/forgotPassSent/userForgotPass
 import UserInfo from './components/users/info/userInfo';
 import UserGoodbye from './components/users/goodbye/userGoodbye';
 import UserLockdown from './components/users/lockdown/userLockdown';
+import UserPassChanged from './components/users/passChanged/userPassChanged';
 
 const App: React.FC = () => {
   return (
@@ -48,6 +49,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/changePass">
               <UserChangePass />
+            </Route>
+            <Route exact path="/passChanged">
+              <UserPassChanged />
             </Route>
             <Route exact path="/endOwnership">
               <UserEndOwnership />

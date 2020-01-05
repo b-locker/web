@@ -52,5 +52,15 @@
     "goodbye.seeya.label": "Tot ziens!",
     "goodbye.desc.label": "Bedankt voor het gebruiken van B-locker, uw eigenaarschap is succesvol opgezegd.",
     "lockdown.lockdown.label": "Lockdown",
-    "lockdown.desc.label": "Te veel ontgrendelings pogingen. Voor veiligheidsredenen is het openen tijdelijk geblokkeerd. We hebben een mail naar de eigenaar gestuurd om deze blokkade op te heffen."
+    "lockdown.desc.label": "Te veel ontgrendelings pogingen. Voor veiligheidsredenen is het openen tijdelijk geblokkeerd. We hebben een mail naar de eigenaar gestuurd om deze blokkade op te heffen.",
+    "changePass.changePass.label": "Verander code",
+    "changePass.desc.label": "Stel een nieuwe code in",
+    "changePass.currentPass.label": "Huidige code",
+    "changePass.current.hint": "Huidig",
+    "changePass.newPass.label": "Nieuwe code",
+    "changePass.passcode.hint": "Code",
+    "changePass.setPass.button": "Verander code",
+    "passChanged.newPassSet.label": "Code is veranderd",
+    "passChanged.done.label": "Voldaan",
+    "passChanged.desc.label": "Scan de locker opnieuw om hem te openen."
 }
