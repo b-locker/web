@@ -11,6 +11,9 @@ $disabled-green: #C2D8CB;
 $main-button-blue: #678AFF;
 $hover-blue: rgb(84, 117, 226);
 $active-blue: rgb(53, 82, 177);
+$main-button-red: #EF5252;
+$hover-red: rgb(212, 71, 71);
+$active-red: rgb(187, 59, 59);
 $main-button-gray: #D5D5D5;
 $button-gray-text: #8F8F8F;
 $button-hover-gray-text: rgb(109, 109, 109);
@@ -119,6 +122,19 @@ $active-gray: rgb(134, 134, 134);
 
 .global-button-blue:active {
     background-color: $active-blue;
+}
+
+.global-button-red{
+    color: $main-white;
+    background-color: $main-button-red;
+}
+
+.global-button-red:hover {
+    background-color: $hover-red;
+}
+
+.global-button-red:active {
+    background-color: $active-red;
 }
 
 .global-button-gray{

@@ -10,6 +10,7 @@ const UserUnlock: React.FC = () => {
     // https://stackoverflow.com/a/57767104/7052690
     const [passcode, setPasscode] = useState("");
     const { t } = useTranslation();
+    let unlockTriesAmount: number = 1;
 
     let history = useHistory();
     function redirectForgotPass(e: any) {
@@ -18,11 +19,16 @@ const UserUnlock: React.FC = () => {
 
     function unlock(e: any) {
         console.log('entered passcode: ', passcode);
-        if (passcode) {
+        console.log('unlock tries: ', unlockTriesAmount);
+        if(unlockTriesAmount > 2){
+            history.push('/lockdown');
+        }
+        else if (passcode) {
             history.push('/info')
         }
         else {
             alert('Fill in a passcode');
+            unlockTriesAmount++;
         }
     }
 
