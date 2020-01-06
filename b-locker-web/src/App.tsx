@@ -15,33 +15,34 @@ import TestPage from './components/general/testPage';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Suspense fallback={null}>
-        <Router>
-          <Switch>
-            <Route path="/login">
-              <OrgLogin />
-            </Route>
-            <Route path="/unlock">
-              <UserUnlock />
-            </Route>
-            <Route path="/dashboard">
-              <OrgDashboard />
-            </Route>
-            <Route exact path="/">
-              <TestPage />
-            </Route>
-            <Route path="/404">
-              <PageNotFound />
-            </Route>
-            <Route path="/*">
-              <Redirect to="/404" />
-            </Route>
-          </Switch>
-        </Router>
-      </Suspense>
+    //App gecomment omdat de css hiervan conflicten geeft met de styling van het dashboard
+    //<div className="App">
+    <Suspense fallback={null}>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <OrgLogin />
+          </Route>
+          <Route path="/unlock">
+            <UserUnlock />
+          </Route>
+          <Route path="/dashboard">
+            <OrgDashboard />
+          </Route>
+          <Route exact path="/">
+            <TestPage />
+          </Route>
+          <Route path="/404">
+            <PageNotFound />
+          </Route>
+          <Route path="/*">
+            <Redirect to="/404" />
+          </Route>
+        </Switch>
+      </Router>
+    </Suspense>
 
-    </div>
+    //</div>
   );
 }
 
