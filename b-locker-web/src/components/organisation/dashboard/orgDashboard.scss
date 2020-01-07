@@ -3,7 +3,8 @@
 main {
   position: relative;
   height: 100vh;
-  padding-left: 25px;
+  padding: 25px;
+  display: block;
 
   h1 {
     color: $white;
@@ -11,7 +12,7 @@ main {
   }
 
   h2 {
-    color: $h2-color;
+    color: $textcolor;
   }
 
   .row {
@@ -30,6 +31,14 @@ main {
         height: 110px;
         background-color: $white;
 
+        .box-right-side {
+          p {
+            font-size: 60px;
+            color: $textcolor;
+            font-weight: 500;
+          }
+        }
+
         .box-left-side {
           border-top-left-radius: 20px;
           border-bottom-left-radius: 20px;
@@ -37,10 +46,18 @@ main {
           width: 50%;
           float: left;
           background-color: $red-dashboard;
+          text-align: center;
+          padding: 10px;
+          padding-bottom: 0px;
+
+          .locker-icon {
+            width: 85%;
+          }
 
           p {
-            height: 100%;
-            vertical-align: middle;
+            margin-block-start: 0;
+            color: $textcolor;
+            font-weight: 500;
           }
         }
       }
@@ -58,6 +75,19 @@ main {
           width: 50%;
           float: left;
           background-color: $green-dashboard;
+          text-align: center;
+          padding: 10px;
+          padding-bottom: 0px;
+
+          .locker-icon {
+            width: 85%;
+          }
+
+          p {
+            margin-block-start: 0;
+            color: $textcolor;
+            font-weight: 500;
+          }
         }
       }
       .box3 {
@@ -74,31 +104,38 @@ main {
           width: 50%;
           float: left;
           background-color: $blue-dashboard;
+          text-align: center;
+          padding: 10px;
+          padding-bottom: 0px;
+
+          .locker-icon {
+            width: 85%;
+          }
+
+          p {
+            margin-block-start: 0;
+            color: $textcolor;
+            font-weight: 500;
+          }
         }
       }
     }
   }
 }
 
-.row {
-  content: "";
-  display: table;
-  clear: both;
-
-  .panel {
-    padding: 5px 30px;
-    border-radius: 20px;
-    margin-top: 50px;
-    background-color: $white;
-    height: 68vh;
-    width: 85vw;
-    box-shadow: 0px 1px 6px #888888;
-  }
+.panel {
+  padding: 5px 30px;
+  border-radius: 20px;
+  margin-top: 50px;
+  background-color: $white;
+  //height: 68vh;
+  //width: 85vw;
+  box-shadow: 0px 1px 6px #888888;
 }
 
 .main-div {
   //overflow hidden removes the scrolls bar, for the lockers page this should be removed
-  overflow: hidden;
+  //overflow: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(
     to bottom,
@@ -266,6 +303,7 @@ td {
 }
 
 .table100-head {
+  text-align: left;
   position: absolute;
   width: 100%;
   top: 0;

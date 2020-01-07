@@ -19,6 +19,10 @@
       padding: 15px;
       cursor: pointer;
 
+      img {
+        margin-right: 10px;
+      }
+
       &:last-child {
         bottom: 0;
         position: absolute;
@@ -33,6 +37,8 @@
       }
 
       a {
+        position: relative;
+        top: -3px;
         text-decoration: none;
         color: #ffffff;
 

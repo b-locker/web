@@ -3,6 +3,8 @@ import './orgDashboard.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
 
+import lockerIcon from '../../../assets/locker.png'
+
 
 const orgDashboard: React.FC = () => {
     return (
@@ -17,25 +19,37 @@ const orgDashboard: React.FC = () => {
                     <div className="flex-container">
                         <div className="box1">
                             <div className="box-left-side">
-                                <p>Used Lockers</p>
+                                <img className="locker-icon" src={lockerIcon} alt='' />
+                                <p>Used</p>
+
                             </div>
-                            <div className="box-right-side"></div>
+                            <div className="box-right-side">
+                                <p>10</p>
+                            </div>
+
                         </div>
                         <div className="box2">
                             <div className="box-left-side">
-                                <p>Unused Lockers</p>
+                                <img className="locker-icon" src={lockerIcon} alt='' />
+                                <p>Unused</p>
                             </div>
-                            <div className="box-right-side"></div>
+                            <div className="box-right-side">
+                                <p>4</p>
+                            </div>
+
                         </div>
                         <div className="box3">
                             <div className="box-left-side">
-                                <p>Total Lockers</p>
+                                <img className="locker-icon" src={lockerIcon} alt='' />
+                                <p>Total</p>
                             </div>
-                            <div className="box-right-side"></div>
+                            <div className="box-right-side">
+                                <p>14</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="container">
                     <div className="panel">
                         <h2>Recently opened/closed lockers</h2>
                         <div className="limiter">
