@@ -1,9 +1,16 @@
 @import "../../../styles/org-global.scss";
 
 main {
+  padding: 25px;
+}
+
+.content {
+  height: 100vh;
+}
+
+.main-div {
   position: relative;
   height: 100vh;
-  padding: 25px;
   display: block;
 
   h1 {
@@ -32,10 +39,15 @@ main {
         background-color: $white;
 
         .box-right-side {
+          padding: 25px;
+          text-align: center;
+
           p {
-            font-size: 60px;
+            font-size: 40px;
             color: $textcolor;
-            font-weight: 500;
+            font-weight: 400;
+            margin-block-start: 0;
+            margin-block-end: 0;
           }
         }
 
@@ -68,6 +80,19 @@ main {
         height: 110px;
         background-color: $white;
 
+        .box-right-side {
+          padding: 25px;
+          text-align: center;
+
+          p {
+            font-size: 40px;
+            color: $textcolor;
+            font-weight: 400;
+            margin-block-start: 0;
+            margin-block-end: 0;
+          }
+        }
+
         .box-left-side {
           border-top-left-radius: 20px;
           border-bottom-left-radius: 20px;
@@ -97,6 +122,19 @@ main {
         height: 110px;
         background-color: $white;
 
+        .box-right-side {
+          padding: 25px;
+          text-align: center;
+
+          p {
+            font-size: 40px;
+            color: $textcolor;
+            font-weight: 400;
+            margin-block-start: 0;
+            margin-block-end: 0;
+          }
+        }
+
         .box-left-side {
           border-top-left-radius: 20px;
           border-bottom-left-radius: 20px;
@@ -124,7 +162,9 @@ main {
 }
 
 .panel {
+  margin-bottom: 30px;
   padding: 5px 30px;
+  padding-bottom: 25px;
   border-radius: 20px;
   margin-top: 50px;
   background-color: $white;
@@ -237,12 +277,12 @@ iframe {
 [ Table ]*/
 
 .limiter {
-  width: 1366px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .wrap-table100 {
-  width: 1170px;
+  width: 100%;
 }
 
 /*//////////////////////////////////////////////////////////////////
