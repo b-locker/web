@@ -13,6 +13,7 @@ const orgDashboard: React.FC = () => {
             <div className="content">
                 <OrgTopbar></OrgTopbar>
                 <main>
+                    <div className= "container">
                     <div className="row">
                         <h1>Dashboard</h1>
                     </div>
@@ -50,7 +51,7 @@ const orgDashboard: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="container">
+                    </div>
                         <div className="panel">
                             <h2>Recently opened/closed lockers</h2>
                             <div className="limiter">
@@ -259,7 +260,7 @@ const orgDashboard: React.FC = () => {
                             </div>
 
                         </div>
-                    </div>
+                       
                 </main>
             </div>
         </div>
