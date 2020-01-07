@@ -1,15 +1,16 @@
 import React from 'react';
 import './orgTopbar.scss';
 
+import navUserIcon from '../../../assets/userTopbar.svg'
+
 const topbar: React.FC = () => {
 
     return (
         <section className="topbar">
             <div className="container">
-                <a className="active" href="#home">Home</a>
-                <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
+                <a><img className="user-icon" src={navUserIcon} alt='' />Brian </a>
+                
+                <a href="#news">Admin </a>
             </div>
         </section>
     );
