@@ -10,6 +10,7 @@ import './global/i18n/i18n'
 import OrgLogin from './components/organisation/login/orgLogin';
 import UserUnlock from './components/users/unlock/userUnlock';
 import OrgDashboard from './components/organisation/dashboard/orgDashboard';
+import OrgLockers from './components/organisation/lockers/orgLockers';
 import PageNotFound from './components/general/pageNotFound';
 import TestPage from './components/general/testPage';
 
@@ -28,6 +29,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/dashboard">
             <OrgDashboard />
+          </Route>
+          <Route path="/lockers">
+            <OrgLockers />
           </Route>
           <Route exact path="/">
             <TestPage />
