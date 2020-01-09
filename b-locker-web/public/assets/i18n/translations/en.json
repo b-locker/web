@@ -24,6 +24,7 @@
     "thispage.label": "This page",
     "orgloginpage.label": "Organisation login page",
     "userunlockpage.label": "User unlock page",
+    "claimpage.label": "Claim a locker",
     "header.ruas.label": "Rotterdam UAS",
     "unlock.unlock.label": "Unlock",
     "unlock.desc.label": "Enter the passcode of your locker",

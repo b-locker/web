@@ -22,6 +22,9 @@ const TestPage: React.FC = () => {
                         <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>
                     </li>
                     <li>
+                        <NavLink to="/claim">{t('claimpage.label')}</NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/randompagethatwontwork">404</NavLink>
                     </li>
                 </ul>
