@@ -14,6 +14,14 @@ import SingleLocker from './components/organisation/singlelocker/orgSingleLocker
 import OrgLockers from './components/organisation/lockers/orgLockers';
 import PageNotFound from './components/general/pageNotFound';
 import TestPage from './components/general/testPage';
+import UserForgotPass from './components/users/forgotPass/userForgotPass';
+import UserChangePass from './components/users/changePass/userChangePass';
+import UserEndOwnership from './components/users/endOwnership/userEndOwnership';
+import UserForgotPassSent from './components/users/forgotPassSent/userForgotPassSent';
+import UserInfo from './components/users/info/userInfo';
+import UserGoodbye from './components/users/goodbye/userGoodbye';
+import UserLockdown from './components/users/lockdown/userLockdown';
+import UserPassChanged from './components/users/passChanged/userPassChanged';
 
 const App: React.FC = () => {
   return (
@@ -22,12 +30,39 @@ const App: React.FC = () => {
     <Suspense fallback={null}>
       <Router>
         <Switch>
+        </Route>
+              <TestPage />
+            <Route exact path="/">
           <Route path="/login">
             <OrgLogin />
           </Route>
           <Route path="/unlock">
             <UserUnlock />
           </Route>
+          <Route exact path="/lockdown">
+              <UserLockdown />
+            </Route>
+            <Route exact path="/info">
+              <UserInfo />
+            </Route>
+            <Route exact path="/forgotPass">
+              <UserForgotPass />
+            </Route>
+            <Route exact path="/forgotPassSent">
+              <UserForgotPassSent />
+            </Route>
+            <Route exact path="/changePass">
+              <UserChangePass />
+            </Route>
+            <Route exact path="/passChanged">
+              <UserPassChanged />
+            </Route>
+            <Route exact path="/endOwnership">
+              <UserEndOwnership />
+            </Route>
+            <Route exact path="/goodbye">
+              <UserGoodbye/>
+            </Route>
           <Route path="/dashboard">
             <OrgDashboard />
           </Route>
@@ -49,8 +84,7 @@ const App: React.FC = () => {
         </Switch>
       </Router>
     </Suspense>
-
-    //</div>
+            
   );
 }
 
