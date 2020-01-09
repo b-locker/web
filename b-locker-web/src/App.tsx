@@ -30,9 +30,9 @@ const App: React.FC = () => {
     <Suspense fallback={null}>
       <Router>
         <Switch>
-        </Route>
-              <TestPage />
-            <Route exact path="/">
+          <Route exact path="/">
+            <TestPage />
+          </Route>
           <Route path="/login">
             <OrgLogin />
           </Route>
@@ -40,29 +40,29 @@ const App: React.FC = () => {
             <UserUnlock />
           </Route>
           <Route exact path="/lockdown">
-              <UserLockdown />
-            </Route>
-            <Route exact path="/info">
-              <UserInfo />
-            </Route>
-            <Route exact path="/forgotPass">
-              <UserForgotPass />
-            </Route>
-            <Route exact path="/forgotPassSent">
-              <UserForgotPassSent />
-            </Route>
-            <Route exact path="/changePass">
-              <UserChangePass />
-            </Route>
-            <Route exact path="/passChanged">
-              <UserPassChanged />
-            </Route>
-            <Route exact path="/endOwnership">
-              <UserEndOwnership />
-            </Route>
-            <Route exact path="/goodbye">
-              <UserGoodbye/>
-            </Route>
+            <UserLockdown />
+          </Route>
+          <Route exact path="/info">
+            <UserInfo />
+          </Route>
+          <Route exact path="/forgotPass">
+            <UserForgotPass />
+          </Route>
+          <Route exact path="/forgotPassSent">
+            <UserForgotPassSent />
+          </Route>
+          <Route exact path="/changePass">
+            <UserChangePass />
+          </Route>
+          <Route exact path="/passChanged">
+            <UserPassChanged />
+          </Route>
+          <Route exact path="/endOwnership">
+            <UserEndOwnership />
+          </Route>
+          <Route exact path="/goodbye">
+            <UserGoodbye />
+          </Route>
           <Route path="/dashboard">
             <OrgDashboard />
           </Route>
@@ -84,7 +84,7 @@ const App: React.FC = () => {
         </Switch>
       </Router>
     </Suspense>
-            
+
   );
 }
 
