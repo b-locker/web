@@ -20,7 +20,7 @@ const UserUnlock: React.FC = () => {
     function unlock(e: any) {
         console.log('entered passcode: ', passcode);
         console.log('unlock tries: ', unlockTriesAmount);
-        if(unlockTriesAmount > 2){
+        if (unlockTriesAmount > 2) {
             history.push('/lockdown');
         }
         else if (passcode) {
@@ -35,7 +35,7 @@ const UserUnlock: React.FC = () => {
     return (
         <div className="main-div">
             <UserHeader></UserHeader>
-            <div className="unlock-div screen-rule">
+            <div className="global-edge-div">
                 <div className="title-icon-div">
                     <p className="global-page-title unlock-title">{t('unlock.unlock.label')}</p>
                     <img className="lock-icon" src={lockIcon} alt='' />
