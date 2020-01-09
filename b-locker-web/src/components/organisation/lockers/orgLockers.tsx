@@ -9,7 +9,7 @@ import unlockIcon from '../../../assets/unlock.png'
 
 import { useHistory } from 'react-router';
 
-const OrgLockers: React.FC = () => {
+const OrgLockers: React.FC  = () => {
     
     let history = useHistory();
 
