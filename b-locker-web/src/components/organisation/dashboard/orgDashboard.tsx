@@ -8,7 +8,7 @@ import lockerIcon from '../../../assets/locker.png'
 
 const orgDashboard: React.FC = () => {
     return (
-        <div className="main-div">
+        <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
             <div className="content">
                 <OrgTopbar></OrgTopbar>

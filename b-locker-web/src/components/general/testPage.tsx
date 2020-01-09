@@ -16,7 +16,7 @@ const TestPage: React.FC = () => {
                         <NavLink to="/">{t('thispage.label')}</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/login">{t('orgloginpage.label')}</NavLink>
+                        <NavLink to="/dashboard">{t('orgloginpage.label')}</NavLink>
                     </li>
                     <li>
                         <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>

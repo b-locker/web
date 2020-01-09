@@ -25,43 +25,41 @@ import UserPassChanged from './components/users/passChanged/userPassChanged';
 
 const App: React.FC = () => {
   return (
-    //App gecomment omdat de css hiervan conflicten geeft met de styling van het dashboard
-    //<div className="App">
     <Suspense fallback={null}>
       <Router>
         <Switch>
           <Route exact path="/">
             <TestPage />
           </Route>
+            <Route path="/unlock">
+              <UserUnlock />
+            </Route>
+            <Route exact path="/lockdown">
+              <UserLockdown />
+            </Route>
+            <Route exact path="/info">
+              <UserInfo />
+            </Route>
+            <Route exact path="/forgotPass">
+              <UserForgotPass />
+            </Route>
+            <Route exact path="/forgotPassSent">
+              <UserForgotPassSent />
+            </Route>
+            <Route exact path="/changePass">
+              <UserChangePass />
+            </Route>
+            <Route exact path="/passChanged">
+              <UserPassChanged />
+            </Route>
+            <Route exact path="/endOwnership">
+              <UserEndOwnership />
+            </Route>
+            <Route exact path="/goodbye">
+              <UserGoodbye />
+            </Route>
           <Route path="/login">
             <OrgLogin />
-          </Route>
-          <Route path="/unlock">
-            <UserUnlock />
-          </Route>
-          <Route exact path="/lockdown">
-            <UserLockdown />
-          </Route>
-          <Route exact path="/info">
-            <UserInfo />
-          </Route>
-          <Route exact path="/forgotPass">
-            <UserForgotPass />
-          </Route>
-          <Route exact path="/forgotPassSent">
-            <UserForgotPassSent />
-          </Route>
-          <Route exact path="/changePass">
-            <UserChangePass />
-          </Route>
-          <Route exact path="/passChanged">
-            <UserPassChanged />
-          </Route>
-          <Route exact path="/endOwnership">
-            <UserEndOwnership />
-          </Route>
-          <Route exact path="/goodbye">
-            <UserGoodbye />
           </Route>
           <Route path="/dashboard">
             <OrgDashboard />
@@ -84,7 +82,6 @@ const App: React.FC = () => {
         </Switch>
       </Router>
     </Suspense>
-
   );
 }
 

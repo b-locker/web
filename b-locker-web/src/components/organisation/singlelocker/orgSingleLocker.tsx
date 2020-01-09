@@ -12,7 +12,7 @@ import chevronIcon from '../../../assets/chevron-right.svg'
 
 const orgLockers: React.FC = () => {
     return (
-        <div className="main-div">
+        <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
             <OrgTopbar></OrgTopbar>
             <main>
