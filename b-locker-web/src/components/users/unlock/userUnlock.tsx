@@ -49,7 +49,7 @@ const UserUnlock: React.FC = () => {
                 <br />
                 <button className="global-button global-button-green" onClick={unlock}>{t('unlock.unlock.button')}</button>
                 <br />
-                <button className="href-button box" onClick={redirectForgotPass}>{t('unlock.forgotpass.label')}</button>
+                <button className="href-button" onClick={redirectForgotPass}>{t('unlock.forgotpass.label')}</button>
             </div>
         </div>
     );
