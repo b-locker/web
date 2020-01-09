@@ -10,9 +10,11 @@ const UserMailSent: React.FC = () => {
             <UserHeader />
             <div className="global-edge-div">
                 <div className="global-title-desc-div ">
-                    <p className="global-page-title ">{t('hello.label')}</p>
-                    <p className="global-desc-label ">{t('thankyou.label')}</p>
+                    <p className="global-page-title ">{t('mailSent.check.label')}</p>
+                    <p className="global-desc-label ">{t('mailSent.desc.label')}</p>
                 </div>
+                <br />
+                <p className="global-desc-label ">{t('mailSent.toContinue.label')}</p>
             </div>
         </div>
     );

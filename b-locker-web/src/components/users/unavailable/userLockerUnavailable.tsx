@@ -10,8 +10,10 @@ const UserLockerUnavailable: React.FC = () => {
             <UserHeader />
             <div className="global-edge-div">
                 <div className="global-title-desc-div ">
-                    <p className="global-page-title ">{t('hello.label')}</p>
-                    <p className="global-desc-label ">{t('thankyou.label')}</p>
+                    <p className="global-page-title ">{t('unavailable.un.label')}</p>
+                    <p className="global-desc-label ">{t('unavailable.desc.label')}</p>
+                    <br />
+                    <p className="global-desc-label ">{t('unavailalbe.explanation.label')}</p>
                 </div>
             </div>
         </div>
