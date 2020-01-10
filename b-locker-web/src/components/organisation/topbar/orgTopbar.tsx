@@ -8,16 +8,13 @@ const topbar: React.FC = () => {
     return (
         <section className="topbar">
             <div className="container">
-                <a><img className="user-icon" src={navUserIcon} alt='' />Brian </a>
+                <p><img className="user-icon" src={navUserIcon} alt='' />Brian </p>
                 
-                <a href="#news">Admin </a>
+                <p>Admin </p>
             </div>
         </section>
     );
 }
 
-function redirectHome() {
-    console.log('test');
-}
 
 export default topbar;
