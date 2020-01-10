@@ -62,5 +62,10 @@
     "changePass.setPass.button": "Verander code",
     "passChanged.newPassSet.label": "Code is veranderd",
     "passChanged.done.label": "Voldaan",
-    "passChanged.desc.label": "Scan de locker opnieuw om hem te openen."
+    "passChanged.desc.label": "Scan de locker opnieuw om hem te openen.",
+    "login.title.label": "Log in",
+    "login.user.hint":"Gebruikersnaam",
+    "login.pass.hint":"Wachtwoord",
+    "login.check.label": "Login",
+    "login.desc.label": "Voer de inloggegevens van uw account in."
 }
