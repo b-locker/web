@@ -32,7 +32,7 @@ const UserChangePass: React.FC = () => {
                 <b>
                     <p className="global-desc-label ">{t('changePass.currentPass.label')}</p>
                 </b>
-                <input className="pass-input global-input" placeholder={t('changePass.current.hint')}
+                <input className="global-input" placeholder={t('changePass.current.hint')}
                     type="password"
                     id="currentPasscode"
                     onChange={evt => setCurrentPasscode(evt.target.value)}>
@@ -40,7 +40,7 @@ const UserChangePass: React.FC = () => {
                 <b>
                     <p className="global-desc-label ">{t('changePass.newPass.label')}</p>
                 </b>
-                <input className="pass-input global-input" placeholder={t('changePass.passcode.hint')}
+                <input className="global-input" placeholder={t('changePass.passcode.hint')}
                     type="password"
                     id="newPasscode"
                     onChange={evt => setNewPasscode(evt.target.value)}>

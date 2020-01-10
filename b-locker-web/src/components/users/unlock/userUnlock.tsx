@@ -41,7 +41,7 @@ const UserUnlock: React.FC = () => {
                     <img className="lock-icon" src={lockIcon} alt='' />
                 </div>
                 <p className="global-desc-label">{t('unlock.desc.label')}</p>
-                <input className="pass-input global-input" placeholder={t('unlock.passcode.hint')}
+                <input className="global-input" placeholder={t('unlock.passcode.hint')}
                     type="password"
                     id="passcode"
                     onChange={evt => setPasscode(evt.target.value)}>

@@ -28,7 +28,7 @@ const UserForgotPass: React.FC = () => {
                     <p className="global-page-title ">{t('forgot.forgotPass.label')}</p>
                     <p className="global-desc-label ">{t('forgot.enterEmail.label')}</p>
                 </div>
-                <input className="pass-input global-input" placeholder={emailHint}
+                <input className="global-input" placeholder={emailHint}
                     type="email"
                     id="email"
                     onChange={evt => setEmail(evt.target.value)}>
