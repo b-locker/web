@@ -62,5 +62,11 @@
     "changePass.setPass.button": "Set pass",
     "passChanged.newPassSet.label": "New pass set",
     "passChanged.done.label": "Done",
-    "passChanged.desc.label": "Re-scan your locker to access it."
+    "passChanged.desc.label": "Re-scan your locker to access it.",
+    "login.title.label": "Log in",
+    "login.user.hint":"Username",
+    "login.pass.hint":"Password",
+    "login.check.label": "Login",
+    "login.desc.label": "Enter your account's login credentials.",
+    "login.forgotpass.label": "Wachtwoord vergeten?"
 }

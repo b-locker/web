@@ -1,1 +1,57 @@
 @import "../../../styles/org-global.scss";
+@import "../../../styles/user-global.scss";
+
+$background: #F2F2F2;
+
+.unlock-div{
+    max-width: fit-content;
+    margin: 0 auto;
+    max-width: 50%;
+}
+
+.title-icon-div{
+    display: flex;
+}
+
+.unlock-title{
+    justify-self: flex-start;
+    align-self: center;
+    padding-right: 20px;
+    float: left;
+}
+
+.lock-icon{
+    align-self: center;
+    height: 4vh;
+}
+
+.left-div{
+    background-color: $background;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: fit-content;
+    margin: 0 auto;
+    float: left;
+    min-width: 50%;
+    max-width: 100%;
+    width: auto;
+    position:fixed;
+    top:0;
+    left:0;
+}
+
+.lockers{
+    width: 100%;
+}
+
+.right-div{
+    max-width: fit-content;
+    margin: 0 auto;
+    float: right;
+    min-width: 50%;
+    max-width: 50%;
+    width: auto;
+    position:fixed;
+    top:0;
+    right:0;
+}
