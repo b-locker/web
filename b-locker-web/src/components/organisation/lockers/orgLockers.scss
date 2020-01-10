@@ -3,7 +3,7 @@
 .main-div-org {
   //overflow hidden removes the scrolls bar, for the lockers page this should be removed
   //overflow: hidden;
-  height: 100vh; 
+  height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(
     to bottom,
@@ -171,7 +171,14 @@
       background-color: $white;
 
       .org-href-button {
-        text-decoration: none;
+        all: unset;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        text-decoration: underline;
+        display: inline;
+        margin: 0;
+        padding: 0;
       }
 
       .box-right-side {
@@ -179,6 +186,7 @@
         text-align: center;
 
         p {
+          padding-top: 10px;
           font-size: 23px;
           color: $textcolor;
           font-weight: 500;

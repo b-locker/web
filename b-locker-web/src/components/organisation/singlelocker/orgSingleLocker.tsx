@@ -3,11 +3,19 @@ import './orgSingleLocker.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
 
-import unlockIcon from '../../../assets/unlock.png'
+// import unlockIcon from '../../../assets/unlock.png'
 // import chevronIcon from '../../../assets/chevron-right.svg'
 
+import { useHistory } from 'react-router';
 
-const orgLockers: React.FC = () => {
+
+const OrgLockers: React.FC = () => {
+
+    let history = useHistory();
+
+    function redirectLogin(e: any) {
+        history.push('/login');
+    }
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
@@ -33,7 +41,7 @@ const orgLockers: React.FC = () => {
                         </div>
                         <h2>Unlock Locker</h2>
                         <div className="locker-unlock">
-                            <a href="#"><img className="logout-icon" src={unlockIcon} alt='' />Click here to unlock this locker</a>
+                            <button className="org-href-button" onClick={redirectLogin}>Click here to unlock this locker</button>
                         </div>
 
                     </div>
@@ -252,4 +260,4 @@ const orgLockers: React.FC = () => {
     );
 }
 
-export default orgLockers;
+export default OrgLockers;

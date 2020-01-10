@@ -9,8 +9,8 @@ import unlockIcon from '../../../assets/unlock.png'
 
 import { useHistory } from 'react-router';
 
-const OrgLockers: React.FC  = () => {
-    
+const OrgLockers: React.FC = () => {
+
     let history = useHistory();
 
     function redirectUnlocklockers(e: any) {
@@ -20,9 +20,9 @@ const OrgLockers: React.FC  = () => {
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
-                <OrgTopbar></OrgTopbar>
-                <main>
-                    <div className= "container">
+            <OrgTopbar></OrgTopbar>
+            <main>
+                <div className="container">
                     <div className="row">
                         <h1>Lockers</h1>
                     </div>
@@ -58,33 +58,32 @@ const OrgLockers: React.FC  = () => {
                                     <p>14</p>
                                 </div>
                             </div>
-                            <div className="box4">
                             <button className="org-href-button" onClick={redirectUnlocklockers}>
-                                <div className="box-left-side">
-                                    <img className="unlock-icon" src={unlockIcon} alt='' />
-                                    
+                                <div className="box4">
+                                    <div className="box-left-side">
+                                        <img className="unlock-icon" src={unlockIcon} alt='' />
+                                    </div>
+                                    <div className="box-right-side">
+                                        <p>Unlock All</p>
+                                    </div>
                                 </div>
-                                <div className="box-right-side">
-                                    <p>Unlock All</p>
-                                </div>
-                                </button>
-                            </div>
+                            </button>
                         </div>
                     </div>
+                </div>
+                <div className="wrapper">
+                    <div className="locker-panel">
+                        <h2>Locatie: Stadslab</h2>
+
                     </div>
-                    <div className="wrapper">
-                        <div className="locker-panel">
-                            <h2>Locatie: Stadslab</h2>
+                    <div className="locker-panel">
+                        <h2>Locatie: Security Lokaal</h2>
 
-                        </div>
-                        <div className="locker-panel">
-                            <h2>Locatie: Security Lokaal</h2>
+                    </div>
+                </div>
 
-                        </div>
-                        </div>
-                       
-                </main>
-            </div>
+            </main>
+        </div>
     );
 }
 
