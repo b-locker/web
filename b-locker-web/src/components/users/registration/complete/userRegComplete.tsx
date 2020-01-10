@@ -8,7 +8,6 @@ const UserRegComplete: React.FC = () => {
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit'};
     let expirationDate: Date = new Date();
     expirationDate.setDate(expirationDate.getDate() + 7);
-    let daysLeft = Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
 
     return (
         <div className="main-div">

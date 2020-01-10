@@ -7,7 +7,6 @@ import lockIcon from '../../../assets/lock.svg'
 import { useHistory } from 'react-router';
 
 const UserUnlock: React.FC = () => {
-    // https://stackoverflow.com/a/57767104/7052690
     const [passcode, setPasscode] = useState("");
     const { t } = useTranslation();
     let unlockTriesAmount: number = 1;
@@ -49,7 +48,7 @@ const UserUnlock: React.FC = () => {
                 <br />
                 <button className="global-button global-button-green" onClick={unlock}>{t('unlock.unlock.button')}</button>
                 <br />
-                <button className="href-button" onClick={redirectForgotPass}>{t('unlock.forgotpass.label')}</button>
+                <button className="link-button" onClick={redirectForgotPass}>{t('unlock.forgotpass.label')}</button>
             </div>
         </div>
     );

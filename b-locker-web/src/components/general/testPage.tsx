@@ -7,6 +7,8 @@ import LanguageSelector from '../../global/i18n/languageSelector';
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
 
+    let GUID: string = "a1B2c3D4";
+
     return (
         <div>
             <Suspense fallback={null}>
@@ -22,7 +24,7 @@ const TestPage: React.FC = () => {
                         <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/claim">{t('claimpage.label')}</NavLink>
+                        <NavLink to={"/claim?="+GUID}>{t('claimpage.label')}</NavLink>
                     </li>
                     <li>
                         <NavLink to="/claim/passcode">{t('setPasscode.set.label')} </NavLink>
