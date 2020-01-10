@@ -3,14 +3,19 @@ import './orgSingleLocker.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
 
+// import unlockIcon from '../../../assets/unlock.png'
+// import chevronIcon from '../../../assets/chevron-right.svg'
 
-import lockerIcon from '../../../assets/locker.png'
-import unlockIcon from '../../../assets/unlock.png'
-import chevronIcon from '../../../assets/chevron-right.svg'
+import { useHistory } from 'react-router';
 
 
+const OrgLockers: React.FC = () => {
 
-const orgLockers: React.FC = () => {
+    let history = useHistory();
+
+    function redirectLogin(e: any) {
+        history.push('/login');
+    }
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
@@ -19,51 +24,6 @@ const orgLockers: React.FC = () => {
                 <div className="container">
                     <div className="row">
                         <h1>Locker 1, Stadslab</h1>
-                    </div>
-                    <div className="row">
-                        <div className="flex-container">
-                            <div className="box1">
-                                <div className="box-left-side">
-                                    <img className="locker-icon" src={lockerIcon} alt='' />
-                                    <p>Used</p>
-
-                                </div>
-                                <div className="box-right-side">
-                                    <p>10</p>
-                                </div>
-
-                            </div>
-                            <div className="box2">
-                                <div className="box-left-side">
-                                    <img className="locker-icon" src={lockerIcon} alt='' />
-                                    <p>Unused</p>
-                                </div>
-                                <div className="box-right-side">
-                                    <p>4</p>
-                                </div>
-
-                            </div>
-                            <div className="box3">
-                                <div className="box-left-side">
-                                    <img className="locker-icon" src={lockerIcon} alt='' />
-                                    <p>Total</p>
-                                </div>
-                                <div className="box-right-side">
-                                    <p>14</p>
-                                </div>
-                            </div>
-                            <div className="box4">
-                                <a href="#">
-                                    <div className="box-left-side">
-                                        <img className="unlock-icon" src={unlockIcon} alt='' />
-
-                                    </div>
-                                    <div className="box-right-side">
-                                        <p>Unlock All</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="wrapper">
@@ -81,7 +41,7 @@ const orgLockers: React.FC = () => {
                         </div>
                         <h2>Unlock Locker</h2>
                         <div className="locker-unlock">
-                            <a href="#"><img className="logout-icon" src={unlockIcon} alt='' />Click here to unlock this locker</a>
+                            <button className="org-href-button" onClick={redirectLogin}>Click here to unlock this locker</button>
                         </div>
 
                     </div>
@@ -300,4 +260,4 @@ const orgLockers: React.FC = () => {
     );
 }
 
-export default orgLockers;
+export default OrgLockers;

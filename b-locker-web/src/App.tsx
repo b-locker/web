@@ -85,7 +85,7 @@ const App: React.FC = () => {
           <Route path="/login">
             <OrgLogin />
           </Route>
-          <Route path="/dashboard">
+          <Route exact path="/dashboard">
             <OrgDashboard />
           </Route>
           <Route path="/singlelocker">

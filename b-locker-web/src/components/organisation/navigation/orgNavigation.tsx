@@ -6,26 +6,39 @@ import navUserIcon from '../../../assets/user.svg'
 import navSettingsIcon from '../../../assets/settings.svg'
 import navLogoutIcon from '../../../assets/log-out.svg'
 
-const orgNavigation: React.FC = () => {
+import { useHistory } from 'react-router';
+
+
+
+const OrgNavigation: React.FC = () => {
+
+    let history = useHistory();
+
+    function redirectDashboard(e: any) {
+        history.push('/dashboard');
+    }
+    function redirectLockers(e: any) {
+        history.push('/lockers');
+    }
+    function redirectLogin(e: any) {
+        history.push('/login');
+    }
 
     return (
         <nav className="menu">
             <div className="smartphone-menu-trigger"></div>
             <ul>
-                <li className="icon-dashboard"><img className="grid-icon" src={navGridIcon} alt='' /><a className="active" href="#home">Dashboard</a></li>
-                <li className="icon-lockers"><img className="locker-icon" src={navLockerIcon} alt='' /><a href="#">Lockers</a></li>
-                <li className="icon-users"><img className="user-icon" src={navUserIcon} alt='' /><a href="#">Users</a></li>
-                <li className="icon-settings"><img className="settings-icon" src={navSettingsIcon} alt='' /><a href="#">Settings</a></li>
-                <li className="icon-logout"><img className="logout-icon" src={navLogoutIcon} alt='' /><a href="#">Log out</a></li>
+                <li className="icon-dashboard"><img className="grid-icon" src={navGridIcon} alt='' /><button className="org-href-button" onClick={redirectDashboard}>Dashboard</button></li>
+                <li className="icon-lockers"><img className="locker-icon" src={navLockerIcon} alt='' /><button className="org-href-button" onClick={redirectLockers}>Lockers</button></li>
+                <li className="icon-users"><img className="user-icon" src={navUserIcon} alt='' /><button className="org-href-button" onClick={redirectLockers}>Users</button></li>
+                <li className="icon-settings"><img className="settings-icon" src={navSettingsIcon} alt='' /><button className="org-href-button" onClick={redirectLockers}>Settings</button></li>
+                <li className="icon-logout"><img className="logout-icon" src={navLogoutIcon} alt='' /><button className="org-href-button" onClick={redirectLogin}>Log Out</button></li>
             </ul>
         </nav>
 
     );
 }
 
-function redirectHome() {
-    console.log('test');
-}
 
-export default orgNavigation;
+export default OrgNavigation;
 
