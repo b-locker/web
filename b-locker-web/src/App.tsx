@@ -23,6 +23,8 @@ import UserGoodbye from './components/users/goodbye/userGoodbye';
 import UserLockdown from './components/users/lockdown/userLockdown';
 import UserPassChanged from './components/users/passChanged/userPassChanged';
 import OrgReLogin from './components/organisation/unlock/orgReLogin';
+import OrgSentence from './components/organisation/unlock/orgSentence';
+import OrgSuccess from './components/organisation/unlock/orgSuccess';
 
 const App: React.FC = () => {
   return (
@@ -73,6 +75,12 @@ const App: React.FC = () => {
           </Route>
           <Route path="/relogin">
             <OrgReLogin />
+          </Route>
+          <Route path="/unlocklockers">
+            <OrgSentence />
+          </Route>
+          <Route path="/success">
+            <OrgSuccess />
           </Route>
           <Route exact path="/">
             <TestPage />

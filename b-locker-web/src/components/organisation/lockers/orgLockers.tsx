@@ -13,8 +13,8 @@ const OrgLockers: React.FC = () => {
 
     let history = useHistory();
 
-    function redirectUnlocklockers(e: any) {
-        history.push('/unlocklockers');
+    function redirectRelogin(e: any) {
+        history.push('/relogin');
     }
 
     return (
@@ -58,7 +58,7 @@ const OrgLockers: React.FC = () => {
                                     <p>14</p>
                                 </div>
                             </div>
-                            <button className="org-href-button" onClick={redirectUnlocklockers}>
+                            <button className="org-href-button" onClick={redirectRelogin}>
                                 <div className="box4">
                                     <div className="box-left-side">
                                         <img className="unlock-icon" src={unlockIcon} alt='' />

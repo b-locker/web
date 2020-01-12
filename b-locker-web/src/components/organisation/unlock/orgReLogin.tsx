@@ -1,6 +1,5 @@
 import React from "react";
 import "./orgUnlock.scss";
-import OrgTopbar from "../topbar/orgTopbar";
 
 import logo from "../../../assets/logo.png";
 
@@ -8,10 +7,9 @@ import { useHistory } from "react-router";
 
 const OrgReLogin: React.FC = () => {
   let history = useHistory();
-  const test = 2;
   const example = "example@hr.nl";
 
-  function redirectUnlocklockers(e: any) {
+  function redirectUnlockLockers(e: any) {
     history.push("/unlocklockers");
   }
   return (
@@ -34,7 +32,7 @@ const OrgReLogin: React.FC = () => {
             id="passcode"
           ></input>
           <br />
-          <button className="org-global-button button-blue">Login</button>
+          <button className="org-global-button button-blue" onClick={redirectUnlockLockers}>Login</button>
         </div>
       </div>
     </div>
