@@ -26,7 +26,7 @@ const UserClaimLocker: React.FC = () => {
                 'guid': values.guid,
                 'email': email
             }
-            http.getRequest('/api/lockers').then((res)=>{
+            http.getRequest('/managers').then((res)=>{
                 console.log('http result:',res);
                 history.push('/claim/mailsent');
             }).catch((error)=>{
