@@ -5,12 +5,13 @@ import { useHistory, useLocation } from 'react-router';
 import queryString from 'querystring';
 import validator from 'validator';
 import { useAlert } from 'react-alert';
-import httpProvider from '../../../../global/http/httpProvider';
+import { httpProvider } from '../../../../global/http/httpProvider';
 
 const UserClaimLocker: React.FC = () => {
     const { t } = useTranslation();
     const alert = useAlert();
     const [email, setEmail] = useState("");
+    let http = new httpProvider;
     let history = useHistory();
     let location = useLocation();
     let values = queryString.parse((location.search.substr(1)));
@@ -25,8 +26,12 @@ const UserClaimLocker: React.FC = () => {
                 'guid': values.guid,
                 'email': email
             }
-            
-            history.push('/claim/mailsent');
+            http.getRequest('/api/lockers').then((res)=>{
+                console.log('http result:',res);
+                history.push('/claim/mailsent');
+            }).catch((error)=>{
+                console.log('error:',error);
+            });
         }
         else{
             alert.error(t('error.invalid.email'));
