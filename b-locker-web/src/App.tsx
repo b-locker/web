@@ -37,69 +37,27 @@ const App: React.FC = () => {
           <Route exact path="/">
             <TestPage />
           </Route>
-          <Route exact path="/claim">
-            <UserClaimLocker />
-          </Route>
-          <Route exact path="/claim/mailsent">
-            <UserMailSent />
-          </Route>
-          <Route exact path="/claim/passcode">
-            <UserSetPasscode />
-          </Route>
-          <Route exact path="/claim/complete">
-            <UserRegComplete />
-          </Route>
-          <Route exact path="/unavailable">
-            <UserLockerUnavailable />
-          </Route>
-          <Route exact path="/tutorial">
-            <UserTutorial />
-          </Route>
-          <Route exact path="/unlock">
-            <UserUnlock />
-          </Route>
-          <Route exact path="/lockdown">
-            <UserLockdown />
-          </Route>
-          <Route exact path="/info">
-            <UserInfo />
-          </Route>
-          <Route exact path="/forgotPass">
-            <UserForgotPass />
-          </Route>
-          <Route exact path="/forgotPassSent">
-            <UserForgotPassSent />
-          </Route>
-          <Route exact path="/changePass">
-            <UserChangePass />
-          </Route>
-          <Route exact path="/passChanged">
-            <UserPassChanged />
-          </Route>
-          <Route exact path="/endOwnership">
-            <UserEndOwnership />
-          </Route>
-          <Route exact path="/goodbye">
-            <UserGoodbye />
-          </Route>
-          <Route path="/login">
-            <OrgLogin />
-          </Route>
-          <Route exact path="/dashboard">
-            <OrgDashboard />
-          </Route>
-          <Route path="/singlelocker">
-            <SingleLocker />
-          </Route>
-          <Route path="/lockers">
-            <OrgLockers />
-          </Route>
-          <Route exact path="/">
-            <TestPage />
-          </Route>
-          <Route path="/404">
-            <PageNotFound />
-          </Route>
+          <Route exact path="/claim" component={UserClaimLocker} />
+          <Route exact path="/claim/mailsent" component={UserMailSent} />
+          <Route exact path="/claim/passcode" component={UserSetPasscode} />
+          <Route exact path="/claim/complete" component={UserRegComplete} />
+          <Route exact path="/unavailable" component={UserLockerUnavailable} />
+          <Route exact path="/tutorial" component={UserTutorial} />
+          <Route exact path="/unlock" component={UserUnlock} />
+          <Route exact path="/lockdown" component={UserLockdown} />
+          <Route exact path="/info" component={UserInfo} />
+          <Route exact path="/forgotPass" component={UserForgotPass} />
+          <Route exact path="/forgotPassSent" component={UserForgotPassSent} />
+          <Route exact path="/changePass" component={UserChangePass} />
+          <Route exact path="/passChanged" component={UserPassChanged} />
+          <Route exact path="/endOwnership" component={UserEndOwnership} />
+          <Route exact path="/goodbye" component={UserGoodbye} />
+          <Route path="/login" component={OrgLogin} />
+          <Route exact path="/dashboard" component={OrgDashboard} />
+          <Route path="/singlelocker" component={SingleLocker} />
+          <Route path="/lockers" component={OrgLockers} />
+          <Route exact path="/" component={TestPage} />
+          <Route path="/404" component={PageNotFound} />
           <Route path="/*">
             <Redirect to="/404" />
           </Route>

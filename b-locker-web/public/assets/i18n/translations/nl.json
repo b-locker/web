@@ -18,6 +18,7 @@
     "global.month.oct": "Oktober",
     "global.month.nov": "November",
     "global.month.dec": "December",
+    "error.invalid.email": "Vul een geldig email-adres in",
     "hello.label": "Hallo",
     "thankyou.label": "Bedankt",
     "goback.button": "GA TERUG",
