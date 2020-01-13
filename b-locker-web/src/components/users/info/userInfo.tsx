@@ -11,6 +11,7 @@ const UserInfo: React.FC = () => {
     const timeOptions = { hour: '2-digit', minute: '2-digit'};
     let previousOpened: Date = new Date();
     let expirationDate: Date = new Date();
+    //let testDate: Date = new Date("2020-01-13T14:11:33.000000Z");
     expirationDate.setDate(expirationDate.getDate() + 7);
     let daysLeft = Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
     let timesOpened: number = 5;
