@@ -25,6 +25,7 @@ const UserSetPasscode: React.FC = () => {
 
     function finish(e: any){
         if(passcode){
+            // min 6 max 100 chars
             history.push('/claim/complete')
         }
     }
