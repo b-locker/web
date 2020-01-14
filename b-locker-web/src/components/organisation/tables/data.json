@@ -33,5 +33,26 @@
     "User": "0867973",
     "Activity": "02/11/292",
     "Action": ">"
+  },
+  {
+    "Id": 6,
+    "status": "Unused",
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  },
+  {
+    "Id": 7,
+    "status": "Unused",
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  },
+  {
+    "Id": 8,
+    "status": "Used",
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
   }
 ]

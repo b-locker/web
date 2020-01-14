@@ -19,8 +19,8 @@ const OrgDashboardTables: React.FC = () => {
     function renderTableHeader() {
         return (
             <tr className="row100 head">
-                <th className="cell100 column1">Status</th>
-                <th className="cell100 column2">Locker Id</th>
+                <th className="cell100 column1">Locker Id</th>
+                <th className="cell100 column2">Status</th>
                 <th className="cell100 column3">Current User</th>
                 <th className="cell100 column4">Latest activity</th>
                 <th className="cell100 column5">Action</th>
@@ -33,8 +33,8 @@ const OrgDashboardTables: React.FC = () => {
         return lockers.map((lockers, index) => {
             return (
                 <tr className="row100 body" key={lockers.Id}>
-                    <td className="cell100 column1">{lockers.status}</td>
-                    <td className="cell100 column2">{lockers.Id}</td>
+                    <td className="cell100 column1">{lockers.Id}</td>
+                    <td className="cell100 column2">{lockers.status}</td>
                     <td className="cell100 column3">{lockers.User}</td>
                     <td className="cell100 column4">{lockers.Activity}</td>
                     <td className="cell100 column5">{lockers.Action}</td>
