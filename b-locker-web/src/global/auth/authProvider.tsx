@@ -1,11 +1,19 @@
-import jwt from 'jsonwebtoken'
+//import jwt from 'jsonwebtoken';
+import store from 'store2';
 
 export class authProvider {
 
-    private authToken: string = "";
-    public devDebugToken: boolean = false;
+    //private jwt: string = "";
 
     public isAuthenticated(): boolean {
-        return this.devDebugToken;
+        let result = store.get("devDebugToken");
+        console.log('from storage:',result);
+        return result;
+    }
+
+    public setDevDebugToken(token: boolean){
+        if(token){
+            store.set("devDebugToken", token);
+        }
     }
 }

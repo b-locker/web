@@ -28,6 +28,17 @@ import UserSetPasscode from './components/users/registration/setPasscode/userSet
 import UserRegComplete from './components/users/registration/complete/userRegComplete';
 import UserLockerUnavailable from './components/users/unavailable/userLockerUnavailable';
 import UserTutorial from './components/users/tutorial/userTutorial';
+import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
+import store from 'store2';
+
+const unlockProtectedRouteProps: ProtectedRouteProps = {
+  authenticationPath: "/unlock",
+  isAllowed: false
+}
+
+window.addEventListener("beforeunload", (ev) =>{
+    store(false);
+})
 
 const App: React.FC = () => {
   return (
@@ -45,13 +56,13 @@ const App: React.FC = () => {
           <Route exact path="/tutorial" component={UserTutorial} />
           <Route exact path="/unlock" component={UserUnlock} />
           <Route exact path="/lockdown" component={UserLockdown} />
-          <Route exact path="/info" component={UserInfo} />
           <Route exact path="/forgotPass" component={UserForgotPass} />
           <Route exact path="/forgotPassSent" component={UserForgotPassSent} />
-          <Route exact path="/changePass" component={UserChangePass} />
-          <Route exact path="/passChanged" component={UserPassChanged} />
-          <Route exact path="/endOwnership" component={UserEndOwnership} />
-          <Route exact path="/goodbye" component={UserGoodbye} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/info" component={UserInfo} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/changePass" component={UserChangePass} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/endOwnership" component={UserEndOwnership} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/goodbye" component={UserGoodbye} />
           <Route path="/login" component={OrgLogin} />
           <Route exact path="/dashboard" component={OrgDashboard} />
           <Route path="/singlelocker" component={SingleLocker} />
