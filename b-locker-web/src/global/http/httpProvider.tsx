@@ -14,7 +14,7 @@ export class httpProvider {
         }
     }
 
-    public postRequest(url: string, data: any, jwt?: string): Promise<any> {
+    public postRequestBodyData(url: string, data: any, jwt?: string): Promise<any> {
         if (jwt) {
             const options = {
                 headers: { 'token': jwt }
@@ -23,6 +23,18 @@ export class httpProvider {
         }
         else {
             return axios.post(this.apiURL + url, data);
+
+        }
+    }
+    public postRequestQueryParams(url: string,  jwt?: string): Promise<any> {
+        if (jwt) {
+            const options = {
+                headers: { 'token': jwt }
+            };
+            return axios.post(this.apiURL + url, null, options);
+        }
+        else {
+            return axios.post(this.apiURL + url, null);
 
         }
     }

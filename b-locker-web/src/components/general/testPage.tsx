@@ -7,8 +7,7 @@ import LanguageSelector from '../../global/i18n/languageSelector';
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
 
-    let guid: string = "a1B2c3D4";
-    //let token: string = "ewceT26ItPWMxVJP";
+    let guid: string = "HtXHuV3y";
 
     return (
         <div>

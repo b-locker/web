@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import UserHeader from '../../header/userHeader';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
+import queryString from 'querystring';
+import { useAlert } from 'react-alert';
+import { httpProvider } from '../../../../global/http/httpProvider';
 
 const UserSetPasscode: React.FC = () => {
     const { t, i18n } = useTranslation();
     let history = useHistory();
-
+    let http = new httpProvider();
+    let alert = useAlert();
+    let location = useLocation();
+    let locationValues = queryString.parse((location.search.substr(1)));
+    if(!locationValues.id || !locationValues.token || !locationValues.claimId){
+        alert.error(t('error.somethingwentwrong.global'));
+        history.push('/unavailable');
+    }
     const [passcode, setPasscode] = useState("");
 
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit'};
@@ -26,8 +36,27 @@ const UserSetPasscode: React.FC = () => {
     function finish(e: any){
         if(passcode){
             // min 6 max 100 chars
+            if(validatePasscode(passcode)){
+                //id=HtXHuV3y&token=p6ibwtPBLgBSubvk
+                http.postRequestQueryParams(
+                    '/lockers/'+locationValues.id+
+                    '/claims/'+locationValues.claimId+
+                    '?key='+passcode+
+                    '&setup_token='+locationValues.token).then((res)=>
+                    {
+                        console.log('http result:',res);
+                        history.push('/claim/complete');
+                    }).catch((error)=>{
+                        console.log('error:',error);
+                        alert.error(t('error.somethingwentwrong.global'))
+                })
+            }
             history.push('/claim/complete')
         }
+    }
+
+    function validatePasscode(passcode: string): boolean{
+        return true;
     }
 
     return (

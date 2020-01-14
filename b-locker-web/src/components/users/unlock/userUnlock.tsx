@@ -3,7 +3,6 @@ import './userUnlock.scss';
 import UserHeader from '../header/userHeader';
 import { useTranslation } from 'react-i18next';
 import { useAlert } from 'react-alert';
-
 import lockIcon from '../../../assets/lock.svg'
 import { useHistory } from 'react-router';
 import { authProvider } from '../../../global/auth/authProvider';
@@ -26,15 +25,20 @@ const UserUnlock: React.FC = () => {
             history.push('/lockdown');
         }
         else if (passcode) {
-            // TODO: check credentials with backend
-            auth.setDevDebugToken(true);
-            console.log('unlock is auth:', auth.isAuthenticated());
-            history.push('/info');
+            if(checkPasscode(passcode)){
+                auth.setDevDebugToken(true);
+                history.push('/info');
+            }
         }
         else {
             alert.error('Fill in a passcode');
             unlockTriesAmount++;
         }
+    }
+    
+    function checkPasscode(passcode: string): boolean{
+        // TODO: check credentials with backend
+        return true;
     }
 
     return (

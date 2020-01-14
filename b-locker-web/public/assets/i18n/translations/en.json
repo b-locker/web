@@ -19,6 +19,7 @@
     "global.month.nov": "November",
     "global.month.dec": "December",
     "error.invalid.email": "Please enter a valid email",
+    "error.somethingwentwrong.global": "Something went wrong",
     "hello.label": "Hello",
     "thankyou.label": "Thank you",
     "goback.button": "GO BACK HOME",
