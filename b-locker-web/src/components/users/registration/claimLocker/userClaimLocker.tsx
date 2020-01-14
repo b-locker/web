@@ -11,7 +11,7 @@ const UserClaimLocker: React.FC = () => {
     const { t } = useTranslation();
     const alert = useAlert();
     const [email, setEmail] = useState("");
-    let http = new httpProvider;
+    let http = new httpProvider();
     let history = useHistory();
     let location = useLocation();
     let values = queryString.parse((location.search.substr(1)));
@@ -26,7 +26,7 @@ const UserClaimLocker: React.FC = () => {
                 'guid': values.guid,
                 'email': email
             }
-            http.getRequest('/managers').then((res)=>{
+            http.postRequest('/managers', dataToSend).then((res)=>{
                 console.log('http result:',res);
                 history.push('/claim/mailsent');
             }).catch((error)=>{

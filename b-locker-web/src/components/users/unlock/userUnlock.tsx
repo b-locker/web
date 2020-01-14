@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import './userUnlock.scss';
 import UserHeader from '../header/userHeader';
 import { useTranslation } from 'react-i18next';
+import { useAlert } from 'react-alert';
 
 import lockIcon from '../../../assets/lock.svg'
 import { useHistory } from 'react-router';
+import { authProvider } from '../../../global/auth/authProvider';
 
 const UserUnlock: React.FC = () => {
     const [passcode, setPasscode] = useState("");
     const { t } = useTranslation();
+    const alert = useAlert();
     let unlockTriesAmount: number = 1;
-
+    const auth = new authProvider();
     let history = useHistory();
     function redirectForgotPass(e: any) {
         history.push('/forgotPass');
@@ -23,10 +26,13 @@ const UserUnlock: React.FC = () => {
             history.push('/lockdown');
         }
         else if (passcode) {
-            history.push('/info')
+            // TODO: check credentials with backend
+            auth.setDevDebugToken(true);
+            console.log('unlock is auth:', auth.isAuthenticated());
+            history.push('/info');
         }
         else {
-            alert('Fill in a passcode');
+            alert.error('Fill in a passcode');
             unlockTriesAmount++;
         }
     }
