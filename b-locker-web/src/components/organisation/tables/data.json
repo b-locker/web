@@ -1,0 +1,37 @@
+[
+  {
+    "status": "Used",
+    "Id": 1,
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  },
+  {
+    "status": "Used",
+    "Id": 2,
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  },
+  {
+    "status": "Unused",
+    "Id": 3,
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  },
+  {
+    "status": "Used",
+    "Id": 4,
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  },
+  {
+    "status": "Unused",
+    "Id": 5,
+    "User": "0867973",
+    "Activity": "02/11/292",
+    "Action": ">"
+  }
+]

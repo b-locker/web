@@ -1,15 +1,8 @@
 import React from 'react';
 import './orgTables.scss';
+import data from '../tables/data.json'
 
 import { useHistory } from 'react-router';
-
-interface Lockers {
-    Status: string
-    Id: Int16Array
-    User: string
-    Activity: string
-    Action: string
-}
 
 const OrgDashboardTable: React.FC = () => {
 
@@ -19,6 +12,8 @@ const OrgDashboardTable: React.FC = () => {
         <div>Init</div>
     );
 }
+
+
 
 
 export default OrgDashboardTable;
