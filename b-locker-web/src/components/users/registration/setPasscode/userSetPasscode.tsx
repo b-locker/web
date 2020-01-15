@@ -80,9 +80,10 @@ const UserSetPasscode: React.FC = () => {
 
     function sendSetPasscodeData(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            http.putRequest(
+            http.postRequestQueryParams(
                 '/lockers/' + locker_guid +
                 '/claims/' + claim_id +
+                '/setup' +
                 '?key=' + passcode +
                 '&setup_token=' + token).then((res) => {
                     resolve();

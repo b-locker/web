@@ -7,7 +7,6 @@ export class authProvider {
 
     public isAuthenticated(): boolean {
         let result = store.get("devDebugToken");
-        console.log('from storage:',result);
         return result;
     }
 

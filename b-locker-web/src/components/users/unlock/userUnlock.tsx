@@ -4,8 +4,10 @@ import UserHeader from '../header/userHeader';
 import { useTranslation } from 'react-i18next';
 import { useAlert } from 'react-alert';
 import lockIcon from '../../../assets/lock.svg'
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { authProvider } from '../../../global/auth/authProvider';
+import { httpProvider } from '../../../global/http/httpProvider';
+import queryString from 'querystring';
 
 const UserUnlock: React.FC = () => {
     const [passcode, setPasscode] = useState("");
@@ -13,18 +15,24 @@ const UserUnlock: React.FC = () => {
     const alert = useAlert();
     let unlockTriesAmount: number = 1;
     const auth = new authProvider();
+    const http = new httpProvider();
     let history = useHistory();
+    let location = useLocation();
+    let locationValues = queryString.parse((location.search.substr(1)));
+    let guid;
+    if(!locationValues.guid){
+        alert.error(t('error.somethingwentwrong.global'));
+        history.push('/unavailable');
+    }
+    else guid = locationValues.guid;
+
     function redirectForgotPass(e: any) {
         history.push('/forgotPass');
     }
 
     function unlock(e: any) {
         console.log('entered passcode: ', passcode);
-        console.log('unlock tries: ', unlockTriesAmount);
-        if (unlockTriesAmount > 2) {
-            history.push('/lockdown');
-        }
-        else if (passcode) {
+        if (passcode) {
             if(checkPasscode(passcode)){
                 auth.setDevDebugToken(true);
                 history.push('/info');
@@ -32,13 +40,31 @@ const UserUnlock: React.FC = () => {
         }
         else {
             alert.error('Fill in a passcode');
-            unlockTriesAmount++;
         }
     }
     
     function checkPasscode(passcode: string): boolean{
         // TODO: check credentials with backend
-        return true;
+        http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
+            console.log('res:',res);
+            if(res.status === 200){
+                return true;
+            }
+            else if (res.status === 400){
+                alert.error()
+                //history.push('/lockdown');
+            }
+            else{
+                alert.error(t('error.somethingwentwrong.global'))
+            }
+        }).catch((error)=>{
+            if(error.response){
+                console.log('error data:',error.response.data);
+                alert.error(error.response.data.message);
+            }
+            console.log('error:',error);
+        });
+        return false;
     }
 
     return (

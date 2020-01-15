@@ -38,7 +38,7 @@ const UserLanding: React.FC = () => {
                 if(isMounted){
                     setLoading(false);
                 }
-                history.push('/unlock');
+                history.push('/unlock?guid='+guid);
             }
         }).catch((error)=>{
             alert.error(t('error.somethingwentwrong.global'));
