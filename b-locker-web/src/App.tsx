@@ -30,7 +30,7 @@ import UserLockerUnavailable from './components/users/unavailable/userLockerUnav
 import UserTutorial from './components/users/tutorial/userTutorial';
 import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
-import UserLanding from './components/landing/userLanding';
+import UserLanding from './components/users/landing/userLanding';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
   authenticationPath: "/unlock",

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
-import UserHeader from '../users/header/userHeader';
+import UserHeader from '../header/userHeader';
 import { useLocation, useHistory } from 'react-router-dom';
-import { httpProvider } from '../../global/http/httpProvider';
+import { httpProvider } from '../../../global/http/httpProvider';
 import { useAlert } from 'react-alert';
 import GridLoader from 'react-spinners/GridLoader';
-import { rejects } from 'assert';
 
 const UserLanding: React.FC = () => {
     const { t } = useTranslation();
