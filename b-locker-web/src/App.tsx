@@ -52,24 +52,6 @@ const App: React.FC = () => {
     <Suspense fallback={null}>
       <Router>
         <Switch>
-          <Route exact path="/orglockertables">
-            <OrgLockerTables />
-          </Route>
-          <Route exact path="/dashboardtables">
-            <OrgDashboardTable />
-          </Route>
-          <Route exact path="/orglogtables">
-            <OrgLogTables />
-          </Route>
-          <Route path="/relogin">
-            <OrgReLogin />
-          </Route>
-          <Route path="/unlocklockers">
-            <OrgSentence />
-          </Route>
-          <Route path="/success">
-            <OrgSuccess />
-          </Route>
           <Route exact path="/l/*" component={UserLanding} />
           <Route exact path="/claim" component={UserClaimLocker} />
           <Route exact path="/claim/mailsent" component={UserMailSent} />
@@ -86,10 +68,16 @@ const App: React.FC = () => {
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/endOwnership" component={UserEndOwnership} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/goodbye" component={UserGoodbye} />
-          <Route path="/login" component={OrgLogin} />
+          <Route exact path="/login" component={OrgLogin} />
           <Route exact path="/dashboard" component={OrgDashboard} />
-          <Route path="/singlelocker" component={SingleLocker} />
+          <Route exact path="/singlelocker" component={SingleLocker} />
           <Route exact path="/lockers" component={OrgLockers} />
+          <Route exact path="/orglockertables" component={OrgLogTables} />
+          <Route exact path="/dashboardtables" component={OrgDashboardTable} />
+          <Route exact path="/orglogtables" component={OrgLogTables} />
+          <Route path="/relogin" component={OrgReLogin} />
+          <Route path="/unlocklockers" component={OrgSentence} />
+          <Route path="/success" component={OrgSuccess} />
           <Route exact path="/" component={TestPage} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/*">
