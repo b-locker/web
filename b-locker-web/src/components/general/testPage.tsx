@@ -7,8 +7,7 @@ import LanguageSelector from '../../global/i18n/languageSelector';
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
 
-    let guid: string = "a1B2c3D4";
-    //let token: string = "ewceT26ItPWMxVJP";
+    let guid: string = "Wa1bkwWx";
 
     return (
         <div>
@@ -20,6 +19,9 @@ const TestPage: React.FC = () => {
                     </li>
                     <li>
                         <NavLink to="/dashboard">{t('orgloginpage.label')}</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={"/l/"+guid}>Landing</NavLink>
                     </li>
                     <li>
                         <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>
