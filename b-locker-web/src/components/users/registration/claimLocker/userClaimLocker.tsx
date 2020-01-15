@@ -14,28 +14,31 @@ const UserClaimLocker: React.FC = () => {
     let http = new httpProvider();
     let history = useHistory();
     let location = useLocation();
-    let values = queryString.parse((location.search.substr(1)));
-    console.log('location:', location);
-    console.log('values:',values);
-    console.log('guid:', values.guid);
+    let locationValues = queryString.parse((location.search.substr(1)));
+    console.log('guid:', locationValues.guid);
+    if(!locationValues.guid){
+        alert.error(t('error.somethingwentwrong.global'));
+        history.push('/unavailable');
+    }
 
     function claim(e:any) {
-        console.log('entered email:',email);
+        // Check if email is valid
         if(validator.isEmail(email)){
-            let dataToSend = {
-                'guid': values.guid,
-                'email': email
-            }
-            http.postRequest('/managers', dataToSend).then((res)=>{
-                console.log('http result:',res);
-                history.push('/claim/mailsent');
-            }).catch((error)=>{
-                console.log('error:',error);
-            });
+            sendMailRequest(locationValues.guid.toString(), email)
         }
         else{
             alert.error(t('error.invalid.email'));
         }
+    }
+
+    function sendMailRequest(guid: string, email: string){
+        http.postRequestQueryParams('/lockers/'+guid+'/claims?email='+email).then((res)=>{
+            console.log('http result:',res);
+            history.push('/claim/mailsent');
+        }).catch((error)=>{
+            console.log('error:',error);
+            alert.error(t('error.somethingwentwrong.global'))
+        });
     }
 
     return (

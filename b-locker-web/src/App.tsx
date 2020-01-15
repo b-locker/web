@@ -36,6 +36,7 @@ import UserLockerUnavailable from './components/users/unavailable/userLockerUnav
 import UserTutorial from './components/users/tutorial/userTutorial';
 import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
+import UserLanding from './components/users/landing/userLanding';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
   authenticationPath: "/unlock",
@@ -51,24 +52,7 @@ const App: React.FC = () => {
     <Suspense fallback={null}>
       <Router>
         <Switch>
-          <Route exact path="/orglockertables">
-            <OrgLockerTables />
-          </Route>
-          <Route exact path="/dashboardtables">
-            <OrgDashboardTable />
-          </Route>
-          <Route exact path="/orglogtables">
-            <OrgLogTables />
-          </Route>
-          <Route path="/relogin">
-            <OrgReLogin />
-          </Route>
-          <Route path="/unlocklockers">
-            <OrgSentence />
-          </Route>
-          <Route path="/success">
-            <OrgSuccess />
-          </Route>
+          <Route exact path="/l/*" component={UserLanding} />
           <Route exact path="/claim" component={UserClaimLocker} />
           <Route exact path="/claim/mailsent" component={UserMailSent} />
           <Route exact path="/claim/passcode" component={UserSetPasscode} />
@@ -84,10 +68,16 @@ const App: React.FC = () => {
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/endOwnership" component={UserEndOwnership} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/goodbye" component={UserGoodbye} />
-          <Route path="/login" component={OrgLogin} />
+          <Route exact path="/login" component={OrgLogin} />
           <Route exact path="/dashboard" component={OrgDashboard} />
-          <Route path="/singlelocker" component={SingleLocker} />
-          <Route path="/lockers" component={OrgLockers} />
+          <Route exact path="/singlelocker" component={SingleLocker} />
+          <Route exact path="/lockers" component={OrgLockers} />
+          <Route exact path="/orglockertables" component={OrgLogTables} />
+          <Route exact path="/dashboardtables" component={OrgDashboardTable} />
+          <Route exact path="/orglogtables" component={OrgLogTables} />
+          <Route exact path="/relogin" component={OrgReLogin} />
+          <Route exact path="/unlocklockers" component={OrgSentence} />
+          <Route exact path="/success" component={OrgSuccess} />
           <Route exact path="/" component={TestPage} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/*">
