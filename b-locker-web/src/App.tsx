@@ -30,6 +30,7 @@ import UserLockerUnavailable from './components/users/unavailable/userLockerUnav
 import UserTutorial from './components/users/tutorial/userTutorial';
 import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
+import UserLanding from './components/landing/userLanding';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
   authenticationPath: "/unlock",
@@ -48,6 +49,7 @@ const App: React.FC = () => {
           <Route exact path="/">
             <TestPage />
           </Route>
+          <Route exact path="/l/*" component={UserLanding} />
           <Route exact path="/claim" component={UserClaimLocker} />
           <Route exact path="/claim/mailsent" component={UserMailSent} />
           <Route exact path="/claim/passcode" component={UserSetPasscode} />

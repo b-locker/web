@@ -24,6 +24,7 @@
     "react-i18next": "^11.2.5",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
+    "react-spinners": "^0.8.0",
     "store2": "^2.10.0",
     "typescript": "^3.7.3",
     "validator": "^12.1.0"

@@ -28,6 +28,8 @@
     "userunlockpage.label": "Gebruiker inlog pagina",
     "claimpage.label": "Huur een kluisje",
     "header.ruas.label": "Hogeschool Rotterdam",
+    "landing.onemoment.label": "Een moment geduld",
+    "landing.checking.label": "We checken of het kluisje beschikbaar is",
     "unlock.unlock.label": "Openen",
     "unlock.desc.label": "Voer de code van je kluisje in",
     "unlock.passcode.hint":"Code",

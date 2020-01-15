@@ -28,6 +28,8 @@
     "userunlockpage.label": "User unlock page",
     "claimpage.label": "Claim a locker",
     "header.ruas.label": "Rotterdam UAS",
+    "landing.onemoment.label": "One moment please",
+    "landing.checking.label": "We're checking if this locker is available",
     "unlock.unlock.label": "Unlock",
     "unlock.desc.label": "Enter the passcode of your locker",
     "unlock.passcode.hint":"Passcode",

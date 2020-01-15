@@ -38,4 +38,16 @@ export class httpProvider {
 
         }
     }
+
+    public putRequest(url: string, jwt?: string): Promise<any> {
+        if(jwt){
+            const options = {
+                headers: { 'token': jwt}
+            };
+            return axios.put(url, null, options);
+        }
+        else {
+            return axios.put(url);
+        }
+    }
 }

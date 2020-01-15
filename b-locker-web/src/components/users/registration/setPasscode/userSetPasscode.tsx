@@ -38,7 +38,7 @@ const UserSetPasscode: React.FC = () => {
             // min 6 max 100 chars
             if(validatePasscode(passcode)){
                 //id=HtXHuV3y&token=p6ibwtPBLgBSubvk
-                http.postRequestQueryParams(
+                http.putRequest(
                     '/lockers/'+locationValues.id+
                     '/claims/'+locationValues.claimId+
                     '?key='+passcode+
