@@ -25,6 +25,9 @@ import UserPassChanged from './components/users/passChanged/userPassChanged';
 import OrgLockerTables from './components/organisation/tables/orgLockerTables';
 import OrgDashboardTable from './components/organisation/tables/orgDashboardTable';
 import OrgLogTables from './components/organisation/tables/orgLogTables';
+import OrgReLogin from './components/organisation/unlock/orgReLogin';
+import OrgSentence from './components/organisation/unlock/orgSentence';
+import OrgSuccess from './components/organisation/unlock/orgSuccess';
 
 const App: React.FC = () => {
   return (
@@ -81,6 +84,15 @@ const App: React.FC = () => {
           </Route>
           <Route path="/lockers">
             <OrgLockers />
+          </Route>
+          <Route path="/relogin">
+            <OrgReLogin />
+          </Route>
+          <Route path="/unlocklockers">
+            <OrgSentence />
+          </Route>
+          <Route path="/success">
+            <OrgSuccess />
           </Route>
           <Route exact path="/">
             <TestPage />
