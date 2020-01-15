@@ -44,10 +44,10 @@ export class httpProvider {
             const options = {
                 headers: { 'token': jwt}
             };
-            return axios.put(url, null, options);
+            return axios.put(this.apiURL + url, null, options);
         }
         else {
-            return axios.put(url);
+            return axios.put(this.apiURL + url);
         }
     }
 }
