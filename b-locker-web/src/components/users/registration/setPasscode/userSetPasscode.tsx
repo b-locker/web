@@ -70,7 +70,6 @@ const UserSetPasscode: React.FC = () => {
             sendSetPasscodeData().then(() => {
                 history.push('/claim/complete')
             }).catch((error) => {
-                console.log(error);
                 alert.error(t('error.somethingwentwrong.global'))
             })
         }
@@ -86,7 +85,6 @@ const UserSetPasscode: React.FC = () => {
                 '/claims/' + claim_id +
                 '?key=' + passcode +
                 '&setup_token=' + token).then((res) => {
-                    console.log('http result:', res);
                     resolve();
                 }).catch((error) => {
                     reject(error);
