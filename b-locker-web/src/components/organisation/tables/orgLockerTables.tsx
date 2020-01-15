@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./orgTables.scss";
-import data from "../tables/data.json";
+import data from "../tables/data/data.json";
 
-const OrgLockerTables: React.FC = () => {
+const OrgLockerTables: React.FC = (props) => {
 
     //data from the data.json file is stored under the lockers variable
     let lockers = data;

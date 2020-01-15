@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import "./orgTables.scss";
-import data from "../tables/data.json";
+import data from "../tables/data/data.json";
 
 const OrgDashboardTables: React.FC = () => {
 
