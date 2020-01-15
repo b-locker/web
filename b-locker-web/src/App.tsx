@@ -43,8 +43,8 @@ const unlockProtectedRouteProps: ProtectedRouteProps = {
   isAllowed: false
 }
 
-window.addEventListener("beforeunload", (ev) =>{
-    store(false);
+window.addEventListener("beforeunload", (ev) => {
+  store(false);
 })
 
 const App: React.FC = () => {
@@ -63,16 +63,16 @@ const App: React.FC = () => {
           <Route exact path="/lockdown" component={UserLockdown} />
           <Route exact path="/forgotPass" component={UserForgotPass} />
           <Route exact path="/forgotPassSent" component={UserForgotPassSent} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/info" component={UserInfo} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/changePass" component={UserChangePass} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/endOwnership" component={UserEndOwnership} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/goodbye" component={UserGoodbye} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/info" component={UserInfo} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/changePass" component={UserChangePass} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/passChanged" component={UserPassChanged} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/endOwnership" component={UserEndOwnership} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/goodbye" component={UserGoodbye} />
           <Route exact path="/login" component={OrgLogin} />
           <Route exact path="/dashboard" component={OrgDashboard} />
           <Route exact path="/singlelocker" component={SingleLocker} />
           <Route exact path="/lockers" component={OrgLockers} />
-          <Route exact path="/orglockertables" component={OrgLogTables} />
+          <Route exact path="/orglockertables" component={OrgLockerTables} />
           <Route exact path="/dashboardtables" component={OrgDashboardTable} />
           <Route exact path="/orglogtables" component={OrgLogTables} />
           <Route exact path="/relogin" component={OrgReLogin} />

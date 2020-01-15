@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class httpProvider {
-    apiURL: string = "//b-locker.nl:8080/api/v1"
+    apiURL: string = "https://b-locker.nl:8080/api/v1"
     public getRequest(url: string, jwt?: string): Promise<any> {
         if (jwt) {
             const options = {
@@ -26,7 +26,7 @@ export class httpProvider {
 
         }
     }
-    public postRequestQueryParams(url: string,  jwt?: string): Promise<any> {
+    public postRequestQueryParams(url: string, jwt?: string): Promise<any> {
         if (jwt) {
             const options = {
                 headers: { 'token': jwt }
@@ -40,9 +40,9 @@ export class httpProvider {
     }
 
     public putRequest(url: string, jwt?: string): Promise<any> {
-        if(jwt){
+        if (jwt) {
             const options = {
-                headers: { 'token': jwt}
+                headers: { 'token': jwt }
             };
             return axios.put(this.apiURL + url, null, options);
         }

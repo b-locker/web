@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./orgTables.scss";
-import data from "../tables/data/data.json";
-import axios from 'axios';
 import { httpProvider } from "../../../global/http/httpProvider";
 
 
@@ -13,18 +11,26 @@ const OrgLockerTables: React.FC = (props) => {
 
     let http = new httpProvider();
     const lockerCall = 'lockers';
-    let lockers;
+    const [lockerData, setLockerData] = useState({
+        id: 0,
+        guid: "",
+        is_currently_claimable: false
+    }[""]);
+
+    useEffect(() => {
+        componentConsole().then((res) => {
+            setLockerData(res);
+        })
+    }, []);
+
+    if (!lockerData) return (<div>Loading...</div>);
 
 
     // function to print api data to the console
     function componentConsole(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/' + lockerCall).then((res) => {
-                let data = res.data.data;
-                lockers = (data);
-                resolve();
-
-                console.log('lockers', lockers);
+                resolve(res.data.data);
             }).catch((error) => {
                 console.log(error);
                 reject();
@@ -32,69 +38,16 @@ const OrgLockerTables: React.FC = (props) => {
         })
     }
 
-    // // function to print api data
-    // function componentApi(): any {
-    //     http.getRequest('/' + lockerCall).then(res => {
-    //         console.log(res);
-    //         state.lockerAPI = (res.data);
-
-    //         console.log('lockers', state.LockerAPI;
-    //     })
-    // }
-
-
-    // componentConsole();
-
-
-    //niels
-    //componentDidMount();
-
-    //niels
-    // function componentDidMount(): any
-    // {
-    //     axios.get('http://145.24.222.153:8080/api/v1/lockers').then (res => {
-    //         console.log(res);
-    //         state.persons = (res.data);
-
-    //         console.log('persons:', state.persons);
-    //         //this.setState({ persons: res.data });
-    //     })
-
-    // }
-
-
-
-    //niels
-    //let lockers = state.persons;
-
     //the table header is rendered 
     function renderTableHeader() {
         return (
             <tr className="row100 head">
                 <th className="cell100 column1">Locker Id</th>
-                <th className="cell100 column2">Status</th>
-                <th className="cell100 column3">Current User</th>
-                <th className="cell100 column4">Latest activity</th>
+                <th className="cell100 column2">Guid</th>
+                <th className="cell100 column3">Status</th>
                 <th className="cell100 column5">Action</th>
             </tr>
         );
-    }
-
-    //the table data is rendered
-    function renderTableData() {
-        let result;
-        componentConsole().then((res) => {
-            result = lockers.map((lockers, index) => {
-                return (
-                    <tr className="row100 body" key={lockers.id}>
-                        <td className="cell100 column1">{lockers.id}</td>
-                        <td className="cell100 column2">{lockers.guid}</td>
-                        <td className="cell100 column3">{lockers.is_currently_claimable}</td>
-                    </tr>
-                );
-            });
-        })
-        return result;
     }
 
     return (
@@ -112,7 +65,18 @@ const OrgLockerTables: React.FC = (props) => {
                         <div className="table100-body js-pscroll">
                             <table>
                                 <tbody>
-                                    {renderTableData()}
+                                    {
+                                        lockerData.map((lockerData, index) => {
+                                            console.log('lockers:', lockerData)
+                                            return (
+                                                <tr className="row100 body" key={lockerData.id}>
+                                                    <td className="cell100 column1">{lockerData.id}</td>
+                                                    <td className="cell100 column2">{lockerData.guid}</td>
+                                                    <td className="cell100 column3">{lockerData.is_currently_claimable}</td>
+                                                </tr>
+                                            );
+                                        }
+                                        )}
                                 </tbody>
                             </table>
                         </div>
