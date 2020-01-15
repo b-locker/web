@@ -19,6 +19,7 @@
     "global.month.nov": "November",
     "global.month.dec": "December",
     "error.invalid.email": "Please enter a valid email",
+    "error.invalid.passcode": "Please enter a valid passcode",
     "error.somethingwentwrong.global": "Something went wrong",
     "hello.label": "Hello",
     "thankyou.label": "Thank you",

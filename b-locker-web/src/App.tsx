@@ -68,7 +68,7 @@ const App: React.FC = () => {
           <Route path="/login" component={OrgLogin} />
           <Route exact path="/dashboard" component={OrgDashboard} />
           <Route path="/singlelocker" component={SingleLocker} />
-          <Route path="/lockers" component={OrgLockers} />
+          <Route exact path="/lockers" component={OrgLockers} />
           <Route exact path="/" component={TestPage} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/*">

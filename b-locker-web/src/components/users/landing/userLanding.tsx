@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next';
 import UserHeader from '../header/userHeader';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -14,20 +14,30 @@ const UserLanding: React.FC = () => {
     let history = useHistory();
     let http: httpProvider = new httpProvider();
     let guid: string = location.pathname.replace("/l/", "");
+    let isMounted = useRef(false);
 
     // useEffect is similar to componenDidMount
     useEffect(()=>{
+        isMounted.current = true;
         checkLocker();
+
+        return function cleanup(){
+            isMounted.current = false;
+        }
     })
 
     function checkLocker() {
         isLockerAvailable().then((res)=>{
             if(res){
-                setLoading(false);
+                if(isMounted){
+                    setLoading(false);
+                }
                 history.push('/claim?guid='+guid);
             }
             else{
-                setLoading(false);
+                if(isMounted){
+                    setLoading(false);
+                }
                 history.push('/unlock');
             }
         }).catch((error)=>{
