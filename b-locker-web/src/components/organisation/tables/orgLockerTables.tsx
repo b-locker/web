@@ -21,8 +21,8 @@ const OrgLockerTables: React.FC = (props) => {
         componentConsole().then((res) => {
             setLockerData(res);
         })
+        // eslint-disable-next-line   
     }, []);
-
     if (!lockerData) return (<div>Loading...</div>);
 
 
@@ -30,6 +30,12 @@ const OrgLockerTables: React.FC = (props) => {
     function componentConsole(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/' + lockerCall).then((res) => {
+                let data = res.data.data;
+                data.forEach(locker => {
+                    console.log('test', locker.is_currently_claimable);
+                    locker.is_currently_claimable = (locker.is_currently_claimable ? "Unused" : "Used");
+                });
+                console.log('data:', data);
                 resolve(res.data.data);
             }).catch((error) => {
                 console.log(error);
@@ -73,6 +79,7 @@ const OrgLockerTables: React.FC = (props) => {
                                                     <td className="cell100 column1">{lockerData.id}</td>
                                                     <td className="cell100 column2">{lockerData.guid}</td>
                                                     <td className="cell100 column3">{lockerData.is_currently_claimable}</td>
+                                                    <td className="cell100 column4">></td>
                                                 </tr>
                                             );
                                         }
