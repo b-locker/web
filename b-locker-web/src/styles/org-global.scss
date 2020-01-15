@@ -9,5 +9,23 @@ $yellow-dashboard: #ffee06;
 $white: #ffffff;
 $textcolor: #172b4d;
 $lockerdetailsbg: #f1f3f9;
+$button-blue: #77c5c4;
 
 $menu-width-desktop: 240px;
+
+.org-global-button {
+    width: 85vw;
+    font-size: 3.5vh;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50px;
+    border: 0px;
+    @media only screen and (min-width: 600px){
+      width: 30vw;
+  }
+}
+
+.button-blue{
+    color: $white;
+    background-color: $button-blue;
+}
