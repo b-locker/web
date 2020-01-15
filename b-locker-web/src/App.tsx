@@ -75,9 +75,9 @@ const App: React.FC = () => {
           <Route exact path="/orglockertables" component={OrgLogTables} />
           <Route exact path="/dashboardtables" component={OrgDashboardTable} />
           <Route exact path="/orglogtables" component={OrgLogTables} />
-          <Route path="/relogin" component={OrgReLogin} />
-          <Route path="/unlocklockers" component={OrgSentence} />
-          <Route path="/success" component={OrgSuccess} />
+          <Route exact path="/relogin" component={OrgReLogin} />
+          <Route exact path="/unlocklockers" component={OrgSentence} />
+          <Route exact path="/success" component={OrgSuccess} />
           <Route exact path="/" component={TestPage} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/*">
