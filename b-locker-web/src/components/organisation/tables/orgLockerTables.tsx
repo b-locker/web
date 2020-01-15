@@ -1,19 +1,71 @@
 import React from "react";
 import "./orgTables.scss";
 import data from "../tables/data/data.json";
+import axios from 'axios';
+import { httpProvider } from "../../../global/http/httpProvider";
+
 
 const OrgLockerTables: React.FC = (props) => {
 
-    //data from the data.json file is stored under the lockers variable
-    let lockers = data;
 
-    //use the following function to dynamically create the table header, this constraints using multiple class names for the styling though
-    // function renderTableHeader() {
-    //     let header = Object.keys(data[0]);
-    //     return header.map((key, index) => {
-    //         return <th className="cell100 column1" key={index}>{key.toUpperCase()}</th>;
-    //     });
+    //data from the data.json file is stored under the lockers variable
+    //let lockers = data;
+
+    let http = new httpProvider();
+    const lockerCall = 'lockers';
+    let lockers;
+
+
+    // function to print api data to the console
+    function componentConsole(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            http.getRequest('/' + lockerCall).then((res) => {
+                let data = res.data.data;
+                lockers = (data);
+                resolve();
+
+                console.log('lockers', lockers);
+            }).catch((error) => {
+                console.log(error);
+                reject();
+            });
+        })
+    }
+
+    // // function to print api data
+    // function componentApi(): any {
+    //     http.getRequest('/' + lockerCall).then(res => {
+    //         console.log(res);
+    //         state.lockerAPI = (res.data);
+
+    //         console.log('lockers', state.LockerAPI;
+    //     })
     // }
+
+
+    // componentConsole();
+
+
+    //niels
+    //componentDidMount();
+
+    //niels
+    // function componentDidMount(): any
+    // {
+    //     axios.get('http://145.24.222.153:8080/api/v1/lockers').then (res => {
+    //         console.log(res);
+    //         state.persons = (res.data);
+
+    //         console.log('persons:', state.persons);
+    //         //this.setState({ persons: res.data });
+    //     })
+
+    // }
+
+
+
+    //niels
+    //let lockers = state.persons;
 
     //the table header is rendered 
     function renderTableHeader() {
@@ -30,17 +82,19 @@ const OrgLockerTables: React.FC = (props) => {
 
     //the table data is rendered
     function renderTableData() {
-        return lockers.map((lockers, index) => {
-            return (
-                <tr className="row100 body" key={lockers.Id}>
-                    <td className="cell100 column1">{lockers.Id}</td>
-                    <td className="cell100 column2">{lockers.status}</td>
-                    <td className="cell100 column3">{lockers.User}</td>
-                    <td className="cell100 column4">{lockers.Activity}</td>
-                    <td className="cell100 column5">{lockers.Action}</td>
-                </tr>
-            );
-        });
+        let result;
+        componentConsole().then((res) => {
+            result = lockers.map((lockers, index) => {
+                return (
+                    <tr className="row100 body" key={lockers.id}>
+                        <td className="cell100 column1">{lockers.id}</td>
+                        <td className="cell100 column2">{lockers.guid}</td>
+                        <td className="cell100 column3">{lockers.is_currently_claimable}</td>
+                    </tr>
+                );
+            });
+        })
+        return result;
     }
 
     return (

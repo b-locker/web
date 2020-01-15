@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export class httpProvider {
+    // misschien handig om van apiUrl http://145.24.222.153:8080/api/v1/ te maken
     apiURL: string = "http://145.24.222.153:8080/api/v1"
     public getRequest(url: string, jwt?: string): Promise<any> {
         if (jwt) {

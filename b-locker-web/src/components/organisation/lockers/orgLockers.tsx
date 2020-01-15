@@ -8,6 +8,7 @@ import unlockIcon from '../../../assets/unlock.png'
 // import chevronIcon from '../../../assets/chevron-right.svg'
 
 import { useHistory } from 'react-router';
+import OrgLockerTables from '../tables/orgLockerTables';
 
 const OrgLockers: React.FC = () => {
 
@@ -74,6 +75,7 @@ const OrgLockers: React.FC = () => {
                 <div className="wrapper">
                     <div className="locker-panel">
                         <h2>Locatie: Stadslab</h2>
+                        <OrgLockerTables></OrgLockerTables>
 
                     </div>
                     <div className="locker-panel">
