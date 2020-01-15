@@ -27,7 +27,7 @@ const UserEndOwnership: React.FC = () => {
                     <p className="global-desc-label ">{t('end.desc.label')}</p>
                 </div>
                 <br />
-                <input className="pass-input global-input" placeholder={t('end.passcode.label')}
+                <input className="global-input" placeholder={t('end.passcode.label')}
                     type="password"
                     id="passcode"
                     onChange={evt => setPasscode(evt.target.value)}>
