@@ -18,15 +18,10 @@ const OrgLockerTables: React.FC = () => {
         is_currently_claimable: false
     }[""]);
 
-    // function redirectSingleLocker(e: any) {
-    //     history.push('/singlelocker/');
-    // }
 
-    function redirectSingleLocker() {
-        for (let i = 0; i < 3; i++) {
-            console.log ("Block statement execution no." + i);
-          }
-        let guid = "3x42Q7kU";
+    function redirectSingleLocker(guid) {
+
+        // let guid = "3x42Q7kU";
         history.push('/singlelocker?guid=' + guid);
     }
 
@@ -141,7 +136,7 @@ const OrgLockerTables: React.FC = () => {
                                                     <td className="cell100 column1">{lockerData.id}</td>
                                                     <td className="cell100 column2">{lockerData.guid}</td>
                                                     <td className="cell100 column3">{lockerData.is_currently_claimable}</td>
-                                                    <td className="cell100 column4"><button className="org-href-button" onClick={redirectSingleLocker}><img className="chrevron-icon" src={chevronIcon} alt='' /></button></td>
+                                                    <td className="cell100 column4"><button className="org-href-button" onClick={() =>redirectSingleLocker(lockerData.guid)}><img className="chrevron-icon" src={chevronIcon} alt='' /></button></td>
                                                 </tr>
                                             );
                                         }
