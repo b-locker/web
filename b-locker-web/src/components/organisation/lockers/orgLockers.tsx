@@ -7,12 +7,15 @@ import lockerIcon from '../../../assets/locker.png'
 import unlockIcon from '../../../assets/unlock.png'
 // import chevronIcon from '../../../assets/chevron-right.svg'
 
+
 import { useHistory } from 'react-router';
 import OrgLockerTables from '../tables/orgLockerTables';
+
 
 const OrgLockers: React.FC = () => {
 
     let history = useHistory();
+    // let lockerTable = new OrgLockerTables();
 
     function redirectRelogin(e: any) {
         history.push('/relogin');

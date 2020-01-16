@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 import chevronIcon from '../../../assets/chevron-right.svg'
 
-const OrgLockerTables: React.FC = (props) => {
+const OrgLockerTables: React.FC = () => {
 
     let history = useHistory();
     let http = new httpProvider();
@@ -23,8 +23,32 @@ const OrgLockerTables: React.FC = (props) => {
     // }
 
     function redirectSingleLocker() {
-        let guid = "3x42Q7kU";
+        let guid = lockerData.guid;
+        console.log('the guid is', guid)
         history.push('/singlelocker?guid=' + guid);
+    }
+
+
+    useEffect(() => {
+        componentConsole().then((res) => {
+            setLockerData(res);
+        })
+        // eslint-disable-next-line   
+    }, []);
+    if (!lockerData) return (<div>Loading...</div>);
+
+    //WIP function to get all lockers
+    function getAllLockers() {
+        let amount = 0;
+
+        console.log('log from getusedlockers, lockermap: ', lockerData);
+
+        for (let i = 0; i < lockerData.length; i++) {
+            amount++
+        }
+
+        console.log('log from getusedlockers, amount: ', amount)
+        return amount
     }
 
     //WIP function to get all used lockers
@@ -57,30 +81,6 @@ const OrgLockerTables: React.FC = (props) => {
         return (amount)
     }
 
-    useEffect(() => {
-        componentConsole().then((res) => {
-            setLockerData(res);
-        })
-        // eslint-disable-next-line   
-    }, []);
-    if (!lockerData) return (<div>Loading...</div>);
-
-    //WIP function to get all lockers
-    function getAllLockers() {
-        let amount;
-        // http.getRequest('/' + lockerCall).then((res) => {
-        //     let data = res.data.data;
-
-        console.log('log from getusedlockers, lockermap: ', lockerData);
-
-        for (let i = 0; i < lockerData.length; i++) {
-            amount++
-        }
-
-        console.log('log from getusedlockers, amount: ', amount)
-        return (amount);
-    }
-
 
     // function to print api data to the console
     function componentConsole(): Promise<any> {
@@ -99,6 +99,8 @@ const OrgLockerTables: React.FC = (props) => {
             });
         })
     }
+
+    getAllLockers();
 
     //the table header is rendered 
     function renderTableHeader() {
@@ -121,7 +123,6 @@ const OrgLockerTables: React.FC = (props) => {
                         <div className="table100-head">
                             <table>
                                 <thead>
-                                    {/* {getAllLockers()} */}
                                     {renderTableHeader()}
                                 </thead>
                             </table>

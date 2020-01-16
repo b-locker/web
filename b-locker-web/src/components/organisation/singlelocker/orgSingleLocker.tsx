@@ -12,7 +12,7 @@ import { useLocation } from 'react-router-dom';
 import queryString from 'querystring';
 
 
-const OrgLockers: React.FC = (props) => {
+const OrgLockers: React.FC = () => {
 
     let history = useHistory();
     let http = new httpProvider();
