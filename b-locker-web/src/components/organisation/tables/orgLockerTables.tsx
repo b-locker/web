@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./orgTables.scss";
 import { httpProvider } from "../../../global/http/httpProvider";
+import { useHistory } from "react-router-dom";
 
+import chevronIcon from '../../../assets/chevron-right.svg'
 
 const OrgLockerTables: React.FC = (props) => {
 
-
-    //data from the data.json file is stored under the lockers variable
-    //let lockers = data;
-
+    let history = useHistory();
     let http = new httpProvider();
     const lockerCall = 'lockers';
     const [lockerData, setLockerData] = useState({
@@ -16,6 +15,11 @@ const OrgLockerTables: React.FC = (props) => {
         guid: "",
         is_currently_claimable: false
     }[""]);
+
+
+    function redirectSingleLocker(e: any) {
+        history.push('/singlelocker');
+    }
 
     useEffect(() => {
         componentConsole().then((res) => {
@@ -50,8 +54,8 @@ const OrgLockerTables: React.FC = (props) => {
             <tr className="row100 head">
                 <th className="cell100 column1">Locker Id</th>
                 <th className="cell100 column2">Guid</th>
-                <th className="cell100 column3">Status</th>
-                <th className="cell100 column5">Action</th>
+                <th className="cell100 column3">Availability</th>
+                <th className="cell100 column4">Action</th>
             </tr>
         );
     }
@@ -79,7 +83,7 @@ const OrgLockerTables: React.FC = (props) => {
                                                     <td className="cell100 column1">{lockerData.id}</td>
                                                     <td className="cell100 column2">{lockerData.guid}</td>
                                                     <td className="cell100 column3">{lockerData.is_currently_claimable}</td>
-                                                    <td className="cell100 column4">></td>
+                                                    <td className="cell100 column4"><button className="org-href-button" onClick={redirectSingleLocker}><img className="chrevron-icon" src={chevronIcon} alt='' /></button></td>
                                                 </tr>
                                             );
                                         }
