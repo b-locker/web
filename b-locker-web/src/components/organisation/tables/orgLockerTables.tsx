@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./orgTables.scss";
+
 import { httpProvider } from "../../../global/http/httpProvider";
 import { useHistory } from "react-router-dom";
 
@@ -9,6 +10,7 @@ const OrgLockerTables: React.FC = (props) => {
 
     let history = useHistory();
     let http = new httpProvider();
+    // let guid: string = location.pathname.replace("/l/", "");
     const lockerCall = 'lockers';
     const [lockerData, setLockerData] = useState({
         id: 0,
@@ -22,7 +24,37 @@ const OrgLockerTables: React.FC = (props) => {
 
     function redirectSingleLocker() {
         let guid = "3x42Q7kU";
-        history.push('/singlelocker/' + guid);
+        history.push('/singlelocker?guid=' + guid);
+    }
+
+    //WIP function to get all used lockers
+    function getUsedLockers() {
+        let amount;
+        let lockermap = lockerData.map(lockerData);
+        console.log('log from getusedlockers, lockermap: ', lockermap);
+
+        for (let i = 0; i < lockermap.length(); i++) {
+            if (!lockerData.is_currently_claimable) {
+                amount++;
+            }
+        }
+        console.log('log from getusedlockers, amount: ', amount)
+        return (amount)
+    }
+
+    //WIP function to get all unused lockers 
+    function getUnusedLockers() {
+        let amount;
+        let lockermap = lockerData.map(lockerData)
+
+        for (let i = 0; i < lockermap.length(); i++) {
+            if (lockerData.is_currently_claimable) {
+                amount++;
+            }
+        }
+        console.log('log from getusedlockers', lockermap);
+
+        return (amount)
     }
 
     useEffect(() => {
@@ -32,6 +64,22 @@ const OrgLockerTables: React.FC = (props) => {
         // eslint-disable-next-line   
     }, []);
     if (!lockerData) return (<div>Loading...</div>);
+
+    //WIP function to get all lockers
+    function getAllLockers() {
+        let amount;
+        // http.getRequest('/' + lockerCall).then((res) => {
+        //     let data = res.data.data;
+
+        console.log('log from getusedlockers, lockermap: ', lockerData);
+
+        for (let i = 0; i < lockerData.length; i++) {
+            amount++
+        }
+
+        console.log('log from getusedlockers, amount: ', amount)
+        return (amount);
+    }
 
 
     // function to print api data to the console
@@ -65,6 +113,7 @@ const OrgLockerTables: React.FC = (props) => {
     }
 
     return (
+
         <div className="limiter">
             <div className="container-table100">
                 <div className="wrap-table100">
@@ -72,6 +121,7 @@ const OrgLockerTables: React.FC = (props) => {
                         <div className="table100-head">
                             <table>
                                 <thead>
+                                    {/* {getAllLockers()} */}
                                     {renderTableHeader()}
                                 </thead>
                             </table>

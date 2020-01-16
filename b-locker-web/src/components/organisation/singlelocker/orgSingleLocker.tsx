@@ -4,19 +4,23 @@ import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
 
 import unlockIcon from '../../../assets/unlock.png'
-// import chevronIcon from '../../../assets/chevron-right.svg'
 
 import { useHistory } from 'react-router';
 import OrgLogTables from '../tables/orgLogTables';
 import { httpProvider } from '../../../global/http/httpProvider';
+import { useLocation } from 'react-router-dom';
+import queryString from 'querystring';
 
 
 const OrgLockers: React.FC = (props) => {
 
     let history = useHistory();
     let http = new httpProvider();
-    let guid = '3x42Q7kU';
-    // let guid: string = location.pathname.replace("/l/", "");
+    let location = useLocation();
+    console.log('location:', location);
+    let locationValues = queryString.parse((location.search.substr(1)))
+    let guid = locationValues.guid;
+    console.log('locationValues:', locationValues);
     const [lockerData, setLockerData] = useState({
         id: 0,
         guid: "",

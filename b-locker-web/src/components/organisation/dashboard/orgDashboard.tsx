@@ -8,6 +8,7 @@ import OrgDashboardTables from '../tables/orgDashboardTable';
 
 
 const orgDashboard: React.FC = () => {
+    // let lockertable = new orgLockerTables();
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
