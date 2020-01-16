@@ -16,9 +16,13 @@ const OrgLockerTables: React.FC = (props) => {
         is_currently_claimable: false
     }[""]);
 
+    // function redirectSingleLocker(e: any) {
+    //     history.push('/singlelocker/');
+    // }
 
-    function redirectSingleLocker(e: any) {
-        history.push('/singlelocker');
+    function redirectSingleLocker() {
+        let guid = "3x42Q7kU";
+        history.push('/singlelocker/' + guid);
     }
 
     useEffect(() => {
@@ -80,6 +84,7 @@ const OrgLockerTables: React.FC = (props) => {
                                             console.log('lockers:', lockerData)
                                             return (
                                                 <tr className="row100 body" key={lockerData.id}>
+                                                    {console.log('the id is', lockerData.id)}
                                                     <td className="cell100 column1">{lockerData.id}</td>
                                                     <td className="cell100 column2">{lockerData.guid}</td>
                                                     <td className="cell100 column3">{lockerData.is_currently_claimable}</td>
