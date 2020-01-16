@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class httpProvider {
-    apiURL: string = "//b-locker.nl:8080/api/v1"
+    apiURL: string = "https://b-locker.nl:8080/api/v1"
     public getRequest(url: string, jwt?: string): Promise<any> {
         if (jwt) {
             const options = {

@@ -72,7 +72,7 @@ const App: React.FC = () => {
           <Route exact path="/dashboard" component={OrgDashboard} />
           <Route exact path="/singlelocker" component={SingleLocker} />
           <Route exact path="/lockers" component={OrgLockers} />
-          <Route exact path="/orglockertables" component={OrgLogTables} />
+          <Route exact path="/orglockertables" component={OrgLockerTables} />
           <Route exact path="/dashboardtables" component={OrgDashboardTable} />
           <Route exact path="/orglogtables" component={OrgLogTables} />
           <Route exact path="/relogin" component={OrgReLogin} />

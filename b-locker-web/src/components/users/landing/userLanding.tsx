@@ -38,10 +38,10 @@ const UserLanding: React.FC = () => {
                 if(isMounted){
                     setLoading(false);
                 }
-                history.push('/unlock');
+                history.push('/unlock?guid='+guid);
             }
         }).catch((error)=>{
-            console.log(error);
+            alert.error(t('error.somethingwentwrong.global'));
         })
     }
 
@@ -49,7 +49,6 @@ const UserLanding: React.FC = () => {
         return new Promise<boolean>((resolve, reject)=>{
             http.getRequest('/lockers/'+guid).then((res)=>{
                 let data = res.data.data;
-                console.log(data);
                 if(data.is_currently_claimable){
                     resolve(true);
                 }
