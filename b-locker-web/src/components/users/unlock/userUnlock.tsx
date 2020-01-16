@@ -13,7 +13,6 @@ const UserUnlock: React.FC = () => {
     const [passcode, setPasscode] = useState("");
     const { t } = useTranslation();
     const alert = useAlert();
-    let unlockTriesAmount: number = 1;
     const auth = new authProvider();
     const http = new httpProvider();
     let history = useHistory();
@@ -33,38 +32,47 @@ const UserUnlock: React.FC = () => {
     function unlock(e: any) {
         console.log('entered passcode: ', passcode);
         if (passcode) {
-            if(checkPasscode(passcode)){
-                auth.setDevDebugToken(true);
-                history.push('/info');
-            }
+            checkPasscode(passcode).then((res)=>{
+                console.log('checkPasscode result:',res);
+                if(res){
+                    auth.setDevDebugToken(true);
+                    history.push('/info');
+                }
+                else{
+                    // Do nothing, this is already handled in the checkPasscode method
+                }
+            }).catch((err)=>{
+                console.log('checkPasscode error:',err);
+                alert.error(t('error.somethingwentwrong.global'))
+            }) 
         }
         else {
             alert.error('Fill in a passcode');
         }
     }
     
-    function checkPasscode(passcode: string): boolean{
-        // TODO: check credentials with backend
-        http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
-            console.log('res:',res);
-            if(res.status === 200){
-                return true;
-            }
-            else if (res.status === 400){
-                alert.error()
-                //history.push('/lockdown');
-            }
-            else{
-                alert.error(t('error.somethingwentwrong.global'))
-            }
-        }).catch((error)=>{
-            if(error.response){
-                console.log('error data:',error.response.data);
-                alert.error(error.response.data.message);
-            }
-            console.log('error:',error);
-        });
-        return false;
+    function checkPasscode(passcode: string): Promise<boolean>{
+        return new Promise<boolean>((resolve, reject)=>{
+            http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
+                console.log('res:',res);
+                if(res.status === 200){
+                    resolve(true);
+                }
+                else{
+                    reject(false);
+                }
+            }).catch((error)=>{
+                if(error.response){
+                    console.log('error data:',error.response.data);
+                    if(error.response.data === "You have no more attempts left."){
+                        //history.push('/lockdown');
+                    }
+                    resolve(false);
+                    alert.error(error.response.data.message);
+                }
+                console.log('error:',error);
+            });
+        })
     }
 
     return (
