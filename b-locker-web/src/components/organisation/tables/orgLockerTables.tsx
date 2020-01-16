@@ -23,8 +23,10 @@ const OrgLockerTables: React.FC = () => {
     // }
 
     function redirectSingleLocker() {
-        let guid = lockerData.guid;
-        console.log('the guid is', guid)
+        for (let i = 0; i < 3; i++) {
+            console.log ("Block statement execution no." + i);
+          }
+        let guid = "3x42Q7kU";
         history.push('/singlelocker?guid=' + guid);
     }
 
