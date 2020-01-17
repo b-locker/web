@@ -69,7 +69,7 @@ const OrgLockers: React.FC = () => {
                             <div className="locker-details-content">
                                 <p>Locker GUID: {lockerData.guid}</p>
                                 <p>Locker number: {lockerData.id}</p>
-                                {/* <p>Locker Availability: {lockerData.is_currently_claimable.toString()}</p> */}
+                                <p>Locker Availability: {lockerData.is_currently_claimable.toString()}</p>
                                 <p>Current Owner: 0867973@hr.nl</p>
                             </div>
 
