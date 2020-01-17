@@ -17,46 +17,44 @@ const UserLanding: React.FC = () => {
     let isMounted = useRef(false);
 
     // useEffect is similar to componenDidMount
-    useEffect(()=>{
+    useEffect(() => {
         isMounted.current = true;
         checkLocker();
 
-        return function cleanup(){
+        return function cleanup() {
             isMounted.current = false;
         }
     })
 
     function checkLocker() {
-        isLockerAvailable().then((res)=>{
-            if(res){
-                if(isMounted){
+        isLockerAvailable().then((res) => {
+            if (res) {
+                if (isMounted) {
                     setLoading(false);
                 }
-                history.push('/claim?guid='+guid);
+                history.push('/claim?guid=' + guid);
             }
-            else{
-                if(isMounted){
+            else {
+                if (isMounted) {
                     setLoading(false);
                 }
                 history.push('/unlock');
             }
-        }).catch((error)=>{
-            console.log(error);
+        }).catch((error) => {
         })
     }
 
     function isLockerAvailable(): Promise<boolean> {
-        return new Promise<boolean>((resolve, reject)=>{
-            http.getRequest('/lockers/'+guid).then((res)=>{
+        return new Promise<boolean>((resolve, reject) => {
+            http.getRequest('/lockers/' + guid).then((res) => {
                 let data = res.data.data;
-                console.log(data);
-                if(data.is_currently_claimable){
+                if (data.is_currently_claimable) {
                     resolve(true);
                 }
-                else{
+                else {
                     resolve(false);
                 }
-            }).catch((error)=> {
+            }).catch((error) => {
                 alert.error(t('error.somethingwentwrong.global'));
                 reject(error);
             });

@@ -9,7 +9,6 @@ const UserEndOwnership: React.FC = () => {
     let history = useHistory();
 
     function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
         if (passcode) {
             history.push('/goodbye')
         }

@@ -17,10 +17,8 @@ const OrgLockers: React.FC = () => {
     let history = useHistory();
     let http = new httpProvider();
     let location = useLocation();
-    console.log('location:', location);
     let locationValues = queryString.parse((location.search.substr(1)))
     let guid = locationValues.guid;
-    console.log('locationValues:', locationValues);
     const [lockerData, setLockerData] = useState({
         id: 0,
         guid: "",
@@ -43,10 +41,8 @@ const OrgLockers: React.FC = () => {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/lockers/' + guid).then((res) => {
                 let data = res.data.data;
-                console.log('data:', data);
                 resolve(res.data.data);
             }).catch((error) => {
-                console.log(error);
                 reject();
             });
         })
@@ -76,6 +72,36 @@ const OrgLockers: React.FC = () => {
         return string
     }
 
+    function displayStartDate() {
+        let result = "";
+        if (lockerData.active_claim == null) {
+            result = "none";
+
+        } else {
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit' };
+            let date = new Date(lockerData.active_claim.start_at);
+            let time = new Date(lockerData.active_claim.start_at);
+            result = date.toLocaleDateString('en', dateOptions) + ' ' + time.toLocaleTimeString('en', timeOptions);
+        }
+        return result;
+    }
+
+    function displayEndDate() {
+        let result = "";
+        if (lockerData.active_claim == null) {
+            result = "none";
+
+        } else {
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit' };
+            let date = new Date(lockerData.active_claim.end_at);
+            let time = new Date(lockerData.active_claim.end_at);
+            result = date.toLocaleDateString('en', dateOptions) + ' ' + time.toLocaleTimeString('en', timeOptions);
+        }
+        return result;
+    }
+
     componentConsole();
     return (
         <div className="main-div-org">
@@ -96,6 +122,8 @@ const OrgLockers: React.FC = () => {
                                 <p>Locker number: {lockerData.id}</p>
                                 <p>Locker Availability: {displayClaim()}</p>
                                 <p>Current Owner: {displayOwner()}</p>
+                                <p>Start Lease: {displayStartDate()}</p>
+                                <p>End Lease: {displayEndDate()}</p>
                             </div>
 
                         </div>

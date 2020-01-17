@@ -10,8 +10,6 @@ const UserChangePass: React.FC = () => {
     const [newPasscode, setNewPasscode] = useState("");
 
     function setPass(e: any) {
-        console.log('entered current passcode: ', currentPasscode);
-        console.log('entered new passcode: ', newPasscode);
         if (currentPasscode && newPasscode) {
             history.push('/passChanged');
         }

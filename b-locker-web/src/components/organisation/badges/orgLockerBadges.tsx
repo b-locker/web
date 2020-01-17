@@ -38,7 +38,6 @@ const OrgLockerBadges: React.FC = () => {
             amount++
         }
 
-        // console.log('log from getusedlockers, amount: ', amount)
         return (amount)
     }
 
@@ -47,12 +46,10 @@ const OrgLockerBadges: React.FC = () => {
         let amount = 0;
 
         for (let i = 0; i < lockerData.length; i++) {
-            console.log('lockerdata ', lockerData[i].active_claim)
             if (lockerData[i].active_claim !== null) {
                 amount++;
             }
         }
-        console.log('log from getusedlockers, amount: ', amount)
         return (amount)
     }
 
@@ -65,7 +62,6 @@ const OrgLockerBadges: React.FC = () => {
                 amount++;
             }
         }
-        console.log('log from getUnusedlockers', amount);
 
         return (amount)
     }
@@ -77,13 +73,10 @@ const OrgLockerBadges: React.FC = () => {
             http.getRequest('/' + lockerCall).then((res) => {
                 let data = res.data.data;
                 data.forEach(locker => {
-                    console.log('test', locker.is_currently_claimable);
                     locker.is_currently_claimable = (locker.is_currently_claimable ? "Unused" : "Used");
                 });
-                console.log('data:', data);
                 resolve(res.data.data);
             }).catch((error) => {
-                console.log(error);
                 reject();
             });
         })

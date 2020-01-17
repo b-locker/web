@@ -40,13 +40,10 @@ const OrgDashboardTable: React.FC = () => {
             http.getRequest('/' + lockerCall).then((res) => {
                 let data = res.data.data;
                 data.forEach(locker => {
-                    console.log('test', locker.is_currently_claimable);
                     locker.active_claim = (locker.active_claim ? "Used" : "Unused");
                 });
-                console.log('data:', data);
                 resolve(res.data.data);
             }).catch((error) => {
-                console.log(error);
                 reject();
             });
         })
@@ -82,10 +79,8 @@ const OrgDashboardTable: React.FC = () => {
                                 <tbody>
                                     {
                                         lockerData.map((lockerData, index) => {
-                                            console.log('lockers:', lockerData)
                                             return (
                                                 <tr className="row100 body" key={lockerData.id}>
-                                                    {console.log('the id is', lockerData.id)}
                                                     <td className="cell100 column1">{lockerData.id}</td>
                                                     <td className="cell100 column2">{lockerData.guid}</td>
                                                     <td className="cell100 column3">{lockerData.active_claim}</td>

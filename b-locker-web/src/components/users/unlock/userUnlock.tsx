@@ -19,13 +19,11 @@ const UserUnlock: React.FC = () => {
     }
 
     function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
-        console.log('unlock tries: ', unlockTriesAmount);
         if (unlockTriesAmount > 2) {
             history.push('/lockdown');
         }
         else if (passcode) {
-            if(checkPasscode(passcode)){
+            if (checkPasscode(passcode)) {
                 auth.setDevDebugToken(true);
                 history.push('/info');
             }
@@ -35,8 +33,8 @@ const UserUnlock: React.FC = () => {
             unlockTriesAmount++;
         }
     }
-    
-    function checkPasscode(passcode: string): boolean{
+
+    function checkPasscode(passcode: string): boolean {
         // TODO: check credentials with backend
         return true;
     }
