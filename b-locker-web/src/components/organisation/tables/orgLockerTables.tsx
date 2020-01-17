@@ -18,7 +18,6 @@ const OrgLockerTables: React.FC = () => {
         is_currently_claimable: false
     }[""]);
 
-
     function redirectSingleLocker(guid) {
         // let guid = "3x42Q7kU";
 
@@ -34,44 +33,7 @@ const OrgLockerTables: React.FC = () => {
     }, []);
     if (!lockerData) return (<div>Loading...</div>);
 
-    //function to get all lockers
-    function getAllLockers() {
-        let amount = 0;
 
-        for (let i = 0; i < lockerData.length; i++) {
-            amount++
-        }
-
-        console.log('log from getusedlockers, amount: ', amount)
-        return amount
-    }
-
-    //function to get all used lockers
-    function getUsedLockers() {
-        let amount = 0;
-
-        for (let i = 0; i < lockerData.length; i++) {
-            if (!lockerData.is_currently_claimable) {
-                amount++;
-            }
-        }
-        console.log('log from getusedlockers, amount: ', amount)
-        return (amount)
-    }
-
-    //function to get all unused lockers 
-    function getUnusedLockers() {
-        let amount = 0;
-
-        for (let i = 0; i < lockerData.length; i++) {
-            if (lockerData.is_currently_claimable) {
-                amount++;
-            }
-        }
-        console.log('log from getUnusedlockers', amount);
-
-        return (amount)
-    }
 
 
     // function to print api data to the console
@@ -92,9 +54,6 @@ const OrgLockerTables: React.FC = () => {
         })
     }
 
-    getAllLockers();
-    getUsedLockers();
-    getUnusedLockers();
 
     //the table header is rendered 
     function renderTableHeader() {
@@ -108,7 +67,9 @@ const OrgLockerTables: React.FC = () => {
         );
     }
 
+
     return (
+
 
         <div className="limiter">
             <div className="container-table100">
@@ -145,6 +106,7 @@ const OrgLockerTables: React.FC = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 
