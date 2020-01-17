@@ -48,8 +48,10 @@ const UserLanding: React.FC = () => {
     function isLockerAvailable(): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             http.getRequest('/lockers/'+guid).then((res)=>{
+                console.log('res":',res);
                 let data = res.data.data;
-                if(data.is_currently_claimable){
+                console.log('active claim:',data.active_claim);
+                if(data.active_claim == null){
                     resolve(true);
                 }
                 else{

@@ -36,7 +36,7 @@ const UserUnlock: React.FC = () => {
                 console.log('checkPasscode result:',res);
                 if(res){
                     auth.setDevDebugToken(true);
-                    history.push('/info');
+                    history.push('/info?guid='+guid);
                 }
                 else{
                     // Do nothing, this is already handled in the checkPasscode method
@@ -68,7 +68,8 @@ const UserUnlock: React.FC = () => {
                         //history.push('/lockdown');
                     }
                     resolve(false);
-                    alert.error(error.response.data.message);
+                    //alert.error(error.response.data.message);
+                    alert.error(t('error.somethingwentwrong.global'))
                 }
                 console.log('error:',error);
             });

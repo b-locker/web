@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import UserHeader from '../header/userHeader'
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
+import { httpProvider } from '../../../global/http/httpProvider';
+import queryString from 'querystring';
+import { useAlert } from 'react-alert';
 
 const UserInfo: React.FC = () => {
 
     const { t, i18n } = useTranslation();
     let history = useHistory();
+    let http = new httpProvider();
+    let alert = useAlert();
+
+    let location = useLocation();
+    let locationValues = queryString.parse((location.search.substr(1)));
+    let guid;
+    if(!locationValues.guid){
+        alert.error(t('error.somethingwentwrong.global'));
+        history.push('/unavailable');
+    }
+    else guid = locationValues.guid;
+
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit'};
     const timeOptions = { hour: '2-digit', minute: '2-digit'};
     let previousOpened: Date = new Date();
@@ -22,6 +37,27 @@ const UserInfo: React.FC = () => {
 
     function endOwnership(e: any){
         history.push('/endOwnership');
+    }
+
+    useEffect(()=>{
+        getLockerData().then((data)=>{
+            
+        })
+    })
+    
+    function getLockerData():Promise<any>{
+        return new Promise<any>((resolve, reject) => {
+            http.getRequest('/lockers/'+guid).then((res)=>{
+                let data = res.data.data;
+                console.log('locker data:',data);
+                resolve(data);
+            }).catch((error)=>{
+                if(error){
+                    alert.error(t('error.somethingwentwrong.global'));
+                    reject(error);
+                }
+            })
+        })
     }
     
 
