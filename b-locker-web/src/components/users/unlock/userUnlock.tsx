@@ -30,6 +30,7 @@ const UserUnlock: React.FC = () => {
         history.push('/forgotPassSent');
     }
 
+
         function unlock(e: any) {
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
@@ -48,6 +49,7 @@ const UserUnlock: React.FC = () => {
             alert.error('Fill in a passcode');
         }
     }
+
     
     function checkPasscode(passcode: string): Promise<boolean>{
         return new Promise<boolean>((resolve, reject)=>{

@@ -1,22 +1,108 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './orgSingleLocker.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
 
 import unlockIcon from '../../../assets/unlock.png'
-// import chevronIcon from '../../../assets/chevron-right.svg'
 
 import { useHistory } from 'react-router';
 import OrgLogTables from '../tables/orgLogTables';
+import { httpProvider } from '../../../global/http/httpProvider';
+import { useLocation } from 'react-router-dom';
+import queryString from 'querystring';
 
 
 const OrgLockers: React.FC = () => {
 
     let history = useHistory();
+    let http = new httpProvider();
+    let location = useLocation();
+    let locationValues = queryString.parse((location.search.substr(1)))
+    let guid = locationValues.guid;
+    const [lockerData, setLockerData] = useState({
+        id: 0,
+        guid: "",
+        active_claim: null
+    }[""]);
 
     function redirectLogin(e: any) {
         history.push('/login');
     }
+
+    useEffect(() => {
+        componentConsole().then((res) => {
+            setLockerData(res);
+        })
+        // eslint-disable-next-line   
+    }, []);
+    if (!lockerData) return (<div>Loading...</div>);
+
+    function componentConsole(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            http.getRequest('/lockers/' + guid).then((res) => {
+                let data = res.data.data;
+                resolve(res.data.data);
+            }).catch((error) => {
+                reject();
+            });
+        })
+    }
+
+    function displayClaim() {
+
+        let string = ""
+        if (lockerData.active_claim != null) {
+            string = "Used"
+        } else {
+            string = "Unused"
+        }
+
+        return string
+    }
+
+    function displayOwner() {
+
+        let string = "";
+        if (lockerData.active_claim == null) {
+            string = "None";
+        } else {
+            string = lockerData.active_claim.client.email
+        }
+
+        return string
+    }
+
+    function displayStartDate() {
+        let result = "";
+        if (lockerData.active_claim == null) {
+            result = "none";
+
+        } else {
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit' };
+            let date = new Date(lockerData.active_claim.start_at);
+            let time = new Date(lockerData.active_claim.start_at);
+            result = date.toLocaleDateString('en', dateOptions) + ' ' + time.toLocaleTimeString('en', timeOptions);
+        }
+        return result;
+    }
+
+    function displayEndDate() {
+        let result = "";
+        if (lockerData.active_claim == null) {
+            result = "none";
+
+        } else {
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit' };
+            let date = new Date(lockerData.active_claim.end_at);
+            let time = new Date(lockerData.active_claim.end_at);
+            result = date.toLocaleDateString('en', dateOptions) + ' ' + time.toLocaleTimeString('en', timeOptions);
+        }
+        return result;
+    }
+
+    componentConsole();
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
@@ -24,7 +110,7 @@ const OrgLockers: React.FC = () => {
             <main>
                 <div className="container">
                     <div className="row">
-                        <h1>Locker 1, Stadslab</h1>
+                        <h1>Locker {lockerData.id}</h1>
                     </div>
                 </div>
                 <div className="wrapper">
@@ -32,11 +118,12 @@ const OrgLockers: React.FC = () => {
                         <h2>Locker Details</h2>
                         <div className="locker-details">
                             <div className="locker-details-content">
-                                <p>Locker ID: 1.1</p>
-                                <p>Locker number: 1</p>
-                                <p>Locker Location: Stadslab</p>
-                                <p>Current Owner: 0867973@hr.nl</p>
-                                <p>Current Status: Locked</p>
+                                <p>Locker GUID: {lockerData.guid}</p>
+                                <p>Locker number: {lockerData.id}</p>
+                                <p>Locker Availability: {displayClaim()}</p>
+                                <p>Current Owner: {displayOwner()}</p>
+                                <p>Start Lease: {displayStartDate()}</p>
+                                <p>End Lease: {displayEndDate()}</p>
                             </div>
 
                         </div>

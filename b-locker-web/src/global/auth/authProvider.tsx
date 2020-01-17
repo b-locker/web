@@ -10,8 +10,8 @@ export class authProvider {
         return result;
     }
 
-    public setDevDebugToken(token: boolean){
-        if(token){
+    public setDevDebugToken(token: boolean) {
+        if (token) {
             store.set("devDebugToken", token);
         }
     }

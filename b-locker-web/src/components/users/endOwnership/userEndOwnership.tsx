@@ -15,6 +15,7 @@ const UserEndOwnership: React.FC = () => {
     let guid = store.get("guid");
     let lockerId = store.get("locker_id");
 
+
     function endOwnership(e: any) {
         if (passcode) {
             checkPasscode(passcode).then((res)=>{

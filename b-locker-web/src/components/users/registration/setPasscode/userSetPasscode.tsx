@@ -57,8 +57,8 @@ const UserSetPasscode: React.FC = () => {
 
     function validatePasscode(passcode: string): boolean {
         // min 6 max 100 chars
-        if (passcode){
-            if(passcode.length >= 6 && passcode.length <= 100){
+        if (passcode) {
+            if (passcode.length >= 6 && passcode.length <= 100) {
                 return true;
             }
         }

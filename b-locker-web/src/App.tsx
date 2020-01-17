@@ -64,6 +64,11 @@ const App: React.FC = () => {
           <Route exact path="/lockdown" component={UserLockdown} />
           <Route exact path="/forgotPass" component={UserForgotPass} />
           <Route exact path="/forgotPassSent" component={UserForgotPassSent} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/info" component={UserInfo} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/changePass" component={UserChangePass} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/passChanged" component={UserPassChanged} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/endOwnership" component={UserEndOwnership} />
+          <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/goodbye" component={UserGoodbye} />
           <Route exact path="/forgot/passcode" component={UserResetPasscode} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/info" component={UserInfo} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/changePass" component={UserChangePass} />

@@ -15,20 +15,22 @@ const UserClaimLocker: React.FC = () => {
     let history = useHistory();
     let location = useLocation();
     let locationValues = queryString.parse((location.search.substr(1)));
+
     if(!locationValues.guid){
         alert.error(t('error.somethingwentwrong.global'));
         history.push('/unavailable');
     }
 
-    function claim(e:any) {
+    function claim(e: any) {
         // Check if email is valid
-        if(validator.isEmail(email)){
+        if (validator.isEmail(email)) {
             sendMailRequest(locationValues.guid.toString(), email)
         }
-        else{
+        else {
             alert.error(t('error.invalid.email'));
         }
     }
+
 
     function sendMailRequest(guid: string, email: string){
         http.postRequestQueryParams('/lockers/'+guid+'/claims?email='+email).then((res)=>{
