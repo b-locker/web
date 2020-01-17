@@ -2,20 +2,18 @@ import React, { useEffect, useState } from 'react';
 import './orgBadges.scss';
 
 import lockerIcon from '../../../assets/locker.png'
-import { useHistory } from 'react-router-dom';
 import { httpProvider } from '../../../global/http/httpProvider';
 
 const OrgDashboardBadges: React.FC = () => {
 
-    let history = useHistory();
     let http = new httpProvider();
     // let guid: string = location.pathname.replace("/l/", "");
     const lockerCall = 'lockers';
-    const [lockerData, setLockerData] = useState({
+    const [lockerData, setLockerData] = useState([{
         id: 0,
         guid: "",
-        is_currently_claimable: false
-    }[""]);
+        active_claim: null
+    }]);
 
     useEffect(() => {
         componentConsole().then((res) => {
@@ -23,7 +21,8 @@ const OrgDashboardBadges: React.FC = () => {
         })
         // eslint-disable-next-line   
     }, []);
-    if (!lockerData) return (<div>Loading...</div>);
+
+    if (lockerData == undefined) return (<div>Loading...</div>);
 
     //function to get all lockers
     function getAllLockers() {
@@ -34,7 +33,7 @@ const OrgDashboardBadges: React.FC = () => {
         }
 
         // console.log('log from getusedlockers, amount: ', amount)
-        return amount
+        return (amount)
     }
 
     //function to get all used lockers
@@ -42,11 +41,12 @@ const OrgDashboardBadges: React.FC = () => {
         let amount = 0;
 
         for (let i = 0; i < lockerData.length; i++) {
-            if (!lockerData.is_currently_claimable) {
+            console.log('lockerdata ', lockerData[i].active_claim)
+            if (lockerData[i].active_claim !== null) {
                 amount++;
             }
         }
-        // console.log('log from getusedlockers, amount: ', amount)
+        console.log('log from getusedlockers, amount: ', amount)
         return (amount)
     }
 
@@ -55,11 +55,11 @@ const OrgDashboardBadges: React.FC = () => {
         let amount = 0;
 
         for (let i = 0; i < lockerData.length; i++) {
-            if (lockerData.is_currently_claimable) {
+            if (lockerData[i].active_claim == null) {
                 amount++;
             }
         }
-        // console.log('log from getUnusedlockers', amount);
+        console.log('log from getUnusedlockers', amount);
 
         return (amount)
     }
@@ -70,10 +70,10 @@ const OrgDashboardBadges: React.FC = () => {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/' + lockerCall).then((res) => {
                 let data = res.data.data;
-                data.forEach(locker => {
-                    console.log('test', locker.is_currently_claimable);
-                    locker.is_currently_claimable = (locker.is_currently_claimable ? "Unused" : "Used");
-                });
+                // data.forEach(locker => {
+                //     console.log('test', locker.is_currently_claimable);
+                //     locker.is_currently_claimable = (locker.is_currently_claimable ? "Unused" : "Used");
+                // });
                 console.log('data:', data);
                 resolve(res.data.data);
             }).catch((error) => {

@@ -12,11 +12,11 @@ const OrgDashboardTable: React.FC = () => {
     let http = new httpProvider();
     // let guid: string = location.pathname.replace("/l/", "");
     const lockerCall = 'lockers';
-    const [lockerData, setLockerData] = useState({
+    const [lockerData, setLockerData] = useState([{
         id: 0,
         guid: "",
         is_currently_claimable: false
-    }[""]);
+    }]);
 
 
     function redirectSingleLocker(guid) {
@@ -34,47 +34,7 @@ const OrgDashboardTable: React.FC = () => {
     }, []);
     if (!lockerData) return (<div>Loading...</div>);
 
-    //function to get all lockers
-    function getAllLockers() {
-        let amount = 0;
-
-        for (let i = 0; i < lockerData.length; i++) {
-            amount++
-        }
-
-        console.log('log from getusedlockers, amount: ', amount)
-        return amount
-    }
-
-    //function to get all used lockers
-    function getUsedLockers() {
-        let amount = 0;
-
-        for (let i = 0; i < lockerData.length; i++) {
-            if (!lockerData.is_currently_claimable) {
-                amount++;
-            }
-        }
-        console.log('log from getusedlockers, amount: ', amount)
-        return (amount)
-    }
-
-    //function to get all unused lockers 
-    function getUnusedLockers() {
-        let amount = 0;
-
-        for (let i = 0; i < lockerData.length; i++) {
-            if (lockerData.is_currently_claimable) {
-                amount++;
-            }
-        }
-        console.log('log from getUnusedlockers', amount);
-
-        return (amount)
-    }
-
-
-    // function to print api data to the console
+    // function to get data from the api
     function componentConsole(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/' + lockerCall).then((res) => {
@@ -91,10 +51,6 @@ const OrgDashboardTable: React.FC = () => {
             });
         })
     }
-
-    getAllLockers();
-    getUsedLockers();
-    getUnusedLockers();
 
     //the table header is rendered 
     function renderTableHeader() {
