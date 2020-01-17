@@ -29,20 +29,18 @@ const UserUnlock: React.FC = () => {
         history.push('/forgotPass');
     }
 
-    function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
+        function unlock(e: any) {
+            console.log('entered passcode: ', passcode);
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
-                console.log('checkPasscode result:',res);
                 if(res){
                     auth.setDevDebugToken(true);
-                    history.push('/info');
+                    history.push('/info?guid='+guid);
                 }
                 else{
                     // Do nothing, this is already handled in the checkPasscode method
                 }
             }).catch((err)=>{
-                console.log('checkPasscode error:',err);
                 alert.error(t('error.somethingwentwrong.global'))
             }) 
         }

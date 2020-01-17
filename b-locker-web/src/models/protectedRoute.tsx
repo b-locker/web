@@ -10,7 +10,6 @@ export interface ProtectedRouteProps extends RouteProps {
 const auth = new authProvider();
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = props => {
-    console.log('entered props:', props);
     let redirectPath = '';
     let isAuthenticated = auth.isAuthenticated();
     if (!isAuthenticated) {
