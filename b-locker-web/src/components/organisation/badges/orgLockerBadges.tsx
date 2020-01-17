@@ -12,11 +12,11 @@ const OrgLockerBadges: React.FC = () => {
     let http = new httpProvider();
     // let guid: string = location.pathname.replace("/l/", "");
     const lockerCall = 'lockers';
-    const [lockerData, setLockerData] = useState({
+    const [lockerData, setLockerData] = useState([{
         id: 0,
         guid: "",
-        is_currently_claimable: false
-    }[""]);
+        active_claim: null
+    }]);
 
     function redirectRelogin(e: any) {
         history.push('/relogin');
@@ -30,14 +30,16 @@ const OrgLockerBadges: React.FC = () => {
     }, []);
     if (!lockerData) return (<div>Loading...</div>);
 
+    //function to get all lockers
     function getAllLockers() {
         let amount = 0;
 
         for (let i = 0; i < lockerData.length; i++) {
             amount++
         }
+
         // console.log('log from getusedlockers, amount: ', amount)
-        return amount
+        return (amount)
     }
 
     //function to get all used lockers
@@ -45,11 +47,12 @@ const OrgLockerBadges: React.FC = () => {
         let amount = 0;
 
         for (let i = 0; i < lockerData.length; i++) {
-            if (!lockerData.is_currently_claimable) {
+            console.log('lockerdata ', lockerData[i].active_claim)
+            if (lockerData[i].active_claim !== null) {
                 amount++;
             }
         }
-        // console.log('log from getusedlockers, amount: ', amount)
+        console.log('log from getusedlockers, amount: ', amount)
         return (amount)
     }
 
@@ -58,11 +61,12 @@ const OrgLockerBadges: React.FC = () => {
         let amount = 0;
 
         for (let i = 0; i < lockerData.length; i++) {
-            if (lockerData.is_currently_claimable) {
+            if (lockerData[i].active_claim == null) {
                 amount++;
             }
         }
-        // console.log('log from getUnusedlockers', amount);
+        console.log('log from getUnusedlockers', amount);
+
         return (amount)
     }
 

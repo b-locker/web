@@ -22,7 +22,7 @@ const OrgDashboardBadges: React.FC = () => {
         // eslint-disable-next-line   
     }, []);
 
-    if (lockerData == undefined) return (<div>Loading...</div>);
+    if (lockerData === undefined) return (<div>Loading...</div>);
 
     //function to get all lockers
     function getAllLockers() {

@@ -24,7 +24,7 @@ const OrgLockers: React.FC = () => {
     const [lockerData, setLockerData] = useState({
         id: 0,
         guid: "",
-        is_currently_claimable: false
+        active_claim: null
     }[""]);
 
     function redirectLogin(e: any) {
@@ -51,6 +51,31 @@ const OrgLockers: React.FC = () => {
             });
         })
     }
+
+    function displayClaim() {
+
+        let string = ""
+        if (lockerData.active_claim != null) {
+            string = "Used"
+        } else {
+            string = "Unused"
+        }
+
+        return string
+    }
+
+    function displayOwner() {
+
+        let string = "";
+        if (lockerData.active_claim == null) {
+            string = "None";
+        } else {
+            string = lockerData.active_claim.client.email
+        }
+
+        return string
+    }
+
     componentConsole();
     return (
         <div className="main-div-org">
@@ -69,8 +94,8 @@ const OrgLockers: React.FC = () => {
                             <div className="locker-details-content">
                                 <p>Locker GUID: {lockerData.guid}</p>
                                 <p>Locker number: {lockerData.id}</p>
-                                {/* <p>Locker Availability: {lockerData.is_currently_claimable.toString()}</p> */}
-                                <p>Current Owner: 0867973@hr.nl</p>
+                                <p>Locker Availability: {displayClaim()}</p>
+                                <p>Current Owner: {displayOwner()}</p>
                             </div>
 
                         </div>

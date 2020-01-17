@@ -15,7 +15,7 @@ const OrgDashboardTable: React.FC = () => {
     const [lockerData, setLockerData] = useState([{
         id: 0,
         guid: "",
-        is_currently_claimable: false
+        active_claim: null
     }]);
 
 
@@ -41,7 +41,7 @@ const OrgDashboardTable: React.FC = () => {
                 let data = res.data.data;
                 data.forEach(locker => {
                     console.log('test', locker.is_currently_claimable);
-                    locker.is_currently_claimable = (locker.is_currently_claimable ? "Unused" : "Used");
+                    locker.active_claim = (locker.active_claim ? "Used" : "Unused");
                 });
                 console.log('data:', data);
                 resolve(res.data.data);
@@ -88,7 +88,7 @@ const OrgDashboardTable: React.FC = () => {
                                                     {console.log('the id is', lockerData.id)}
                                                     <td className="cell100 column1">{lockerData.id}</td>
                                                     <td className="cell100 column2">{lockerData.guid}</td>
-                                                    <td className="cell100 column3">{lockerData.is_currently_claimable}</td>
+                                                    <td className="cell100 column3">{lockerData.active_claim}</td>
                                                     <td className="cell100 column4"><button className="org-href-button" onClick={() => redirectSingleLocker(lockerData.guid)}><img className="chrevron-icon" src={chevronIcon} alt='' /></button></td>
                                                 </tr>
                                             );
