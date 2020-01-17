@@ -8,6 +8,7 @@ import { useHistory, useLocation } from 'react-router';
 import { authProvider } from '../../../global/auth/authProvider';
 import { httpProvider } from '../../../global/http/httpProvider';
 import queryString from 'querystring';
+import store from 'store2';
 
 const UserUnlock: React.FC = () => {
     const [passcode, setPasscode] = useState("");
@@ -26,7 +27,7 @@ const UserUnlock: React.FC = () => {
     else guid = locationValues.guid;
 
     function redirectForgotPass(e: any) {
-        history.push('/forgotPass');
+        history.push('/forgotPassSent');
     }
 
         function unlock(e: any) {
@@ -54,6 +55,7 @@ const UserUnlock: React.FC = () => {
             http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
                 console.log('res:',res);
                 if(res.status === 200){
+                    store.set("locker_id", res.data.data.claim.id)
                     resolve(true);
                 }
                 else{
