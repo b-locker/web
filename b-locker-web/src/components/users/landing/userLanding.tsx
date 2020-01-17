@@ -5,6 +5,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { httpProvider } from '../../../global/http/httpProvider';
 import { useAlert } from 'react-alert';
 import GridLoader from 'react-spinners/GridLoader';
+import store from 'store2';
 
 const UserLanding: React.FC = () => {
     const { t } = useTranslation();
@@ -14,6 +15,9 @@ const UserLanding: React.FC = () => {
     let history = useHistory();
     let http: httpProvider = new httpProvider();
     let guid: string = location.pathname.replace("/l/", "");
+    if(!guid){
+        guid = store.get("guid");
+    }
     let isMounted = useRef(false);
 
     // useEffect is similar to componenDidMount
@@ -31,26 +35,24 @@ const UserLanding: React.FC = () => {
             if(res){
                 if(isMounted){
                     setLoading(false);
+                    history.push('/claim?guid='+guid);
                 }
-                history.push('/claim?guid='+guid);
             }
             else{
                 if(isMounted){
                     setLoading(false);
+                    history.push('/unlock?guid='+guid);
                 }
-                history.push('/unlock?guid='+guid);
             }
         }).catch((error)=>{
-            alert.error(t('error.somethingwentwrong.global'));
+            history.push('/unavailable')
         })
     }
 
     function isLockerAvailable(): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             http.getRequest('/lockers/'+guid).then((res)=>{
-                console.log('res":',res);
                 let data = res.data.data;
-                console.log('active claim:',data.active_claim);
                 if(data.active_claim == null){
                     resolve(true);
                 }

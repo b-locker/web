@@ -39,13 +39,13 @@ import store from 'store2';
 import UserLanding from './components/users/landing/userLanding';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
-  authenticationPath: "/unlock",
+  authenticationPath: "/l/",
   isAllowed: false
 }
 
 window.addEventListener("beforeunload", (ev) =>{
-    store(false);
-})
+    store.set("devDebugToken",false, true);
+});
 
 const App: React.FC = () => {
   return (
