@@ -1,19 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import UserHeader from '../header/userHeader'
 import { useTranslation } from 'react-i18next';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
+import { httpProvider } from '../../../global/http/httpProvider';
+import queryString from 'querystring';
+import { useAlert } from 'react-alert';
+import store from 'store2';
 
 const UserInfo: React.FC = () => {
 
     const { t, i18n } = useTranslation();
     let history = useHistory();
+    let http = new httpProvider();
+    let alert = useAlert();
+
+    let location = useLocation();
+    let locationValues = queryString.parse((location.search.substr(1)));
+    let guid;
+    if(!locationValues.guid){
+        alert.error(t('error.somethingwentwrong.global'));
+        history.push('/unavailable');
+    }
+    else{
+        guid = locationValues.guid;
+        store.set("guid", guid);
+    } 
+
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit'};
     const timeOptions = { hour: '2-digit', minute: '2-digit'};
     let previousOpened: Date = new Date();
-    let expirationDate: Date = new Date();
-    //let testDate: Date = new Date("2020-01-13T14:11:33.000000Z");
-    expirationDate.setDate(expirationDate.getDate() + 7);
-    let daysLeft = Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+    const [ expirationDate, setExpirationDate ] = useState(new Date());
+    const [ daysLeft, setDaysLeft ] = useState(0);
     let timesOpened: number = 5;
 
     function changePass(e: any){
@@ -23,7 +40,31 @@ const UserInfo: React.FC = () => {
     function endOwnership(e: any){
         history.push('/endOwnership');
     }
+
+    useEffect(()=>{
+
+        getLockerData().then((data)=>{
+            setExpirationDate(new Date(data.active_claim.end_at));
+            setDaysLeft(Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)));
+        });// eslint-disable-next-line
+    },[daysLeft])
+    if(daysLeft === 0){
+        return (<div><UserHeader></UserHeader><div>Loading...</div></div>);
+    } 
     
+    function getLockerData():Promise<any>{
+        return new Promise<any>((resolve, reject) => {
+            http.getRequest('/lockers/'+guid).then((res)=>{
+                let data = res.data.data;
+                resolve(data);
+            }).catch((error)=>{
+                if(error){
+                    alert.error(t('error.somethingwentwrong.global'));
+                    reject(error);
+                }
+            })
+        })
+    }
 
     return (
         <div className="main-div">

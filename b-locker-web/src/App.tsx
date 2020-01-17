@@ -37,15 +37,16 @@ import UserTutorial from './components/users/tutorial/userTutorial';
 import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
 import UserLanding from './components/users/landing/userLanding';
+import UserResetPasscode from './components/users/resetPasscode/userResetPasscode';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
-  authenticationPath: "/unlock",
+  authenticationPath: "/l/",
   isAllowed: false
 }
 
-window.addEventListener("beforeunload", (ev) => {
-  store(false);
-})
+window.addEventListener("beforeunload", (ev) =>{
+    store.set("devDebugToken",false, true);
+});
 
 const App: React.FC = () => {
   return (
@@ -68,6 +69,12 @@ const App: React.FC = () => {
           <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/passChanged" component={UserPassChanged} />
           <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/endOwnership" component={UserEndOwnership} />
           <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/goodbye" component={UserGoodbye} />
+          <Route exact path="/forgot/passcode" component={UserResetPasscode} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/info" component={UserInfo} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/changePass" component={UserChangePass} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/endOwnership" component={UserEndOwnership} />
+          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/goodbye" component={UserGoodbye} />
           <Route exact path="/login" component={OrgLogin} />
           <Route exact path="/dashboard" component={OrgDashboard} />
           <Route exact path="/singlelocker" component={SingleLocker} />

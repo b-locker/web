@@ -5,6 +5,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { httpProvider } from '../../../global/http/httpProvider';
 import { useAlert } from 'react-alert';
 import GridLoader from 'react-spinners/GridLoader';
+import store from 'store2';
 
 const UserLanding: React.FC = () => {
     const { t } = useTranslation();
@@ -14,6 +15,9 @@ const UserLanding: React.FC = () => {
     let history = useHistory();
     let http: httpProvider = new httpProvider();
     let guid: string = location.pathname.replace("/l/", "");
+    if(!guid){
+        guid = store.get("guid");
+    }
     let isMounted = useRef(false);
 
     // useEffect is similar to componenDidMount
@@ -31,16 +35,17 @@ const UserLanding: React.FC = () => {
             if (res) {
                 if (isMounted) {
                     setLoading(false);
+                    history.push('/claim?guid='+guid);
                 }
-                history.push('/claim?guid=' + guid);
             }
             else {
                 if (isMounted) {
                     setLoading(false);
+                    history.push('/unlock?guid='+guid);
                 }
-                history.push('/unlock');
             }
-        }).catch((error) => {
+        }).catch((error)=>{
+            history.push('/unavailable')
         })
     }
 
@@ -48,7 +53,7 @@ const UserLanding: React.FC = () => {
         return new Promise<boolean>((resolve, reject) => {
             http.getRequest('/lockers/' + guid).then((res) => {
                 let data = res.data.data;
-                if (data.is_currently_claimable) {
+                if(data.active_claim == null){
                     resolve(true);
                 }
                 else {

@@ -15,7 +15,8 @@ const UserClaimLocker: React.FC = () => {
     let history = useHistory();
     let location = useLocation();
     let locationValues = queryString.parse((location.search.substr(1)));
-    if (!locationValues.guid) {
+
+    if(!locationValues.guid){
         alert.error(t('error.somethingwentwrong.global'));
         history.push('/unavailable');
     }
@@ -30,10 +31,11 @@ const UserClaimLocker: React.FC = () => {
         }
     }
 
-    function sendMailRequest(guid: string, email: string) {
-        http.postRequestQueryParams('/lockers/' + guid + '/claims?email=' + email).then((res) => {
+
+    function sendMailRequest(guid: string, email: string){
+        http.postRequestQueryParams('/lockers/'+guid+'/claims?email='+email).then((res)=>{
             history.push('/claim/mailsent');
-        }).catch((error) => {
+        }).catch((error)=>{
             alert.error(t('error.somethingwentwrong.global'))
         });
     }

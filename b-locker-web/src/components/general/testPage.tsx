@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import './testPage.scss'
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -6,8 +6,7 @@ import LanguageSelector from '../../global/i18n/languageSelector';
 
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
-
-    let guid: string = "Wa1bkwWx";
+    const [ guid, setGuid ] = useState("Wa1bkwWx");
 
     return (
         <div>
@@ -29,6 +28,11 @@ const TestPage: React.FC = () => {
                     <li>
                         <NavLink to={"/claim?guid="+guid}>{t('claimpage.label')}</NavLink>
                     </li>
+                    <input className="global-input" placeholder="Guid"
+                    type="text"
+                    id="guid"
+                    onChange={evt => setGuid(evt.target.value)}>
+                    </input>
                     <li>
                         <NavLink to="/claim/passcode">{t('setPasscode.set.label')} </NavLink>
                     </li>

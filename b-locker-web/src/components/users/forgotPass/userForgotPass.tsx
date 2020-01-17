@@ -10,7 +10,7 @@ const UserForgotPass: React.FC = () => {
     // TODO: change this email to the real email adress
     const emailHint = "095***@hr.nl";
 
-    function sendForgotPass(e: any) {
+    function sendForgotPass(e: any){
         if (email) {
             history.push('/forgotPassSent')
         }
