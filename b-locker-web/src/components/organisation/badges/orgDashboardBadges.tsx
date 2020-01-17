@@ -66,10 +66,6 @@ const OrgDashboardBadges: React.FC = () => {
     function componentConsole(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/' + lockerCall).then((res) => {
-                let data = res.data.data;
-                // data.forEach(locker => {
-                //     locker.is_currently_claimable = (locker.is_currently_claimable ? "Unused" : "Used");
-                // });
                 resolve(res.data.data);
             }).catch((error) => {
                 reject();

@@ -40,7 +40,6 @@ const OrgLockers: React.FC = () => {
     function componentConsole(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.getRequest('/lockers/' + guid).then((res) => {
-                let data = res.data.data;
                 resolve(res.data.data);
             }).catch((error) => {
                 reject();
