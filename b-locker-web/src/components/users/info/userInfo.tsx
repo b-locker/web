@@ -42,7 +42,6 @@ const UserInfo: React.FC = () => {
     }
 
     useEffect(()=>{
-        console.log('useEffect()');
 
         getLockerData().then((data)=>{
             setExpirationDate(new Date(data.active_claim.end_at));

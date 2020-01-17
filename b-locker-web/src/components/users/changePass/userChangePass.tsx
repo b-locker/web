@@ -17,8 +17,6 @@ const UserChangePass: React.FC = () => {
     const [newPasscode, setNewPasscode] = useState("");
 
     function setPass(e: any) {
-        console.log('entered current passcode: ', currentPasscode);
-        console.log('entered new passcode: ', newPasscode);
         if (currentPasscode && newPasscode) {
             if(newPasscode !== currentPasscode){
                 checkPasscode(currentPasscode).then((res)=>{

@@ -31,7 +31,6 @@ const UserUnlock: React.FC = () => {
     }
 
         function unlock(e: any) {
-            console.log('entered passcode: ', passcode);
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
                 if(res){
@@ -53,7 +52,6 @@ const UserUnlock: React.FC = () => {
     function checkPasscode(passcode: string): Promise<boolean>{
         return new Promise<boolean>((resolve, reject)=>{
             http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
-                console.log('res:',res);
                 if(res.status === 200){
                     store.set("locker_id", res.data.data.claim.id)
                     resolve(true);
@@ -63,14 +61,12 @@ const UserUnlock: React.FC = () => {
                 }
             }).catch((error)=>{
                 if(error.response){
-                    console.log('error data:',error.response.data);
                     if(error.response.data === "You have no more attempts left."){
                         //history.push('/lockdown');
                     }
                     resolve(false);
                     alert.error(error.response.data.message);
                 }
-                console.log('error:',error);
             });
         })
     }
