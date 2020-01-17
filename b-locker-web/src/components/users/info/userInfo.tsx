@@ -42,16 +42,13 @@ const UserInfo: React.FC = () => {
     }
 
     useEffect(()=>{
-        console.log('useEffect()');
 
         getLockerData().then((data)=>{
             setExpirationDate(new Date(data.active_claim.end_at));
-            console.log(data);
             setDaysLeft(Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)));
-        });
+        });// eslint-disable-next-line
     },[daysLeft])
     if(daysLeft === 0){
-        console.log('check done');
         return (<div><UserHeader></UserHeader><div>Loading...</div></div>);
     } 
     
@@ -68,7 +65,6 @@ const UserInfo: React.FC = () => {
             })
         })
     }
-    
 
     return (
         <div className="main-div">

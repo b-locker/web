@@ -18,6 +18,7 @@
     "global.month.oct": "October",
     "global.month.nov": "November",
     "global.month.dec": "December",
+    "global.developed.label": "Developed by Bodach",
     "error.invalid.email": "Please enter a valid email",
     "error.invalid.passcode": "Please enter a valid passcode",
     "error.somethingwentwrong.global": "Something went wrong",

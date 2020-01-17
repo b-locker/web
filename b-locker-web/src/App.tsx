@@ -37,6 +37,7 @@ import UserTutorial from './components/users/tutorial/userTutorial';
 import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
 import UserLanding from './components/users/landing/userLanding';
+import UserResetPasscode from './components/users/resetPasscode/userResetPasscode';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
   authenticationPath: "/l/",
@@ -63,6 +64,7 @@ const App: React.FC = () => {
           <Route exact path="/lockdown" component={UserLockdown} />
           <Route exact path="/forgotPass" component={UserForgotPass} />
           <Route exact path="/forgotPassSent" component={UserForgotPassSent} />
+          <Route exact path="/forgot/passcode" component={UserResetPasscode} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/info" component={UserInfo} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/changePass" component={UserChangePass} />
           <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />

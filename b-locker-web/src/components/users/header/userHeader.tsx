@@ -15,7 +15,7 @@ const UserHeader: React.FC = () => {
         history.push('/');
     }
 
-    function changeLanguage(lang: string){
+    function changeLanguage(lang: string) {
         i18n.changeLanguage(lang);
     }
 
@@ -27,8 +27,8 @@ const UserHeader: React.FC = () => {
                     <img src={bLockerLogo} alt="BLocker logo" id="bl-logo" onClick={redirectHome} />
                 </div>
                 <div className="header-top-right">
-                    <img src={dutchFlag} alt="Dutch flag" id="dutch-flag" onClick={()=>{changeLanguage('nl')}} />
-                    <img src={ukFlag} alt="Dutch flag" id="uk-flag" onClick={()=>{changeLanguage('en')}} />
+                    <img src={dutchFlag} alt="Dutch flag" id="dutch-flag" onClick={() => { changeLanguage('nl') }} />
+                    <img src={ukFlag} alt="Dutch flag" id="uk-flag" onClick={() => { changeLanguage('en') }} />
                 </div>
             </div>
             <div className="header-bottom">
@@ -36,7 +36,7 @@ const UserHeader: React.FC = () => {
                 <p id="ruas-title">{t('header.ruas.label')}</p>
             </div>
             <div className="sub-header">
-                <p id="user-detail">abcdefghijklmnopqrstu</p>
+                <p id="user-detail">{t('global.developed.label')}</p>
             </div>
         </div>
     );
