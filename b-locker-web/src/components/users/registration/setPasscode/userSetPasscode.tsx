@@ -68,13 +68,13 @@ const UserSetPasscode: React.FC = () => {
     function onSetPasscodeClick(e: any) {
         if (validatePasscode(passcode)) {
             sendSetPasscodeData().then(() => {
-                history.push('/claim/complete')
+                history.push('/claim/complete?guid='+locker_guid);
             }).catch((error) => {
-                alert.error(t('error.somethingwentwrong.global'))
+                alert.error(t('error.somethingwentwrong.global'));
             })
         }
         else {
-            alert.error(t('error.invalid.passcode'))
+            alert.error(t('error.invalid.passcode'));
         }
     }
 

@@ -88,6 +88,7 @@
     "claimComplete.good.label": "Good to go!",
     "claimComplete.desc.label": "Setup complete, you can now use your new locker",
     "claimComplete.itsYours.label": "It's yours until",
+    "claimComplete.goTo.button": "Unlock the locker",
     "unavailable.un.label": "Unavailable",
     "unavailable.desc.label": "Deactivated",
     "unavailalbe.explanation.label": "This locker has been set as non-active by the organization's administrator. Contact the manager if you think this locker should be available.",
