@@ -1,0 +1,208 @@
+$main-red: #DB3838;
+$main-black: #101010;
+$main-darkgray: #707070;
+$main-lightgray: #F2F2F2;
+$background: #F2F2F2;
+$main-white: #FFFFFF;
+$main-button-green: #39BC6E;
+$hover-green: rgb(43, 175, 96);
+$active-green: rgb(39, 131, 76);
+$disabled-green: #C2D8CB;
+$main-button-blue: #678AFF;
+$hover-blue: rgb(84, 117, 226);
+$active-blue: rgb(53, 82, 177);
+$main-button-red: #EF5252;
+$hover-red: rgb(212, 71, 71);
+$active-red: rgb(187, 59, 59);
+$main-button-gray: #D5D5D5;
+$button-gray-text: #8F8F8F;
+$button-hover-gray-text: rgb(109, 109, 109);
+$hover-gray: rgb(180, 180, 180);
+$active-gray: rgb(134, 134, 134);
+
+// use this for debugging css
+.box{
+    border: black dotted 1px;
+}
+
+.main-div{
+    background-color: $background;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrap-content-div{
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+.global-edge-div{
+    max-width: fit-content;
+    margin: 0 auto;
+    width: 87vw;
+    @media only screen and (min-width: 600px) {
+        max-width: 50%;
+    }
+}
+
+.global-title-desc-div{
+    width: 87vw;
+}
+
+.global-page-title{
+    font-size: 5vh;
+    font-weight: bold;
+    max-width: fit-content;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.global-small-title{
+    font-size: small;
+    font-weight: bold;
+    max-width: fit-content;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+.global-desc-label{
+    font-size: small;
+    max-width: fit-content;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.global-button{
+    width: 85vw;
+    font-size: 3.5vh;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50px;
+    border: 0px;
+    @media only screen and (min-width: 600px) {
+        width: 30vw;
+    }
+}
+
+.global-button:hover {
+    cursor: pointer;
+}
+
+.global-button-spacing{
+    margin-top: 10px;
+}
+
+.global-button-green{
+    color: $main-white;
+    background-color: $main-button-green;
+}
+
+.global-button-green-disabled{
+    background-color: $disabled-green;
+}
+
+.global-button-green:hover {
+    background-color: $hover-green;
+}
+
+.global-button-green:active {
+    background-color: $active-green;
+}
+
+.global-button-blue{
+    color: $main-white;
+    background-color: $main-button-blue;
+}
+
+.global-button-blue:hover {
+    background-color: $hover-blue;
+}
+
+.global-button-blue:active {
+    background-color: $active-blue;
+}
+
+.global-button-red{
+    color: $main-white;
+    background-color: $main-button-red;
+}
+
+.global-button-red:hover {
+    background-color: $hover-red;
+}
+
+.global-button-red:active {
+    background-color: $active-red;
+}
+
+.global-button-gray{
+    color: $button-gray-text;
+    background-color: $main-button-gray;
+}
+
+.global-button-gray:hover {
+    color: $button-hover-gray-text;
+    background-color: $hover-gray;
+}
+
+.global-button-gray:active {
+    background-color: $active-gray;
+}
+
+
+.global-input{
+    height: 40px;
+    width: 85vw;
+    border: 0px;
+    font-size: 3vh;
+    padding-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    @media only screen and (min-width: 600px) {
+        width: 30vw;
+    }
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #8A8A8A;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #8A8A8A;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #8A8A8A;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color: #8A8A8A;
+}
+
+.href-button{
+    color: #3869DB;
+    text-align: center;
+}
+
+.href-button:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.link-button {
+    color: #3869DB;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+  
+.link-button:hover,
+.link-button:focus {
+text-decoration: none;
+}
+

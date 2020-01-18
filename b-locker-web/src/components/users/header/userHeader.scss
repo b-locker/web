@@ -1,0 +1,82 @@
+@import "../../../styles/user-global.scss";
+
+.header{
+    box-sizing: content-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header-top{
+    background-color: $main-white;
+    display: flex;
+    height: 10vh;
+}
+
+.header-top-left{
+    align-self: flex-start;
+    display: flex;
+    height: 10vh;
+}
+
+.header-top-right{
+    align-self: center;
+    display: flex;
+    position: absolute;
+    right: 0;
+    margin-right: 1vw;
+}
+
+.header-bottom{
+    display: flex;
+    height: 6vh;
+    padding-top: 1vh;
+}
+
+.sub-header{
+    display: flex;
+    height: 3vh;
+}
+
+#title{
+    font-size: 5vh;
+    font-weight: bold;
+
+    align-self: center;
+
+    padding-left: 7vw;
+    padding-right: 2vw;
+}
+
+#bl-logo{
+    max-height: 6vh;
+    align-self: center;
+}
+
+#ruas-logo{
+    max-height: 5vh;
+    align-self: center;
+    padding-left: 7vw;
+    padding-right: 2vw;
+}
+
+#ruas-title{
+    align-self: center;
+    font-size: large;
+}
+
+#user-detail{
+    align-self: center;
+    padding-left: 7vw;
+    color: $main-red;
+    font-size: small;
+}
+
+#dutch-flag{
+    width: 7vw;
+    margin-right: 2vw;
+}
+
+#uk-flag{
+    width: 7vw;
+}
+
+

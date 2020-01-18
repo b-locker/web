@@ -1,0 +1,59 @@
+@import "../../../styles/org-global.scss";
+
+.menu {
+  background: $menu;
+  height: 100vh;
+  width: $menu-width-desktop;
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+
+  ul {
+    list-style: none;
+    padding: 1.55em 0;
+    text-align: left;
+
+    li {
+      font-weight: 500;
+      padding: 15px;
+      cursor: pointer;
+
+      img {
+        height: 24px;
+        width: 24px;
+        margin-right: 10px;
+      }
+
+      &:last-child {
+        bottom: 0;
+        position: absolute;
+        width: 100%;
+      }
+
+      &:hover {
+        background-color: $menu-selected;
+        border-left-style: solid;
+        border-width: 3px;
+        border-color: #ffffff;
+      }
+
+      button {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        position: relative;
+        top: -3px;
+        text-decoration: none;
+        color: #ffffff;
+
+        .active {
+          background-color: $menu-selected;
+          border-left-style: solid;
+          border-width: 3px;
+          border-color: #ffffff;
+        }
+      }
+    }
+  }
+}
