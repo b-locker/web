@@ -51,7 +51,7 @@ const UserResetPasscode: React.FC = () => {
     function onResetPasscodeClick(e: any) {
         if (validatePasscode(passcode)) {
             sendResetPasscodeData().then(() => {
-                history.push('/claim/complete')
+                history.push('/claim/complete?guid='+locker_guid)
             }).catch((error) => {
                 alert.error(t('error.somethingwentwrong.global'))
             })
