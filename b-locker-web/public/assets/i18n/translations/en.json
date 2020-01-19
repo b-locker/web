@@ -97,5 +97,11 @@
     "tutorial.step1.label": "Scan a locker with your phone",
     "tutorial.step2.label": "If it's available, set your email and passcode",
     "tutorial.step3.label": "Unlock using your passcode",
-    "tutorial.step4.label": "See insights or change settings"
+    "tutorial.step4.label": "See insights or change settings",
+    "login.title.label": "Log in",
+    "login.user.hint":"Username",
+    "login.pass.hint":"Password",
+    "login.check.label": "Login",
+    "login.desc.label": "Enter your account's login credentials.",
+    "login.forgotpass.label": "Wachtwoord vergeten?"
 }

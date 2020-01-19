@@ -44,6 +44,11 @@ const unlockProtectedRouteProps: ProtectedRouteProps = {
   isAllowed: false
 }
 
+const loginProtectedRouteProps: ProtectedRouteProps = {
+  authenticationPath: "/login",
+  isAllowed: false
+}
+
 window.addEventListener("beforeunload", (ev) =>{
     store.set("devDebugToken",false, true);
 });
@@ -70,21 +75,16 @@ const App: React.FC = () => {
           <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/endOwnership" component={UserEndOwnership} />
           <ProtectedRoute {...unlockProtectedRouteProps} exact={true} path="/goodbye" component={UserGoodbye} />
           <Route exact path="/forgot/passcode" component={UserResetPasscode} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/info" component={UserInfo} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/changePass" component={UserChangePass} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/passChanged" component={UserPassChanged} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/endOwnership" component={UserEndOwnership} />
-          <ProtectedRoute { ...unlockProtectedRouteProps } exact={true} path="/goodbye" component={UserGoodbye} />
           <Route exact path="/login" component={OrgLogin} />
-          <Route exact path="/dashboard" component={OrgDashboard} />
-          <Route exact path="/singlelocker" component={SingleLocker} />
-          <Route exact path="/lockers" component={OrgLockers} />
-          <Route exact path="/orglockertables" component={OrgLockerTables} />
-          <Route exact path="/dashboardtables" component={OrgDashboardTable} />
-          <Route exact path="/orglogtables" component={OrgLogTables} />
-          <Route exact path="/relogin" component={OrgReLogin} />
-          <Route exact path="/unlocklockers" component={OrgSentence} />
-          <Route exact path="/success" component={OrgSuccess} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/dashboard" component={OrgDashboard} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/singlelocker" component={SingleLocker} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/lockers" component={OrgLockers} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/orglockertables" component={OrgLockerTables} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/dashboardtables" component={OrgDashboardTable} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/orglogtables" component={OrgLogTables} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/relogin" component={OrgReLogin} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/unlocklockers" component={OrgSentence} />
+          <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/success" component={OrgSuccess} />
           <Route exact path="/" component={TestPage} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/*">

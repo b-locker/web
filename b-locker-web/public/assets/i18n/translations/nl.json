@@ -97,5 +97,10 @@
     "tutorial.step1.label": "Scan een kluisje met je telefoon",
     "tutorial.step2.label": "Als hij beschikbaar is, vul uw email and code in",
     "tutorial.step3.label": "Ontgrendel met uw code",
-    "tutorial.step4.label": "Krijg inzicht en verander instellingen"
+    "tutorial.step4.label": "Krijg inzicht en verander instellingen",
+    "login.title.label": "Log in",
+    "login.user.hint":"Gebruikersnaam",
+    "login.pass.hint":"Wachtwoord",
+    "login.check.label": "Login",
+    "login.desc.label": "Voer de inloggegevens van uw account in."
 }

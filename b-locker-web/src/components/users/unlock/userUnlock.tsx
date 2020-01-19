@@ -50,6 +50,12 @@ const UserUnlock: React.FC = () => {
         }
     }
 
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            unlock(event);
+        }
+    }
+
     
     function checkPasscode(passcode: string): Promise<boolean>{
         return new Promise<boolean>((resolve, reject)=>{
@@ -85,7 +91,8 @@ const UserUnlock: React.FC = () => {
                 <input className="global-input" placeholder={t('unlock.passcode.hint')}
                     type="password"
                     id="passcode"
-                    onChange={evt => setPasscode(evt.target.value)}>
+                    onChange={evt => setPasscode(evt.target.value)}
+                    onKeyPress={handleKeyPress} >
                 </input>
                 <br />
                 <button className="global-button global-button-green" onClick={unlock}>{t('unlock.unlock.button')}</button>

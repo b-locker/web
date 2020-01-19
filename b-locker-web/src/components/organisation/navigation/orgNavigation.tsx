@@ -7,10 +7,13 @@ import navSettingsIcon from '../../../assets/settings.svg'
 import navLogoutIcon from '../../../assets/log-out.svg'
 
 import { useHistory } from 'react-router';
+import { authProvider } from '../../../global/auth/authProvider';
 
 
 
 const OrgNavigation: React.FC = () => {
+
+    let auth = new authProvider();
 
     let history = useHistory();
 
@@ -21,6 +24,7 @@ const OrgNavigation: React.FC = () => {
         history.push('/lockers');
     }
     function redirectLogin(e: any) {
+        auth.setDevDebugToken(false);
         history.push('/login');
     }
 
