@@ -20,6 +20,8 @@
       cursor: pointer;
 
       img {
+        height: 24px;
+        width: 24px;
         margin-right: 10px;
       }
 
@@ -36,7 +38,10 @@
         border-color: #ffffff;
       }
 
-      a {
+      button {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 15px;
+        font-weight: 600;
         position: relative;
         top: -3px;
         text-decoration: none;
