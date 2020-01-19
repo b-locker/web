@@ -1,6 +1,6 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import './testPage.scss'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../../global/i18n/languageSelector';
 import { httpProvider } from '../../global/http/httpProvider';
@@ -8,6 +8,7 @@ import { httpProvider } from '../../global/http/httpProvider';
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
     let http = new httpProvider();
+    let history = useHistory();
     const [guid, setGuid] = useState("Wa1bkwWx");
     const lockerCall = 'lockers';
     const [lockerData, setLockerData] = useState([{
@@ -38,6 +39,12 @@ const TestPage: React.FC = () => {
         })
     }
 
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            history.push('/l/'+guid);
+        }
+    }
+
     return (
         <div>
             <Suspense fallback={null}>
@@ -55,7 +62,8 @@ const TestPage: React.FC = () => {
                     <input className="global-input" placeholder="Guid"
                         type="text"
                         id="guid"
-                        onChange={evt => setGuid(evt.target.value)}>
+                        onChange={evt => setGuid(evt.target.value)}
+                        onKeyPress={handleKeyPress} >
                     </input>
                     <li>
                         <NavLink to="/tutorial">tutorial </NavLink>
