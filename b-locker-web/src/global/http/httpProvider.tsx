@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from 'store2';
 
 export class httpProvider {
-    apiURL: string = "http://localhost:8080/api/v1"
+    apiURL: string = "http://b-locker.nl:8080/api/v1"
     public getRequest(url: string): Promise<any> {
         let jwt = store.get("jwt");
         if (jwt) {
