@@ -17,7 +17,7 @@ export class httpProvider {
             });
         }
         else {
-            return axios.get(this.apiURL + {
+            return axios.get(this.apiURL + url, {
                 proxy: {
                     host: '127.0.0.1',
                     port: 8080,
