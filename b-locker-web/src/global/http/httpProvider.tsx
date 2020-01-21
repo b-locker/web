@@ -8,21 +8,19 @@ export class httpProvider {
         if (jwt) {
             return axios.get(this.apiURL + url, {
                 headers: {
-                    proxy: {
-                        host: '127.0.0.1',
-                        port: 8080,
-                    },
                     'token': jwt
+                },
+                proxy: {
+                    host: '127.0.0.1',
+                    port: 8080,
                 }
             });
         }
         else {
             return axios.get(this.apiURL + {
-                headers: {
-                    proxy: {
-                        host: '127.0.0.1',
-                        port: 8080,
-                    }
+                proxy: {
+                    host: '127.0.0.1',
+                    port: 8080,
                 }
             });
         }
