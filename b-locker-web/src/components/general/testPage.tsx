@@ -41,7 +41,7 @@ const TestPage: React.FC = () => {
 
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
-            history.push('/l/'+guid);
+            history.push('/l/' + guid);
         }
     }
 
@@ -75,8 +75,8 @@ const TestPage: React.FC = () => {
                         lockerData.map((lockerData) => {
                             return (
                                 <div key={lockerData.guid}>
-                                        <span>{lockerData.guid + ' '}</span>
-                                        <b>{lockerData.active_claim}</b>
+                                    <span>{lockerData.guid + ' '}</span>
+                                    <b>{lockerData.active_claim}</b>
                                 </div>
                             );
                         }
