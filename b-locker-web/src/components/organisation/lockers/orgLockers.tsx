@@ -3,20 +3,26 @@ import './orgLockers.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
 
-
 import lockerIcon from '../../../assets/locker.png'
 import unlockIcon from '../../../assets/unlock.png'
-import chevronIcon from '../../../assets/chevron-right.svg'
+// import chevronIcon from '../../../assets/chevron-right.svg'
 
+import { useHistory } from 'react-router';
 
+const OrgLockers: React.FC = () => {
 
-const orgLockers: React.FC = () => {
+    let history = useHistory();
+
+    function redirectRelogin(e: any) {
+        history.push('/relogin');
+    }
+
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>
-                <OrgTopbar></OrgTopbar>
-                <main>
-                    <div className= "container">
+            <OrgTopbar></OrgTopbar>
+            <main>
+                <div className="container">
                     <div className="row">
                         <h1>Lockers</h1>
                     </div>
@@ -52,34 +58,33 @@ const orgLockers: React.FC = () => {
                                     <p>14</p>
                                 </div>
                             </div>
-                            <div className="box4">
-                            <a href="#">
-                                <div className="box-left-side">
-                                    <img className="unlock-icon" src={unlockIcon} alt='' />
-                                    
+                            <button className="org-href-button" onClick={redirectRelogin}>
+                                <div className="box4">
+                                    <div className="box-left-side">
+                                        <img className="unlock-icon" src={unlockIcon} alt='' />
+                                    </div>
+                                    <div className="box-right-side">
+                                        <p>Unlock All</p>
+                                    </div>
                                 </div>
-                                <div className="box-right-side">
-                                    <p>Unlock All</p>
-                                </div>
-                                </a>
-                            </div>
+                            </button>
                         </div>
                     </div>
+                </div>
+                <div className="wrapper">
+                    <div className="locker-panel">
+                        <h2>Locatie: Stadslab</h2>
+
                     </div>
-                    <div className="wrapper">
-                        <div className="locker-panel">
-                            <h2>Locatie: Stadslab</h2>
+                    <div className="locker-panel">
+                        <h2>Locatie: Security Lokaal</h2>
 
-                        </div>
-                        <div className="locker-panel">
-                            <h2>Locatie: Security Lokaal</h2>
+                    </div>
+                </div>
 
-                        </div>
-                        </div>
-                       
-                </main>
-            </div>
+            </main>
+        </div>
     );
 }
 
-export default orgLockers;
+export default OrgLockers;

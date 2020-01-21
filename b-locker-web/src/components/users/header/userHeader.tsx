@@ -23,6 +23,9 @@ const UserHeader: React.FC = () => {
                 <img src={hrLogo} alt="RUAS logo" id="ruas-logo" />
                 <p id="ruas-title">{t('header.ruas.label')}</p>
             </div>
+            <div className="sub-header">
+                <p id="user-detail">abcdefghijklmnopqrstu</p>
+            </div>
         </div>
     );
 }
