@@ -11,7 +11,6 @@ const UserForgotPass: React.FC = () => {
     const emailHint = "095***@hr.nl";
 
     function sendForgotPass(e: any){
-        console.log('entered email: ', email);
         if (email) {
             history.push('/forgotPassSent')
         }

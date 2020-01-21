@@ -2,12 +2,15 @@ import React from 'react';
 import './orgDashboard.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
+import OrgDashboardBadges from '../badges/orgDashboardBadges';
 
 import lockerIcon from '../../../assets/locker.png'
 import OrgDashboardTables from '../tables/orgDashboardTable';
 
 
+
 const orgDashboard: React.FC = () => {
+    // let lockertable = new orgLockerTables();
     return (
         <div className="main-div-org">
             <OrgNavigation></OrgNavigation>

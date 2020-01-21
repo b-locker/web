@@ -5,6 +5,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { httpProvider } from '../../../global/http/httpProvider';
 import { useAlert } from 'react-alert';
 import GridLoader from 'react-spinners/GridLoader';
+import store from 'store2';
 
 const UserLanding: React.FC = () => {
     const { t } = useTranslation();
@@ -14,48 +15,51 @@ const UserLanding: React.FC = () => {
     let history = useHistory();
     let http: httpProvider = new httpProvider();
     let guid: string = location.pathname.replace("/l/", "");
+    if(!guid){
+        guid = store.get("guid");
+    }
     let isMounted = useRef(false);
 
     // useEffect is similar to componenDidMount
-    useEffect(()=>{
+    useEffect(() => {
         isMounted.current = true;
         checkLocker();
 
-        return function cleanup(){
+        return function cleanup() {
             isMounted.current = false;
         }
     })
 
     function checkLocker() {
-        isLockerAvailable().then((res)=>{
-            if(res){
-                if(isMounted){
+        isLockerAvailable().then((res) => {
+            if (res) {
+                if (isMounted) {
                     setLoading(false);
+                    history.push('/claim?guid='+guid);
                 }
-                history.push('/claim?guid='+guid);
             }
-            else{
-                if(isMounted){
+            else {
+                if (isMounted) {
                     setLoading(false);
+                    history.push('/unlock?guid='+guid);
                 }
-                history.push('/unlock?guid='+guid);
             }
         }).catch((error)=>{
-            alert.error(t('error.somethingwentwrong.global'));
+            history.push('/unavailable')
         })
     }
 
     function isLockerAvailable(): Promise<boolean> {
-        return new Promise<boolean>((resolve, reject)=>{
-            http.getRequest('/lockers/'+guid).then((res)=>{
+        return new Promise<boolean>((resolve, reject) => {
+            http.getRequest('/lockers/' + guid).then((res) => {
                 let data = res.data.data;
-                if(data.is_currently_claimable){
+                if(data.active_claim == null){
                     resolve(true);
                 }
-                else{
+                else {
                     resolve(false);
                 }
-            }).catch((error)=> {
+            }).catch((error) => {
                 alert.error(t('error.somethingwentwrong.global'));
                 reject(error);
             });

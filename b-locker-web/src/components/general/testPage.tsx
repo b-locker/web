@@ -1,12 +1,49 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import './testPage.scss'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../../global/i18n/languageSelector';
+import { httpProvider } from '../../global/http/httpProvider';
 
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
-    const [ guid, setGuid ] = useState("Wa1bkwWx");
+    let http = new httpProvider();
+    let history = useHistory();
+    const [guid, setGuid] = useState("Wa1bkwWx");
+    const lockerCall = 'lockers';
+    const [lockerData, setLockerData] = useState([{
+        id: 0,
+        guid: "",
+        active_claim: null
+    }]);
+
+    useEffect(() => {
+        componentConsole().then((res) => {
+            setLockerData(res);
+        })
+        // eslint-disable-next-line   
+    }, []);
+    if (!lockerData) return (<div>Loading...</div>);
+
+    function componentConsole(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            http.getRequest('/' + lockerCall).then((res) => {
+                let data = res.data.data;
+                data.forEach(locker => {
+                    locker.active_claim = (locker.active_claim ? "Used" : "Unused");
+                });
+                resolve(res.data.data);
+            }).catch((error) => {
+                reject();
+            });
+        })
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            history.push('/l/'+guid);
+        }
+    }
 
     return (
         <div>
@@ -20,31 +57,30 @@ const TestPage: React.FC = () => {
                         <NavLink to="/dashboard">{t('orgloginpage.label')}</NavLink>
                     </li>
                     <li>
-                        <NavLink to={"/l/"+guid}>Landing</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/unlock">{t('userunlockpage.label')}</NavLink>
-                    </li>
-                    <li>
-                        <NavLink to={"/claim?guid="+guid}>{t('claimpage.label')}</NavLink>
+                        <NavLink to={"/l/" + guid}>Landing</NavLink>
                     </li>
                     <input className="global-input" placeholder="Guid"
-                    type="text"
-                    id="guid"
-                    onChange={evt => setGuid(evt.target.value)}>
+                        type="text"
+                        id="guid"
+                        onChange={evt => setGuid(evt.target.value)}
+                        onKeyPress={handleKeyPress} >
                     </input>
-                    <li>
-                        <NavLink to="/claim/passcode">{t('setPasscode.set.label')} </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/unavailable">{t('unavailable.un.label')} </NavLink>
-                    </li>
                     <li>
                         <NavLink to="/tutorial">tutorial </NavLink>
                     </li>
                     <li>
                         <NavLink to="/randompagethatwontwork">404</NavLink>
                     </li>
+                    {
+                        lockerData.map((lockerData) => {
+                            return (
+                                <div key={lockerData.guid}>
+                                        <span>{lockerData.guid + ' '}</span>
+                                        <b>{lockerData.active_claim}</b>
+                                </div>
+                            );
+                        }
+                        )}
                 </ul>
             </Suspense>
         </div>

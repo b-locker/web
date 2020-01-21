@@ -8,6 +8,7 @@ import { useHistory, useLocation } from 'react-router';
 import { authProvider } from '../../../global/auth/authProvider';
 import { httpProvider } from '../../../global/http/httpProvider';
 import queryString from 'querystring';
+import store from 'store2';
 
 const UserUnlock: React.FC = () => {
     const [passcode, setPasscode] = useState("");
@@ -26,23 +27,21 @@ const UserUnlock: React.FC = () => {
     else guid = locationValues.guid;
 
     function redirectForgotPass(e: any) {
-        history.push('/forgotPass');
+        history.push('/forgotPassSent');
     }
 
-    function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
+
+        function unlock(e: any) {
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
-                console.log('checkPasscode result:',res);
                 if(res){
                     auth.setDevDebugToken(true);
-                    history.push('/info');
+                    history.push('/info?guid='+guid);
                 }
                 else{
                     // Do nothing, this is already handled in the checkPasscode method
                 }
             }).catch((err)=>{
-                console.log('checkPasscode error:',err);
                 alert.error(t('error.somethingwentwrong.global'))
             }) 
         }
@@ -75,6 +74,35 @@ const UserUnlock: React.FC = () => {
         })
     }
 
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            unlock(event);
+        }
+    }
+
+    
+    function checkPasscode(passcode: string): Promise<boolean>{
+        return new Promise<boolean>((resolve, reject)=>{
+            http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
+                if(res.status === 200){
+                    store.set("locker_id", res.data.data.claim.id)
+                    resolve(true);
+                }
+                else{
+                    reject(false);
+                }
+            }).catch((error)=>{
+                if(error.response){
+                    if(error.response.data === "You have no more attempts left."){
+                        //history.push('/lockdown');
+                    }
+                    resolve(false);
+                    alert.error(error.response.data.message);
+                }
+            });
+        })
+    }
+
     return (
         <div className="main-div">
             <UserHeader></UserHeader>
@@ -87,7 +115,8 @@ const UserUnlock: React.FC = () => {
                 <input className="global-input" placeholder={t('unlock.passcode.hint')}
                     type="password"
                     id="passcode"
-                    onChange={evt => setPasscode(evt.target.value)}>
+                    onChange={evt => setPasscode(evt.target.value)}
+                    onKeyPress={handleKeyPress} >
                 </input>
                 <br />
                 <button className="global-button global-button-green" onClick={unlock}>{t('unlock.unlock.button')}</button>

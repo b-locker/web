@@ -2,6 +2,7 @@ import React from 'react';
 import './orgLockers.scss';
 import OrgNavigation from '../navigation/orgNavigation';
 import OrgTopbar from '../topbar/orgTopbar';
+import OrgLockerBadges from '../badges/orgLockerBadges';
 
 import lockerIcon from '../../../assets/locker.png'
 import unlockIcon from '../../../assets/unlock.png'
@@ -26,17 +27,16 @@ const OrgLockers: React.FC = () => {
                     <div className="row">
                         <h1>Lockers</h1>
                     </div>
-                    <div className="row">
-                        <div className="flex-container">
-                            <div className="box1">
-                                <div className="box-left-side">
-                                    <img className="locker-icon" src={lockerIcon} alt='' />
-                                    <p>Used</p>
+                    <OrgLockerBadges></OrgLockerBadges>
+                </div>
+                <div className="wrapper">
+                    <div className="locker-panel">
+                        <h2>Locatie: Stadslab</h2>
+                        <OrgLockerTables></OrgLockerTables>
 
-                                </div>
-                                <div className="box-right-side">
-                                    <p>10</p>
-                                </div>
+                    </div>
+                    <div className="locker-panel">
+                        <h2>Locatie: Security Lokaal</h2>
 
                             </div>
                             <div className="box2">

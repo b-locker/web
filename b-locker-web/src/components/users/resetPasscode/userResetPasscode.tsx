@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
-import UserHeader from '../../header/userHeader';
 import { useHistory, useLocation } from 'react-router';
 import queryString from 'querystring';
 import { useAlert } from 'react-alert';
-import { httpProvider } from '../../../../global/http/httpProvider';
+import { httpProvider } from '../../../global/http/httpProvider';
+import UserHeader from '../header/userHeader';
 
-const UserSetPasscode: React.FC = () => {
-    const { t, i18n } = useTranslation();
+const UserResetPasscode: React.FC = () => {
+    const { t } = useTranslation();
     let history = useHistory();
     let http = new httpProvider();
     let alert = useAlert();
     let location = useLocation();
     const [passcode, setPasscode] = useState("");
-    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: '2-digit' };
-    let expirationDate: Date = new Date();
-    expirationDate.setDate(expirationDate.getDate() + 7);
-    let daysLeft = Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
     let locker_guid, token, claim_id;
 
     useEffect(() => {
@@ -26,10 +22,6 @@ const UserSetPasscode: React.FC = () => {
             history.push('/unavailable');
         })
     })
-
-    /* for testing
-    localhost:3000/claim/passcode?locker_guid=HtXHuV3y&claim_id=5&token=pLkNDdbMCGBpyZbh
-    */
 
     function parseLocationString(location): Promise<any> {
         return new Promise<any>((resolve, reject) => {
@@ -46,39 +38,30 @@ const UserSetPasscode: React.FC = () => {
         })
     }
 
-    function dayOrDays(): string {
-        if (daysLeft > 1) {
-            return t('setPasscode.days.label');
-        }
-        else {
-            return t('setPasscode.day.label');
-        }
-    }
-
     function validatePasscode(passcode: string): boolean {
         // min 6 max 100 chars
-        if (passcode) {
-            if (passcode.length >= 6 && passcode.length <= 100) {
+        if (passcode){
+            if(passcode.length >= 6 && passcode.length <= 100){
                 return true;
             }
         }
         return false;
     }
 
-    function onSetPasscodeClick(e: any) {
+    function onResetPasscodeClick(e: any) {
         if (validatePasscode(passcode)) {
-            sendSetPasscodeData().then(() => {
-                history.push('/claim/complete?guid='+locker_guid);
+            sendResetPasscodeData().then(() => {
+                history.push('/claim/complete?guid='+locker_guid)
             }).catch((error) => {
-                alert.error(t('error.somethingwentwrong.global'));
+                alert.error(t('error.somethingwentwrong.global'))
             })
         }
         else {
-            alert.error(t('error.invalid.passcode'));
+            alert.error(t('error.invalid.passcode'))
         }
     }
 
-    function sendSetPasscodeData(): Promise<any> {
+    function sendResetPasscodeData(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             http.postRequestQueryParams(
                 '/lockers/' + locker_guid +
@@ -103,18 +86,15 @@ const UserSetPasscode: React.FC = () => {
                     <p className="global-page-title ">{t('setPasscode.set.label')}</p>
                     <p className="global-desc-label ">{t('setPasscode.desc.label')}</p>
                 </div>
-                <p className="global-small-title">{t('setPasscode.itsYours.label')}</p>
-                <p className="global-desc-label ">{expirationDate.toLocaleDateString(i18n.language, dateOptions)}</p>
-                <p className="global-desc-label">{'(' + daysLeft + ' ' + dayOrDays() + ')'}</p>
                 <input className="global-input" placeholder={t('setPasscode.passcode.hint')}
                     type="password"
                     id="passcode"
                     onChange={evt => setPasscode(evt.target.value)}>
                 </input>
-                <button className="global-button global-button-green" onClick={onSetPasscodeClick}>{t('setPasscode.finish.button')}</button>
+                <button className="global-button global-button-green" onClick={onResetPasscodeClick}>{t('setPasscode.finish.button')}</button>
             </div>
         </div>
     );
 }
 
-export default UserSetPasscode;
+export default UserResetPasscode;
