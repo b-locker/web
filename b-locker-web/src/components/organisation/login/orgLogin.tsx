@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react';
 import './orgLogin.scss';
 import { useTranslation } from 'react-i18next';
@@ -104,60 +103,6 @@ const UserUnlock: React.FC = () => {
     //         unlockTriesAmount++;
     //     }
     // }
-=======
-import React, { useState } from 'react';
-import './orgLogin.scss';
-import { useTranslation } from 'react-i18next';
-
-import lockIcon from '../../../assets/lock.svg'
-import lockers from '../../../assets/lockers.png'
-import { useHistory } from 'react-router';
-import UserHeader from '../../users/header/userHeader';
-import { authProvider } from '../../../global/auth/authProvider';
-import { useAlert } from 'react-alert';
-
-const UserUnlock: React.FC = () => {
-    // https://stackoverflow.com/a/57767104/7052690
-    const [passcode, setPasscode] = useState("");
-    const [username, setUsername] = useState("");
-    const { t } = useTranslation();
-    let auth = new authProvider();
-    let alert = useAlert();
-    let unlockTriesAmount: number = 0;
-    let usernameCheck = "admin", passwordCheck = "admin";
-
-    let history = useHistory();
-    function redirectForgotPass(e: any) {
-        history.push('/forgotPass');
-    }
-
-    function handleKeyPress(event) {
-        if (event.key === 'Enter') {
-            unlock(event);
-        }
-    }
-
-    function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
-        console.log('unlock tries: ', unlockTriesAmount);
-        if (unlockTriesAmount >= 5) {
-            history.push('/lockdown');
-        }
-        else if (passcode) {
-            if (passcode === passwordCheck && username === usernameCheck) {
-                auth.setDevDebugToken(true);
-                history.push('/dashboard')
-            }
-            else {
-                alert.error('Wrong password');
-                unlockTriesAmount++;
-            }
-        }
-        else{
-            alert.error('Fill in a passcode');
-        }
-    }
->>>>>>> LoginOrg
 
     return (
         <div className="left-div">
@@ -169,25 +114,14 @@ const UserUnlock: React.FC = () => {
                 </div>
                 <p className="global-desc-label">{t('login.desc.label')}</p>
                 <input className="pass-input global-input" placeholder={t('login.user.hint')}
-<<<<<<< HEAD
                     type="email"
                     id="email"
                     onChange={evt => setEmail(evt.target.value)}>
-=======
-                    type="username"
-                    id="username"
-                    onChange={evt => setUsername(evt.target.value)}>
->>>>>>> LoginOrg
                 </input>
                 <input className="pass-input global-input" placeholder={t('login.pass.hint')}
                     type="password"
                     id="passcode"
-<<<<<<< HEAD
                     onChange={evt => setPasscode(evt.target.value)}>
-=======
-                    onChange={evt => setPasscode(evt.target.value)}
-                    onKeyPress={handleKeyPress} >
->>>>>>> LoginOrg
                 </input>
                 <br />
                 <button className="global-button global-button-green" onClick={unlock}>{t('login.check.label')}</button>
@@ -197,19 +131,11 @@ const UserUnlock: React.FC = () => {
             <div className="right-div">
                 <div className="centered">
                     <img className="lockers" src={lockers} alt='Lockers' />
-<<<<<<< HEAD
                     
                 </div>
             </div>
         </div>
         
-=======
-
-                </div>
-            </div>
-        </div>
-
->>>>>>> LoginOrg
     );
 }
 
