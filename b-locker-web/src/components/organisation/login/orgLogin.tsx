@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './orgLogin.scss';
 import { useTranslation } from 'react-i18next';
 import lockIcon from '../../../assets/lock.svg'
 import lockers from '../../../assets/lockers.png'
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import UserHeader from '../../users/header/userHeader';
-import axios from 'axios';
 import { httpProvider } from '../../../global/http/httpProvider';
-import admin from "../tables/data/admin.json";
 import { authProvider } from '../../../global/auth/authProvider';
-import queryString from 'querystring';
 import { useAlert } from 'react-alert';
 
-const UserUnlock: React.FC = () => {
+const OrgLogin: React.FC = () => {
     let history = useHistory();
     let http = new httpProvider();
     const auth = new authProvider();
     const alert = useAlert();
-
-    const state = {
-        clients: [],
-    };
-
+    const [email, setEmail] = useState("");
+    const [passcode, setPasscode] = useState("");
+    const { t } = useTranslation();
     
     function unlock(e: any) {
         console.log('entered passcode: ', passcode);
@@ -72,37 +67,15 @@ const UserUnlock: React.FC = () => {
         })
     }
 
-    // https://stackoverflow.com/a/57767104/7052690
-    const [email, setEmail] = useState("");
-    const [passcode, setPasscode] = useState("");
-    const { t, i18n } = useTranslation();
-    let unlockTriesAmount: number = 1;
-
     function redirectForgotPass(e: any) {
         history.push('/forgotPass');
     }
 
-    // function unlock(e: any) {
-    //     let adminlogin = admin;
-    //     console.log('entered email: ', email);
-    //     console.log('unlock tries: ', unlockTriesAmount);
-    //     if(unlockTriesAmount > 2){
-    //         history.push('/lockdown');
-    //     }
-    //     else if (email === "") {
-    //         alert('Fill in a email');
-    //     }
-    //     else if (passcode === "") {
-    //         alert('Fill in a password');
-    //     }
-    //     else if (passcode === "password" && (email === "Admin" || "admin")) {
-    //         history.push('/dashboard')
-    //     }
-    //     else {
-    //         alert('Invalid login data');
-    //         unlockTriesAmount++;
-    //     }
-    // }
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            unlock(event);
+        }
+    }
 
     return (
         <div className="left-div">
@@ -121,7 +94,8 @@ const UserUnlock: React.FC = () => {
                 <input className="pass-input global-input" placeholder={t('login.pass.hint')}
                     type="password"
                     id="passcode"
-                    onChange={evt => setPasscode(evt.target.value)}>
+                    onChange={evt => setPasscode(evt.target.value)}
+                    onKeyPress={handleKeyPress} >
                 </input>
                 <br />
                 <button className="global-button global-button-green" onClick={unlock}>{t('login.check.label')}</button>
@@ -139,4 +113,4 @@ const UserUnlock: React.FC = () => {
     );
 }
 
-export default UserUnlock;
+export default OrgLogin;
