@@ -38,6 +38,7 @@ import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
 import UserLanding from './components/users/landing/userLanding';
 import UserResetPasscode from './components/users/resetPasscode/userResetPasscode';
+import LoginForm from './LoginForm';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
   authenticationPath: "/l/",
@@ -58,6 +59,7 @@ const App: React.FC = () => {
     <Suspense fallback={null}>
       <Router>
         <Switch>
+          <Route exact path="/test/login-form" component={LoginForm} />
           <Route exact path="/l/*" component={UserLanding} />
           <Route exact path="/claim" component={UserClaimLocker} />
           <Route exact path="/claim/mailsent" component={UserMailSent} />

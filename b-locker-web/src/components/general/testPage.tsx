@@ -51,6 +51,9 @@ const TestPage: React.FC = () => {
                 <LanguageSelector></LanguageSelector>
                 <ul>
                     <li>
+                        <NavLink to="/test/login-form">Test Login form</NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/">{t('thispage.label')}</NavLink>
                     </li>
                     <li>
