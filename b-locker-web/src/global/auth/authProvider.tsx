@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import store from 'store2';
 
 export class authProvider {
@@ -6,17 +5,9 @@ export class authProvider {
     
 
     public isAuthenticated(): boolean {
-        let token = store.get("jwt");
-        let secret = "";
-        let foundJWT: boolean = false;
-        if(process.env.REACT_APP_JWT_SECRET){
-            secret = process.env.REACT_APP_JWT_SECRET;
-            foundJWT = true;
-        }
+        let token = this.getJWT();
         if(token){
-            let decoded = jwt.verify(token, secret);
-            console.log('decoded jwt:', decoded);
-            return foundJWT; // CHANGE THIS
+            return true;
         }
         else{
             return false;
@@ -43,5 +34,9 @@ export class authProvider {
         else{
             return "";
         }
+    }
+
+    public logout(){
+        store.set("jwt", false, true);
     }
 }

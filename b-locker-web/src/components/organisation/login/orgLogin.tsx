@@ -19,8 +19,6 @@ const OrgLogin: React.FC = () => {
     const { t } = useTranslation();
     
     function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
-        console.log('entered username: ', email);
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
                 console.log('checkPasscode result:',res);
@@ -40,13 +38,10 @@ const OrgLogin: React.FC = () => {
             alert.error('Fill in a passcode');
         }
     }
-    
-    // '/managers/login?email=walker.bram@gmail.com&password=123123'
 
     function checkPasscode(passcode: string): Promise<boolean>{
         return new Promise<boolean>((resolve, reject)=>{
             http.postRequestQueryParams('/managers/login?email='+email+'&password='+passcode ).then((res)=>{
-                console.log('res:',res);
                 if(res.status === 200){
                     if(res.data.data.token){
                         handleJWT(res.data.data.token);
@@ -61,14 +56,19 @@ const OrgLogin: React.FC = () => {
                 }
             }).catch((error)=>{
                 if(error.response){
-                    console.log('error data:',error.response.data);
-                    if(error.response.data === "You have no more attempts left."){
-                        //history.push('/lockdown');
+                    let data = error.response.data;
+                    console.log('error data:', data);
+                    if(data.message){
+                        alert.error(data.message);
+                        if(data.message === "You have no more attempts left."){
+                            history.push('/lockdown');
+                        }
+                    }
+                    if(data.error === "Invalid credentials."){
+                        alert.error(data.error);
                     }
                     resolve(false);
-                    alert.error(error.response.data.message);
                 }
-                console.log('error:',error);
             });
         })
     }
