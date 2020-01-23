@@ -51,6 +51,7 @@ const loginProtectedRouteProps: ProtectedRouteProps = {
 
 window.addEventListener("beforeunload", (ev) =>{
     store.set("devDebugToken",false, true);
+    store.set("jwt",false, true);
 });
 
 const App: React.FC = () => {

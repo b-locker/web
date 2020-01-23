@@ -48,7 +48,13 @@ const OrgLogin: React.FC = () => {
             http.postRequestQueryParams('/managers/login?email='+email+'&password='+passcode ).then((res)=>{
                 console.log('res:',res);
                 if(res.status === 200){
-                    resolve(true);
+                    if(res.data.data.token){
+                        handleJWT(res.data.data.token);
+                        resolve(true);
+                    }
+                    else{
+                        reject(false);
+                    }
                 }
                 else{
                     reject(false);
@@ -65,6 +71,10 @@ const OrgLogin: React.FC = () => {
                 console.log('error:',error);
             });
         })
+    }
+
+    function handleJWT(jwt: string){
+        auth.setJWT(jwt);
     }
 
     function redirectForgotPass(e: any) {
