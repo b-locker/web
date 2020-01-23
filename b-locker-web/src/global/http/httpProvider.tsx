@@ -1,53 +1,35 @@
 import axios from 'axios';
+import { authProvider } from '../auth/authProvider';
 
 export class httpProvider {
-    apiURL: string = "https://b-locker.nl:8080/api/v1"
-    public getRequest(url: string, jwt?: string): Promise<any> {
+    apiURL: string = "https://b-locker.nl/api/v1"
+    authorizationHeaderName: string = "Authorization";
+    auth: authProvider = new authProvider();
+
+    private getOptions(): object {
+        let jwt = this.auth.getJWT();
         if (jwt) {
-            const options = {
-                headers: { 'token': jwt }
+            return {
+                headers: { "Authorization": "Bearer "+jwt }
             };
-            return axios.get(this.apiURL + url, options);
         }
         else {
-            return axios.get(this.apiURL + url);
+            return {};
         }
     }
 
-    public postRequestBodyData(url: string, data: any, jwt?: string): Promise<any> {
-        if (jwt) {
-            const options = {
-                headers: { 'token': jwt }
-            };
-            return axios.post(this.apiURL + url, data, options);
-        }
-        else {
-            return axios.post(this.apiURL + url, data);
-
-        }
-    }
-    public postRequestQueryParams(url: string, jwt?: string): Promise<any> {
-        if (jwt) {
-            const options = {
-                headers: { 'token': jwt }
-            };
-            return axios.post(this.apiURL + url, null, options);
-        }
-        else {
-            return axios.post(this.apiURL + url, null);
-
-        }
+    public getRequest(url: string): Promise<any> {
+        return axios.get(this.apiURL + url, this.getOptions());
     }
 
-    public putRequest(url: string, jwt?: string): Promise<any> {
-        if (jwt) {
-            const options = {
-                headers: { 'token': jwt }
-            };
-            return axios.put(this.apiURL + url, null, options);
-        }
-        else {
-            return axios.put(this.apiURL + url);
-        }
+    public postRequestBodyData(url: string, data: any): Promise<any> {
+        return axios.post(this.apiURL + url, data, this.getOptions());
+    }
+    public postRequestQueryParams(url: string): Promise<any> {
+        return axios.post(this.apiURL + url, null, this.getOptions());
+    }
+
+    public putRequest(url: string): Promise<any> {
+        return axios.put(this.apiURL + url, null, this.getOptions());
     }
 }

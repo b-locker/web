@@ -24,7 +24,7 @@ const OrgNavigation: React.FC = () => {
         history.push('/lockers');
     }
     function redirectLogin(e: any) {
-        auth.setDevDebugToken(false);
+        auth.logout();
         history.push('/login');
     }
 

@@ -19,8 +19,6 @@ const OrgLogin: React.FC = () => {
     const { t } = useTranslation();
     
     function unlock(e: any) {
-        console.log('entered passcode: ', passcode);
-        console.log('entered username: ', email);
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
                 console.log('checkPasscode result:',res);
@@ -40,31 +38,43 @@ const OrgLogin: React.FC = () => {
             alert.error('Fill in a passcode');
         }
     }
-    
-    // '/managers/login?email=walker.bram@gmail.com&password=123123'
 
     function checkPasscode(passcode: string): Promise<boolean>{
         return new Promise<boolean>((resolve, reject)=>{
             http.postRequestQueryParams('/managers/login?email='+email+'&password='+passcode ).then((res)=>{
-                console.log('res:',res);
                 if(res.status === 200){
-                    resolve(true);
+                    if(res.data.data.token){
+                        handleJWT(res.data.data.token);
+                        resolve(true);
+                    }
+                    else{
+                        reject(false);
+                    }
                 }
                 else{
                     reject(false);
                 }
             }).catch((error)=>{
                 if(error.response){
-                    console.log('error data:',error.response.data);
-                    if(error.response.data === "You have no more attempts left."){
-                        //history.push('/lockdown');
+                    let data = error.response.data;
+                    console.log('error data:', data);
+                    if(data.message){
+                        alert.error(data.message);
+                        if(data.message === "You have no more attempts left."){
+                            history.push('/lockdown');
+                        }
+                    }
+                    if(data.error === "Invalid credentials."){
+                        alert.error(data.error);
                     }
                     resolve(false);
-                    alert.error(error.response.data.message);
                 }
-                console.log('error:',error);
             });
         })
+    }
+
+    function handleJWT(jwt: string){
+        auth.setJWT(jwt);
     }
 
     function redirectForgotPass(e: any) {
@@ -78,12 +88,12 @@ const OrgLogin: React.FC = () => {
     }
 
     return (
-        <div className="left-div">
+        <div className="left-div-login">
             <UserHeader></UserHeader>
-            <div className="unlock-div screen-rule">
-                <div className="title-icon-div">
+            <div className="unlock-div-login screen-rule">
+                <div className="title-icon-login-div">
                     <p className="global-page-title unlock-title">{t('login.title.label')}</p>
-                    <img className="lock-icon" src={lockIcon} alt='' />
+                    <img className="lock-icon-login" src={lockIcon} alt='' />
                 </div>
                 <p className="global-desc-label">{t('login.desc.label')}</p>
                 <input className="pass-input global-input" placeholder={t('login.user.hint')}
@@ -102,9 +112,9 @@ const OrgLogin: React.FC = () => {
                 <br />
                 <button className="href-button" onClick={redirectForgotPass}>{t('login.forgotpass.label')}</button>
             </div>
-            <div className="right-div">
+            <div className="right-div-login">
                 <div className="centered">
-                    <img className="lockers" src={lockers} alt='Lockers' />
+                    <img className="lockers-login" src={lockers} alt='Lockers' />
                     
                 </div>
             </div>
