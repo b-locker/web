@@ -35,7 +35,7 @@ const UserUnlock: React.FC = () => {
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
                 if(res){
-                    auth.setDevDebugToken(true);
+                    auth.setJWT("ThisIsNotReallyAJWT");
                     history.push('/info?guid='+guid);
                 }
                 else{

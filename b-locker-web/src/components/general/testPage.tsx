@@ -3,14 +3,14 @@ import './testPage.scss'
 import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../../global/i18n/languageSelector';
-import { httpProvider } from '../../global/http/httpProvider';
+//import { httpProvider } from '../../global/http/httpProvider';
 
 const TestPage: React.FC = () => {
     const { t } = useTranslation();
-    let http = new httpProvider();
+    //let http = new httpProvider();
     let history = useHistory();
     const [guid, setGuid] = useState("Wa1bkwWx");
-    const lockerCall = 'lockers';
+    //const lockerCall = 'lockers';
     const [lockerData, setLockerData] = useState([{
         id: 0,
         guid: "",
@@ -27,15 +27,15 @@ const TestPage: React.FC = () => {
 
     function componentConsole(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            http.getRequest('/' + lockerCall).then((res) => {
-                let data = res.data.data;
-                data.forEach(locker => {
-                    locker.active_claim = (locker.active_claim ? "Used" : "Unused");
-                });
-                resolve(res.data.data);
-            }).catch((error) => {
-                reject();
-            });
+            // http.getRequest('/' + lockerCall).then((res) => {
+            //     let data = res.data.data;
+            //     data.forEach(locker => {
+            //         locker.active_claim = (locker.active_claim ? "Used" : "Unused");
+            //     });
+            //     resolve(res.data.data);
+            // }).catch((error) => {
+            //     reject();
+            // });
         })
     }
 

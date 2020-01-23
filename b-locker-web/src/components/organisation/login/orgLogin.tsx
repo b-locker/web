@@ -88,12 +88,12 @@ const OrgLogin: React.FC = () => {
     }
 
     return (
-        <div className="left-div">
+        <div className="left-div-login">
             <UserHeader></UserHeader>
-            <div className="unlock-div screen-rule">
-                <div className="title-icon-div">
+            <div className="unlock-div-login screen-rule">
+                <div className="title-icon-login-div">
                     <p className="global-page-title unlock-title">{t('login.title.label')}</p>
-                    <img className="lock-icon" src={lockIcon} alt='' />
+                    <img className="lock-icon-login" src={lockIcon} alt='' />
                 </div>
                 <p className="global-desc-label">{t('login.desc.label')}</p>
                 <input className="pass-input global-input" placeholder={t('login.user.hint')}
@@ -112,9 +112,9 @@ const OrgLogin: React.FC = () => {
                 <br />
                 <button className="href-button" onClick={redirectForgotPass}>{t('login.forgotpass.label')}</button>
             </div>
-            <div className="right-div">
+            <div className="right-div-login">
                 <div className="centered">
-                    <img className="lockers" src={lockers} alt='Lockers' />
+                    <img className="lockers-login" src={lockers} alt='Lockers' />
                     
                 </div>
             </div>

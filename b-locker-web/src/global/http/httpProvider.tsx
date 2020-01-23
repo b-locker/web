@@ -10,7 +10,7 @@ export class httpProvider {
         let jwt = this.auth.getJWT();
         if (jwt) {
             return {
-                headers: { "Authorization": jwt }
+                headers: { "Authorization": "Bearer "+jwt }
             };
         }
         else {
