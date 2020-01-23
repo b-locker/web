@@ -57,7 +57,7 @@ describe("<LoginForm />", () => {
         const onSubmit = jest.fn();
         const { findByTestId } = renderLoginForm({
           onSubmit,
-          shouldRemember: true
+          shouldRemember: false
         });
         const username = await findByTestId("username");
         const password = await findByTestId("password");
@@ -66,7 +66,7 @@ describe("<LoginForm />", () => {
       
         fireEvent.change(username, { target: { value: "test" } });
         fireEvent.change(password, { target: { value: "password" } });
-        fireEvent.click(remember);
+        fireEvent.click(remember, { target: { value: true } });
         fireEvent.click(submit);
       
         expect(onSubmit).toHaveBeenCalledWith("test", "password", true);
