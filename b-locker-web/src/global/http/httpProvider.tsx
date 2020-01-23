@@ -1,16 +1,28 @@
 import axios from 'axios';
+import store from 'store2';
 
 export class httpProvider {
     apiURL: string = "https://b-locker.nl:8080/api/v1"
-    public getRequest(url: string, jwt?: string): Promise<any> {
+    public getRequest(url: string): Promise<any> {
+        let jwt = store.get("jwt");
         if (jwt) {
-            const options = {
-                headers: { 'token': jwt }
-            };
-            return axios.get(this.apiURL + url, options);
+            return axios.get(this.apiURL + url, {
+                headers: {
+                    'token': jwt
+                },
+                proxy: {
+                    host: '127.0.0.1',
+                    port: 8080,
+                }
+            });
         }
         else {
-            return axios.get(this.apiURL + url);
+            return axios.get(this.apiURL + url, {
+                proxy: {
+                    host: '127.0.0.1',
+                    port: 8080,
+                }
+            });
         }
     }
 
