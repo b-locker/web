@@ -21,7 +21,6 @@ const OrgLogin: React.FC = () => {
     function unlock(e: any) {
         if (passcode) {
             checkPasscode(passcode).then((res)=>{
-                console.log('checkPasscode result:',res);
                 if(res){
                     auth.setDevDebugToken(true);
                     history.push('/dashboard');
@@ -57,7 +56,6 @@ const OrgLogin: React.FC = () => {
             }).catch((error)=>{
                 if(error.response){
                     let data = error.response.data;
-                    console.log('error data:', data);
                     if(data.message){
                         alert.error(data.message);
                         if(data.message === "You have no more attempts left."){
