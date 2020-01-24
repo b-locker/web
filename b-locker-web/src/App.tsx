@@ -61,6 +61,13 @@ window.addEventListener("beforeunload", (ev) =>{
   store.set("guid", false, true);
 });
 
+let pathName = window.location.href;
+if(pathName.includes("/info")){
+  let infoGuid = pathName.substr(pathName.lastIndexOf("=") + 1);
+  store.set("guid", infoGuid);
+}
+
+
 const App: React.FC = () => {
   return (
     <Suspense fallback={null}>

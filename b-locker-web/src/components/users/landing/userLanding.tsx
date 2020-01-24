@@ -46,7 +46,7 @@ const UserLanding: React.FC = () => {
                 }
                 else {
                     if (isMounted) {
-                        setLoading(false);
+                        //setLoading(false);
                         history.push('/unlock?guid='+guid);
                     }
                 }

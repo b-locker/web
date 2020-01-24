@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Redirect, Route, RouteProps, useHistory } from 'react-router';
+import { Redirect, Route, RouteProps } from 'react-router';
 import { authProvider } from '../global/auth/authProvider';
 
 export interface ProtectedRouteProps extends RouteProps {
@@ -10,8 +10,6 @@ export interface ProtectedRouteProps extends RouteProps {
 const auth = new authProvider();
 
 export const ProtectedRoute: React.FC<ProtectedRouteProps> = props => {
-    let history = useHistory();
-    console.log('history:', history);
     let redirectPath = '';
     let isAuthenticated = auth.isAuthenticated();
     if (!isAuthenticated) {
