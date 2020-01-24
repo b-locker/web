@@ -19,6 +19,9 @@ const UserRegComplete: React.FC = () => {
     if(!locationValues.guid){
         history.push('/unavailable');
     }
+    else{
+        store.set("guid", locationValues.guid);
+    }
 
     function redirectToLander(){
         history.push('/l/'+guid);

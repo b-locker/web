@@ -49,11 +49,24 @@ const loginProtectedRouteProps: ProtectedRouteProps = {
   isAllowed: false
 }
 
-window.addEventListener("beforeunload", (ev) =>{
+window.addEventListener("unload", (ev) =>{
     store.set("devDebugToken",false, true);
     store.set("jwt",false, true);
     store.set("guid", false, true);
 });
+
+window.addEventListener("beforeunload", (ev) =>{
+  store.set("devDebugToken",false, true);
+  store.set("jwt",false, true);
+  store.set("guid", false, true);
+});
+
+let pathName = window.location.href;
+if(pathName.includes("/info")){
+  let infoGuid = pathName.substr(pathName.lastIndexOf("=") + 1);
+  store.set("guid", infoGuid);
+}
+
 
 const App: React.FC = () => {
   return (
