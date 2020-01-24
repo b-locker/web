@@ -20,7 +20,7 @@
     "global.month.dec": "December",
     "global.developed.label": "Ontwikkeld door Bodach",
     "error.invalid.email": "Vul een geldig email-adres in",
-    "error.invalid.passcode": "Vul een geldige code in",
+    "error.invalid.passcode": "Vul een geldige code in, gebruik tenminste 6 karakters",
     "error.somethingwentwrong.global": "Er ging iets fout",
     "hello.label": "Hallo",
     "thankyou.label": "Bedankt",

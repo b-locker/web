@@ -20,7 +20,7 @@
     "global.month.dec": "December",
     "global.developed.label": "Developed by Bodach",
     "error.invalid.email": "Please enter a valid email",
-    "error.invalid.passcode": "Please enter a valid passcode",
+    "error.invalid.passcode": "Please enter a valid passcode, it has to be at least 6 characters",
     "error.somethingwentwrong.global": "Something went wrong",
     "hello.label": "Hello",
     "thankyou.label": "Thank you",
