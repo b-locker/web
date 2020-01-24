@@ -93,7 +93,11 @@ const UserSetPasscode: React.FC = () => {
         })
     }
 
-
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            onSetPasscodeClick(event);
+        }
+    }
 
     return (
         <div className="main-div">
@@ -109,7 +113,8 @@ const UserSetPasscode: React.FC = () => {
                 <input className="global-input" placeholder={t('setPasscode.passcode.hint')}
                     type="password"
                     id="passcode"
-                    onChange={evt => setPasscode(evt.target.value)}>
+                    onChange={evt => setPasscode(evt.target.value)}
+                    onKeyPress={handleKeyPress} >
                 </input>
                 <button className="global-button global-button-green" onClick={onSetPasscodeClick}>{t('setPasscode.finish.button')}</button>
             </div>

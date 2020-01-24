@@ -49,10 +49,16 @@ const loginProtectedRouteProps: ProtectedRouteProps = {
   isAllowed: false
 }
 
-window.addEventListener("beforeunload", (ev) =>{
+window.addEventListener("unload", (ev) =>{
     store.set("devDebugToken",false, true);
     store.set("jwt",false, true);
     store.set("guid", false, true);
+});
+
+window.addEventListener("beforeunload", (ev) =>{
+  store.set("devDebugToken",false, true);
+  store.set("jwt",false, true);
+  store.set("guid", false, true);
 });
 
 const App: React.FC = () => {

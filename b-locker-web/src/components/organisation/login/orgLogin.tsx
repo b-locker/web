@@ -29,7 +29,6 @@ const OrgLogin: React.FC = () => {
                     // Do nothing, this is already handled in the checkPasscode method
                 }
             }).catch((err)=>{
-                console.log('checkPasscode error:',err); 
                 alert.error(t('error.somethingwentwrong.global'))
             }) 
         }

@@ -8,7 +8,7 @@ import { useAlert } from 'react-alert';
 import store from 'store2';
 
 const UserInfo: React.FC = () => {
-
+    console.log('the info page was loaded');
     const { t, i18n } = useTranslation();
     let history = useHistory();
     let http = new httpProvider();

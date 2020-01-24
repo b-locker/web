@@ -31,22 +31,29 @@ const UserLanding: React.FC = () => {
     })
 
     function checkLocker() {
-        isLockerAvailable().then((res) => {
-            if (res) {
-                if (isMounted) {
-                    setLoading(false);
-                    history.push('/claim?guid='+guid);
+        if(guid === "false"){
+            alert.error(t('error.somethingwentwrong.global'));
+            history.push('/unavailable');
+
+        }
+        else{
+            isLockerAvailable().then((res) => {
+                if (res) {
+                    if (isMounted) {
+                        setLoading(false);
+                        history.push('/claim?guid='+guid);
+                    }
                 }
-            }
-            else {
-                if (isMounted) {
-                    setLoading(false);
-                    history.push('/unlock?guid='+guid);
+                else {
+                    if (isMounted) {
+                        setLoading(false);
+                        history.push('/unlock?guid='+guid);
+                    }
                 }
-            }
-        }).catch((error)=>{
-            history.push('/unavailable')
-        })
+            }).catch((error)=>{
+                history.push('/unavailable')
+            })
+        }
     }
 
     function isLockerAvailable(): Promise<boolean> {
