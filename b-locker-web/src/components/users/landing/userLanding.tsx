@@ -28,7 +28,7 @@ const UserLanding: React.FC = () => {
         return function cleanup() {
             isMounted.current = false;
         }
-    })
+    });
 
     function checkLocker() {
         if(guid === "false"){

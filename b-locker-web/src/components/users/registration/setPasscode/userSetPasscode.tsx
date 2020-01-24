@@ -88,6 +88,7 @@ const UserSetPasscode: React.FC = () => {
                 '&setup_token=' + token).then((res) => {
                     resolve();
                 }).catch((error) => {
+                    console.log(error.response);
                     reject(error);
                 });
         })
