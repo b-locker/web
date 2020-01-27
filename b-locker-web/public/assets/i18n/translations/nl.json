@@ -22,6 +22,8 @@
     "error.invalid.email": "Vul een geldig email-adres in",
     "error.invalid.passcode": "Vul een geldige code in, gebruik tenminste 6 karakters",
     "error.somethingwentwrong.global": "Er ging iets fout",
+    "home.welcome.label": "Welkom!",
+    "home.desc.label": "Dit is de home pagina van B-Locker",
     "hello.label": "Hallo",
     "thankyou.label": "Bedankt",
     "goback.button": "GA TERUG",
