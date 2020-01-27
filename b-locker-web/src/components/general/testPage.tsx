@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from 'react';
+import React, { Suspense, useState } from 'react';
 import './testPage.scss'
 import { NavLink, useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
