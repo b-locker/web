@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import UserHeader from '../../header/userHeader';
 import { useHistory, useLocation } from 'react-router';
@@ -6,6 +6,7 @@ import queryString from 'querystring';
 import validator from 'validator';
 import { useAlert } from 'react-alert';
 import { httpProvider } from '../../../../global/http/httpProvider';
+import GridLoader from 'react-spinners/GridLoader';
 
 const UserClaimLocker: React.FC = () => {
     const { t } = useTranslation();
@@ -15,6 +16,16 @@ const UserClaimLocker: React.FC = () => {
     let history = useHistory();
     let location = useLocation();
     let locationValues = queryString.parse((location.search.substr(1)));
+    const [loading, setLoading] = useState(false);
+    let isMounted = useRef(false);
+
+    useEffect(() => {
+        isMounted.current = true;
+
+        return function cleanup() {
+            isMounted.current = false;
+        }
+    });
 
     if(!locationValues.guid){
         alert.error(t('error.somethingwentwrong.global'));
@@ -24,6 +35,7 @@ const UserClaimLocker: React.FC = () => {
     function claim(e: any) {
         // Check if email is valid
         if (validator.isEmail(email)) {
+            setLoading(true);
             sendMailRequest(locationValues.guid.toString(), email)
         }
         else {
@@ -34,9 +46,15 @@ const UserClaimLocker: React.FC = () => {
 
     function sendMailRequest(guid: string, email: string){
         http.postRequestQueryParams('/lockers/'+guid+'/claims?email='+email).then((res)=>{
-            history.push('/claim/mailsent');
+            if(isMounted){
+                setLoading(false);
+                history.push('/claim/mailsent');
+            }
         }).catch((error)=>{
-            alert.error(t('error.somethingwentwrong.global'))
+            if(error){
+                setLoading(false);
+                alert.error(t('error.somethingwentwrong.global'))
+            }
         });
     }
 
@@ -55,6 +73,15 @@ const UserClaimLocker: React.FC = () => {
                 </input>
                 <button className="global-button global-button-green" onClick={claim}>{t('claim.claimlocker.button')}</button>
                 <p className="global-desc-label ">{t('claim.tos.label')}</p>
+                <GridLoader
+                    css={`
+                    padding-top: 30px;
+                    margin: 0 auto;
+                `}
+                    size={25}
+                    color={"#38dbdb"}
+                    loading={loading}
+                />
             </div>
         </div>
     );

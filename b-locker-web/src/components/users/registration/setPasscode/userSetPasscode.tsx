@@ -5,6 +5,8 @@ import { useHistory, useLocation } from 'react-router';
 import queryString from 'querystring';
 import { useAlert } from 'react-alert';
 import { httpProvider } from '../../../../global/http/httpProvider';
+import GridLoader from 'react-spinners/GridLoader';
+import store from 'store2';
 
 const UserSetPasscode: React.FC = () => {
     const { t, i18n } = useTranslation();
@@ -18,6 +20,7 @@ const UserSetPasscode: React.FC = () => {
     expirationDate.setDate(expirationDate.getDate() + 7);
     let daysLeft = Math.ceil((expirationDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
     let locker_guid, token, claim_id;
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         parseLocationString(location).then(() => {
@@ -66,14 +69,21 @@ const UserSetPasscode: React.FC = () => {
     }
 
     function onSetPasscodeClick(e: any) {
+        if(locker_guid){
+            store.set("guid", locker_guid, true);
+        }
+        setLoading(true);
         if (validatePasscode(passcode)) {
             sendSetPasscodeData().then(() => {
+                setLoading(false);
                 history.push('/claim/complete?guid='+locker_guid);
             }).catch((error) => {
+                setLoading(false);
                 alert.error(t('error.somethingwentwrong.global'));
             })
         }
         else {
+            setLoading(false);
             alert.error(t('error.invalid.passcode'));
         }
     }
@@ -118,6 +128,15 @@ const UserSetPasscode: React.FC = () => {
                     onKeyPress={handleKeyPress} >
                 </input>
                 <button className="global-button global-button-green" onClick={onSetPasscodeClick}>{t('setPasscode.finish.button')}</button>
+                <GridLoader
+                    css={`
+                    padding-top: 30px;
+                    margin: 0 auto;
+                `}
+                    size={25}
+                    color={"#38dbdb"}
+                    loading={loading}
+                />
             </div>
         </div>
     );

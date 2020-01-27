@@ -16,33 +16,23 @@ const UserEndOwnership: React.FC = () => {
     let alert = useAlert();
     let guid = store.get("guid");
     let lockerId = store.get("locker_id");
-    let isMounted = useRef(false);
-
-    useEffect(() => {
-        isMounted.current = true;
-
-        return function cleanup() {
-            isMounted.current = false;
-        }
-    });
-
 
     function endOwnership(e: any) {
         if (passcode) {
             setLoading(true);
-            checkPasscode(passcode).then((res)=>{
-                if(res){
+            checkPasscode(passcode).then((res) => {
+                if (res) {
                     http.postRequestQueryParams(
-                        '/lockers/'+guid+
-                        '/claims/'+lockerId+
-                        '/end'+
-                        '?key=' + passcode).then((res)=>{
-                            if(res){
+                        '/lockers/' + guid +
+                        '/claims/' + lockerId +
+                        '/end' +
+                        '?key=' + passcode).then((res) => {
+                            if (res) {
                                 setLoading(false);
                                 history.push('/goodbye')
                             }
-                        }).catch((error)=>{
-                            if(error){
+                        }).catch((error) => {
+                            if (error) {
                                 setLoading(false);
                                 alert.error(t('error.somethingwentwrong.global'))
                             }
@@ -56,18 +46,18 @@ const UserEndOwnership: React.FC = () => {
         }
     }
 
-    function checkPasscode(passcode: string): Promise<boolean>{
-        return new Promise<boolean>((resolve, reject)=>{
-            http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
-                if(res.status === 200){
+    function checkPasscode(passcode: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            http.postRequestQueryParams('/lockers/' + guid + '/unlock?key=' + passcode).then((res) => {
+                if (res.status === 200) {
                     resolve(true);
                 }
-                else{
+                else {
                     reject(false);
                 }
-            }).catch((error)=>{
-                if(error.response){
-                    if(error.response.data === "You have no more attempts left."){
+            }).catch((error) => {
+                if (error.response) {
+                    if (error.response.data === "You have no more attempts left.") {
                         //history.push('/lockdown');
                     }
                     resolve(false);
@@ -94,14 +84,14 @@ const UserEndOwnership: React.FC = () => {
                 <br />
                 <button className="global-button global-button-red" onClick={endOwnership}>{t('end.imsure.button')}</button>
                 <GridLoader
-                css={`
+                    css={`
                     padding-top: 30px;
                     margin: 0 auto;
                 `}
-                size={25}
-                color={"#38dbdb"}
-                loading={loading}
-            />
+                    size={25}
+                    color={"#38dbdb"}
+                    loading={loading}
+                />
             </div>
         </div>
     );
