@@ -22,6 +22,8 @@
     "error.invalid.email": "Please enter a valid email",
     "error.invalid.passcode": "Please enter a valid passcode, it has to be at least 6 characters",
     "error.somethingwentwrong.global": "Something went wrong",
+    "home.welcome.label": "Welcome!",
+    "home.desc.label": "This is the homepage of B-Locker",
     "hello.label": "Hello",
     "thankyou.label": "Thank you",
     "goback.button": "GO BACK HOME",

@@ -4,32 +4,36 @@ import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
 import { httpProvider } from '../../../global/http/httpProvider';
 import { useAlert } from 'react-alert';
+import GridLoader from 'react-spinners/GridLoader';
 import store from 'store2';
 
 const UserEndOwnership: React.FC = () => {
     const { t } = useTranslation();
     const [passcode, setPasscode] = useState("");
+    const [loading, setLoading] = useState(false);
     let history = useHistory();
     let http = new httpProvider();
     let alert = useAlert();
     let guid = store.get("guid");
     let lockerId = store.get("locker_id");
 
-
     function endOwnership(e: any) {
         if (passcode) {
-            checkPasscode(passcode).then((res)=>{
-                if(res){
+            setLoading(true);
+            checkPasscode(passcode).then((res) => {
+                if (res) {
                     http.postRequestQueryParams(
-                        '/lockers/'+guid+
-                        '/claims/'+lockerId+
-                        '/end'+
-                        '?key=' + passcode).then((res)=>{
-                            if(res){
+                        '/lockers/' + guid +
+                        '/claims/' + lockerId +
+                        '/end' +
+                        '?key=' + passcode).then((res) => {
+                            if (res) {
+                                setLoading(false);
                                 history.push('/goodbye')
                             }
-                        }).catch((error)=>{
-                            if(error){
+                        }).catch((error) => {
+                            if (error) {
+                                setLoading(false);
                                 alert.error(t('error.somethingwentwrong.global'))
                             }
                         })
@@ -37,22 +41,23 @@ const UserEndOwnership: React.FC = () => {
             })
         }
         else {
+            setLoading(false);
             alert.error(t('error.invalid.passcode'));
         }
     }
 
-    function checkPasscode(passcode: string): Promise<boolean>{
-        return new Promise<boolean>((resolve, reject)=>{
-            http.postRequestQueryParams('/lockers/'+guid+'/unlock?key='+passcode).then((res)=>{
-                if(res.status === 200){
+    function checkPasscode(passcode: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            http.postRequestQueryParams('/lockers/' + guid + '/unlock?key=' + passcode).then((res) => {
+                if (res.status === 200) {
                     resolve(true);
                 }
-                else{
+                else {
                     reject(false);
                 }
-            }).catch((error)=>{
-                if(error.response){
-                    if(error.response.data === "You have no more attempts left."){
+            }).catch((error) => {
+                if (error.response) {
+                    if (error.response.data === "You have no more attempts left.") {
                         //history.push('/lockdown');
                     }
                     resolve(false);
@@ -78,6 +83,15 @@ const UserEndOwnership: React.FC = () => {
                 </input>
                 <br />
                 <button className="global-button global-button-red" onClick={endOwnership}>{t('end.imsure.button')}</button>
+                <GridLoader
+                    css={`
+                    padding-top: 30px;
+                    margin: 0 auto;
+                `}
+                    size={25}
+                    color={"#38dbdb"}
+                    loading={loading}
+                />
             </div>
         </div>
     );

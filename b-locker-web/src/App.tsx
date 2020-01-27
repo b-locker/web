@@ -13,7 +13,6 @@ import OrgDashboard from './components/organisation/dashboard/orgDashboard';
 import SingleLocker from './components/organisation/singlelocker/orgSingleLocker';
 import OrgLockers from './components/organisation/lockers/orgLockers';
 import PageNotFound from './components/general/pageNotFound';
-import TestPage from './components/general/testPage';
 import UserForgotPass from './components/users/forgotPass/userForgotPass';
 import UserChangePass from './components/users/changePass/userChangePass';
 import UserEndOwnership from './components/users/endOwnership/userEndOwnership';
@@ -38,6 +37,7 @@ import ProtectedRoute, { ProtectedRouteProps } from './models/protectedRoute';
 import store from 'store2';
 import UserLanding from './components/users/landing/userLanding';
 import UserResetPasscode from './components/users/resetPasscode/userResetPasscode';
+import HomePage from './components/general/homePage';
 
 const unlockProtectedRouteProps: ProtectedRouteProps = {
   authenticationPath: "/l/",
@@ -62,7 +62,7 @@ window.addEventListener("beforeunload", (ev) =>{
 });
 
 let pathName = window.location.href;
-if(pathName.includes("/info")){
+if(pathName.includes("/info") || pathName.includes("/changePass") || pathName.includes("/endOwnership")){
   let infoGuid = pathName.substr(pathName.lastIndexOf("=") + 1);
   store.set("guid", infoGuid);
 }
@@ -100,7 +100,7 @@ const App: React.FC = () => {
           <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/relogin" component={OrgReLogin} />
           <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/unlocklockers" component={OrgSentence} />
           <ProtectedRoute {...loginProtectedRouteProps} exact={true} path="/success" component={OrgSuccess} />
-          <Route exact path="/" component={TestPage} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/404" component={PageNotFound} />
           <Route path="/*">
             <Redirect to="/404" />

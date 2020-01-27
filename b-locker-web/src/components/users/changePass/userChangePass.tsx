@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import { useAlert } from 'react-alert';
 import store from 'store2';
 import { httpProvider } from '../../../global/http/httpProvider';
+import GridLoader from 'react-spinners/GridLoader';
 
 const UserChangePass: React.FC = () => {
     const { t } = useTranslation();
@@ -15,8 +16,10 @@ const UserChangePass: React.FC = () => {
     let lockerId = store.get("locker_id");
     const [currentPasscode, setCurrentPasscode] = useState("");
     const [newPasscode, setNewPasscode] = useState("");
+    const [loading, setLoading] = useState(false);
 
     function setPass(e: any) {
+        setLoading(true);
         if (currentPasscode && newPasscode) {
             if(newPasscode !== currentPasscode){
                 checkPasscode(currentPasscode).then((res)=>{
@@ -27,10 +30,12 @@ const UserChangePass: React.FC = () => {
                         '?key=' + currentPasscode +
                         '&new_key=' + newPasscode).then((res)=>{
                             if(res){
+                                setLoading(false);
                                 history.push('/passChanged');
                             }
                     }).catch((error)=>{
                         if(error){
+                            setLoading(false);
                             alert.error(t('error.somethingwentwrong.global'));
                         }
                     });
@@ -38,6 +43,7 @@ const UserChangePass: React.FC = () => {
             }
         }
         else {
+            setLoading(false);
             alert.error(t('error.invalid.passcode'));
         }
     }
@@ -90,6 +96,15 @@ const UserChangePass: React.FC = () => {
                     onChange={evt => setNewPasscode(evt.target.value)}>
                 </input>
                 <button className="global-button global-button-blue" onClick={setPass}>{t('changePass.setPass.button')}</button>
+                <GridLoader
+                    css={`
+                    padding-top: 30px;
+                    margin: 0 auto;
+                `}
+                    size={25}
+                    color={"#38dbdb"}
+                    loading={loading}
+                />
             </div>
         </div>
     );

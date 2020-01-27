@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
 import UserHeader from '../header/userHeader';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -15,42 +15,34 @@ const UserLanding: React.FC = () => {
     let history = useHistory();
     let http: httpProvider = new httpProvider();
     let guid: string = location.pathname.replace("/l/", "");
-    if(!guid){
+    if (!guid) {
         guid = store.get("guid");
     }
-    let isMounted = useRef(false);
 
     // useEffect is similar to componenDidMount
     useEffect(() => {
-        isMounted.current = true;
         checkLocker();
-
-        return function cleanup() {
-            isMounted.current = false;
-        }
-    })
+    });
 
     function checkLocker() {
-        if(guid === "false"){
+        if (guid === "false") {
             alert.error(t('error.somethingwentwrong.global'));
-            history.push('/unavailable');
+            history.push('/');
 
         }
-        else{
+        else {
             isLockerAvailable().then((res) => {
                 if (res) {
-                    if (isMounted) {
-                        setLoading(false);
-                        history.push('/claim?guid='+guid);
-                    }
+                    setLoading(false);
+                    history.push('/claim?guid=' + guid);
+
                 }
                 else {
-                    if (isMounted) {
-                        //  setLoading(false);
-                        history.push('/unlock?guid='+guid);
-                    }
+                    //  setLoading(false);
+                    history.push('/unlock?guid=' + guid);
+
                 }
-            }).catch((error)=>{
+            }).catch((error) => {
                 history.push('/unavailable')
             })
         }
@@ -60,7 +52,7 @@ const UserLanding: React.FC = () => {
         return new Promise<boolean>((resolve, reject) => {
             http.getRequest('/lockers/' + guid).then((res) => {
                 let data = res.data.data;
-                if(data.active_claim == null){
+                if (data.active_claim == null) {
                     resolve(true);
                 }
                 else {
