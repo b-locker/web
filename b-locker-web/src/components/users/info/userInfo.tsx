@@ -35,11 +35,11 @@ const UserInfo: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     function changePass(e: any) {
-        history.push('/changePass');
+        history.push('/changePass?guid='+guid);
     }
 
     function endOwnership(e: any) {
-        history.push('/endOwnership');
+        history.push('/endOwnership?guid='+guid);
     }
 
     useEffect(() => {

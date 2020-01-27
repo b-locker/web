@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
 import UserHeader from '../header/userHeader';
 import { useLocation, useHistory } from 'react-router-dom';
@@ -27,7 +27,7 @@ const UserLanding: React.FC = () => {
     function checkLocker() {
         if (guid === "false") {
             alert.error(t('error.somethingwentwrong.global'));
-            history.push('/unavailable');
+            history.push('/');
 
         }
         else {

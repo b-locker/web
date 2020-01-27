@@ -62,7 +62,7 @@ window.addEventListener("beforeunload", (ev) =>{
 });
 
 let pathName = window.location.href;
-if(pathName.includes("/info")){
+if(pathName.includes("/info") || pathName.includes("/changePass") || pathName.includes("/endOwnership")){
   let infoGuid = pathName.substr(pathName.lastIndexOf("=") + 1);
   store.set("guid", infoGuid);
 }

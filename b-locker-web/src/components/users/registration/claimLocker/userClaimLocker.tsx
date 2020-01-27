@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import UserHeader from '../../header/userHeader';
 import { useHistory, useLocation } from 'react-router';
@@ -17,17 +17,8 @@ const UserClaimLocker: React.FC = () => {
     let location = useLocation();
     let locationValues = queryString.parse((location.search.substr(1)));
     const [loading, setLoading] = useState(false);
-    let isMounted = useRef(false);
 
-    useEffect(() => {
-        isMounted.current = true;
-
-        return function cleanup() {
-            isMounted.current = false;
-        }
-    });
-
-    if(!locationValues.guid){
+    if (!locationValues.guid) {
         alert.error(t('error.somethingwentwrong.global'));
         history.push('/unavailable');
     }
@@ -44,14 +35,12 @@ const UserClaimLocker: React.FC = () => {
     }
 
 
-    function sendMailRequest(guid: string, email: string){
-        http.postRequestQueryParams('/lockers/'+guid+'/claims?email='+email).then((res)=>{
-            if(isMounted){
-                setLoading(false);
-                history.push('/claim/mailsent');
-            }
-        }).catch((error)=>{
-            if(error){
+    function sendMailRequest(guid: string, email: string) {
+        http.postRequestQueryParams('/lockers/' + guid + '/claims?email=' + email).then((res) => {
+            setLoading(false);
+            history.push('/claim/mailsent');
+        }).catch((error) => {
+            if (error) {
                 setLoading(false);
                 alert.error(t('error.somethingwentwrong.global'))
             }
