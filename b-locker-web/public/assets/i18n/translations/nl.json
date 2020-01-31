@@ -104,5 +104,8 @@
     "login.user.hint":"Gebruikersnaam",
     "login.pass.hint":"Wachtwoord",
     "login.check.label": "Login",
-    "login.desc.label": "Voer de inloggegevens van uw account in."
+    "login.desc.label": "Voer de inloggegevens van uw account in.",
+    "lift.lockdown.label": "Account vergrendeling opheffen",
+    "lift.desc.label": "Het lijkt erop dat iemand uw locker probeerde te openen. De vergrendeling wordt nu opgeheven.",
+    "lift.success.label": "Vergrendeling succesvol opgeheven."
 }

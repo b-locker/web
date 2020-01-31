@@ -105,5 +105,8 @@
     "login.pass.hint":"Password",
     "login.check.label": "Login",
     "login.desc.label": "Enter your account's login credentials.",
-    "login.forgotpass.label": "Wachtwoord vergeten?"
+    "login.forgotpass.label": "Wachtwoord vergeten?",
+    "lift.lockdown.label": "Lift your lockdown",
+    "lift.desc.label": "It appears someone attempted to unlock your locker. The lockdown is now being lifted.",
+    "lift.success.label": "Lifted lockdown successful"
 }
