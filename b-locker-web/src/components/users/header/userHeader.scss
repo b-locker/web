@@ -56,6 +56,9 @@
     align-self: center;
     padding-left: 7vw;
     padding-right: 2vw;
+    @media only screen and (min-width: 800px) {
+        padding-left: 7vw;
+    }
 }
 
 #ruas-title{

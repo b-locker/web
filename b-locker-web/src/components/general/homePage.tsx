@@ -32,6 +32,16 @@ const HomePage: React.FC = () => {
                 <div className="global-title-desc-div ">
                     <p className="global-page-title ">{t('home.welcome.label')}</p>
                     <p className="global-desc-label ">{t('home.desc.label')}</p>
+                    <br/>
+                    <div className="youtube-video">
+                        <iframe
+                            title="B-Locker demo video"
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/q8pBZZtk-OY"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
