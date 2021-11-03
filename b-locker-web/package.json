@@ -29,7 +29,7 @@
     "react-spinners": "^0.8.0",
     "store2": "^2.10.0",
     "typescript": "^3.7.3",
-    "validator": "^12.1.0"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
